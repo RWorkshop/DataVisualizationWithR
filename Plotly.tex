@@ -2,7 +2,7 @@
   plotly Sign In SIGN UP  + NEW PROJECT  UPGRADE  REQUEST DEMO Feed Pricing Dashboards API
 Plotly for R is now entirely open source, free, and self-hosted
 Learn more about why we've open sourced
-
+%==========================================%
  HELP/API LIBRARIES/R/ FORK ON GITHUB
 QUICK START
 Getting Started
@@ -26,6 +26,7 @@ GitHub
 community.plot.ly
 TOOLS
 Web Editor
+%===================================================================%
 Plotly R Library 2.0
 Plotly for R is an interactive, browser-based charting library built on the open source JavaScript graphing library, plotly.js. It works entirely locally, through the HTML widgets framework.
 library(plotly)
@@ -59,6 +60,8 @@ str(p <- plot_ly(economics, x = date, y = uempmed))
 ##  - attr(*, "plotly_hash")= chr "7ff330ec8c566561765c62cbafed3e0f#2"
 This allows us to mix data manipulation and visualization verbs in a pure(ly) functional, predictable and pipeable manner. Here, we take advantage of dplyr's filter() verb to label the highest peak in the time series:
 
+\begin{framed}
+\begin{verbatim}
 p %>%
   add_trace(y = fitted(loess(uempmed ~ as.numeric(date)))) %>%
   layout(title = "Median duration of unemployment (in weeks)",
