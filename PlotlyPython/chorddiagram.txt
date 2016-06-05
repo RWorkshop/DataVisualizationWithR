@@ -1,28 +1,36 @@
-Chord Diagram in Python
+﻿Chord Diagram in Python
 How to make an interactive chord diagram in Python with Plotly and iGraph.
-python
-Python
-Chord Diagrams with Plotly
+%======================================================%
+\subsection{Chord Diagrams with Plotly}
+
 A circular layout places the graph nodes uniformly on a circle. In this example we illustrate how to draw the graph edges in order to avoid a cluttered visualization.
 Eurovision Song Contest Example
+
 As an example, we consider a circular graph with the European countries as nodes. Among these countries, some qualified for the grand final Eurovision Song Contest.
 Each european country is a jury member and rates some contestants on a scale from 1 to 12 (in 2015 a contestant from Australia led to adding this country to the graph).
 There is a directed edge from a jury member country to a contestant country if the contestant acquired at least one point from the jury country voters.
 The jury member countries are placed uniformly, in alphabetical order, on the unit circle. If there is an edge between two nodes, then we draw a cubic Bézier curve having as the first and the last control point the given nodes.
 To avoid cluttered edges we adopted the following procedure in choosing the interior control points for the Bézier curve:
 we consider five equally spaced points on the unit circle, corresponding to the angles 0,π/40,π/4 π/2,3π/4,ππ/2,3π/4,π:
+
+5=====================================================%
+
 P1(1,0),P2=(2√/2,2√/2),P3(0,1),P4=(−2√/2,2√/2),P5(−1,0)
 P1(1,0),P2=(2/2,2/2),P3(0,1),P4=(−2/2,2/2),P5(−1,0)
 define a list, Dist, having as elements the distances between the following pairs of points:
 (P1,P1),(P1,P2),(P1,P3),(P1,P4),(P1,P5)
 (P1,P1),(P1,P2),(P1,P3),(P1,P4),(P1,P5)
+
 In order to assign the control poligon to the Bézier curve that will be the edge between two connected nodes, V[i], V[j], we compute the distance between these nodes, and deduce the interval kk, of two consecutive values in Dist, this distance belongs to.
 Since there are four such intervals indexed k=0,1,2,3k=0,1,2,3, we define the control poligon as follows:
 b0=V[i],b1=V[i]/param,b2=V[j]/param,b3=V[j],
 b0=V[i],b1=V[i]/param,b2=V[j]/param,b3=V[j],
 where param is chosen from the list: params=[1.2, 1.5, 1.8, 2.1].
+
 Namely, if the distance(V[i], V[j]), belongs to the KthKth interval associated to Dist, then we choose param= params[K].
 We processed data provided by Eurovision Song Contest, and saved the corresponding graph in a gml file. Now we can read the gml file and define an igraph.Graph object.
+
+%====================================================%
 In [2]:
 import igraph as ig
 
@@ -49,7 +57,7 @@ Get the edge list as a list of tuples, having as elements the end nodes indices:
 In [6]:
 E=[e.tuple for e in G.es]# list of edges
 len(E)
-Copy to clipboard!
+%================================================================%
 Out[6]:
 400Copy to clipboard!
 Get the list of Contestant countries:
@@ -57,9 +65,10 @@ In [7]:
 ContestantLst=[G.vs[e[1]] for e in E]
 Contestant=list(set([v['label'] for  v in ContestantLst]))
 len(Contestant)
-Copy to clipboard!
+%================================================================%
 Out[7]:
-25Copy to clipboard!
+25
+%================================================================%
 Get the node positions, assigned by the circular layout:
 In [8]:
 layt=G.layout('circular') #circular layout
@@ -68,13 +77,13 @@ layt is a list of 2-elements lists, representing the coordinates of nodes placed
 In [9]:
 L=len(layt)
 layt[7]
-Copy to clipboard!
+%================================================================%
 Out[9]:
 [0.4539904997395468, 0.8910065241883678]Copy to clipboard!
 Define the list of edge weights:
 In [10]:
 Weights= map(int, G.es["weight"])
-Copy to clipboard!
+%================================================================%
 In the sequel we define a few functions that lead to the edge definition as a Bézier curve:
 dist(A,B) computes the distance between two 2D points, A, B:
 In [11]:

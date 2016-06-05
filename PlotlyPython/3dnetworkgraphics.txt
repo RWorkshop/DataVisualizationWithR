@@ -2,13 +2,14 @@
 How to make 3D Network Graphs in Python.
 python
 Python
+%================================================================%
 3D Network Graphs with Plotly and igraph
 A 3D graph representing the network of coappearances of characters in
 Victor Hugo's novel Les Miserables
 We define our graph as an igraph.Graph object. Python igraph is a library for high-performance graph generation and analysis.
 In [9]:
 import igraph as ig
-Copy to clipboard!
+%================================================================%
 Read graph data from a json file:
 In [10]:
 import json
@@ -32,7 +33,7 @@ N
 Copy to clipboard!
 Out[11]:
 77
-Copy to clipboard!
+%================================================================%
 Define the list of edges and the Graph object from Edges:
 In [12]:
 L=len(data['links'])
@@ -43,7 +44,7 @@ Copy to clipboard!
 Extract the node attributes, 'group', and 'name':
 In [13]:
 data['nodes'][0]
-Copy to clipboard!
+%================================================================%
 Out[13]:
 {u'group': 1, u'name': u'Myriel'}
 Copy to clipboard!
@@ -57,11 +58,11 @@ Copy to clipboard!
 Get the node positions, set by the Kamada-Kawai layout for 3D graphs:
 In [15]:
 layt=G.layout('kk', dim=3)
-Copy to clipboard!
+%================================================================%
 layt is a list of three elements lists (the coordinates of nodes):
 In [16]:
 layt[5]
-Copy to clipboard!
+%================================================================%
 Out[16]:
 [-2.419184216272965, -5.200101033772013, 4.673402139645248]
 Copy to clipboard!
@@ -104,7 +105,7 @@ trace2=Scatter3d(x=Xn,
                text=labels,
                hoverinfo='text'
                )
-Copy to clipboard!
+%================================================================%
 In [20]:
 axis=dict(showbackground=False,
           showline=False,
@@ -113,7 +114,7 @@ axis=dict(showbackground=False,
           showticklabels=False,
           title=''
           )
-Copy to clipboard!
+%================================================================%
 In [21]:
 layout = Layout(
          title="Network of coappearances of characters in Victor Hugo's novel<br> Les Miserables (3D visualization)",

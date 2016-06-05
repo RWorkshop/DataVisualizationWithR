@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.21)  4 JUN 2016 23:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.21)  5 JUN 2016 12:25
 entering extended mode
 **./Intro.tex
 (Intro.tex
@@ -1002,20 +1002,20 @@ Package pdftex.def Info: plotlygallery.png used on input line 22.
 
 {C:/Users/Computer Six/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./pl
 otlygallery.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+LaTeX Font Info:    Try loading font information for U+msa on input line 31.
 
 ("C:\Users\Computer Six\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\um
 sa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 31.
 
 ("C:\Users\Computer Six\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\um
 sb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 30.
+line 31.
 
 ("C:\Users\Computer Six\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmathacc
 ent\ot1mathkerncmss.fd"
@@ -1025,34 +1025,75 @@ thkerncmss.
 
 ] [4
 
+] [5
+
 ]
-<pipinstallplotly.png, id=120, 504.38437pt x 273.27094pt>
+\openout4 = `Intro.vrb'.
+
+ (Intro.vrb
+<pipinstallplotly.png, id=146, 504.38437pt x 273.27094pt>
 File: pipinstallplotly.png Graphic file (type png)
 
 <use pipinstallplotly.png>
-Package pdftex.def Info: pipinstallplotly.png used on input line 50.
-(pdftex.def)             Requested size: 338.02072pt x 183.13643pt.
-
-Overfull \hbox (30.73085pt too wide) in paragraph at lines 50--50
- [] 
- []
-
-[5
+Package pdftex.def Info: pipinstallplotly.png used on input line 10.
+(pdftex.def)             Requested size: 291.92444pt x 158.16365pt.
+) [6
 
  <./pipinstallplotly.png>]
-<plotlyprofile.png, id=148, 811.53188pt x 383.93437pt>
+<plotlyprofile.png, id=174, 811.53188pt x 383.93437pt>
 File: plotlyprofile.png Graphic file (type png)
  <use plotlyprofile.png>
-Package pdftex.def Info: plotlyprofile.png used on input line 58.
+Package pdftex.def Info: plotlyprofile.png used on input line 80.
 (pdftex.def)             Requested size: 338.02072pt x 159.92148pt.
 
-Overfull \hbox (30.73085pt too wide) in paragraph at lines 58--58
+Overfull \hbox (30.73085pt too wide) in paragraph at lines 80--80
  [] 
  []
 
-[6
+[7
 
  <./plotlyprofile.png>]
+<plotlysubscription.png, id=202, 675.27281pt x 322.20375pt>
+File: plotlysubscription.png Graphic file (type png)
+
+<use plotlysubscription.png>
+Package pdftex.def Info: plotlysubscription.png used on input line 90.
+(pdftex.def)             Requested size: 338.02072pt x 161.2883pt.
+
+Overfull \hbox (30.73085pt too wide) in paragraph at lines 90--90
+ [] 
+ []
+
+[8
+
+ <./plotlysubscription.png>]
+<plotlyindustry.png, id=228, 820.56563pt x 393.72093pt>
+File: plotlyindustry.png Graphic file (type png)
+
+<use plotlyindustry.png>
+Package pdftex.def Info: plotlyindustry.png used on input line 100.
+(pdftex.def)             Requested size: 338.02072pt x 162.1836pt.
+
+Overfull \hbox (30.73085pt too wide) in paragraph at lines 100--100
+ [] 
+ []
+
+[9
+
+ <./plotlyindustry.png>] <jupyter.png, id=254, 715.17188pt x 323.70938pt>
+File: jupyter.png Graphic file (type png)
+
+<use jupyter.png>
+Package pdftex.def Info: jupyter.png used on input line 109.
+(pdftex.def)             Requested size: 399.47777pt x 180.81665pt.
+
+Overfull \hbox (92.1879pt too wide) in paragraph at lines 109--109
+ [] 
+ []
+
+[10
+
+ <./jupyter.png>]
 \tf@nav=\write6
 \openout6 = `Intro.nav'.
 
@@ -1062,11 +1103,11 @@ Overfull \hbox (30.73085pt too wide) in paragraph at lines 58--58
 \tf@snm=\write8
 \openout8 = `Intro.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
  (Intro.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 59.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
 Package rerunfilecheck Info: File `Intro.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1074,23 +1115,23 @@ Package rerunfilecheck Info: File `Intro.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
- 16436 strings out of 493634
- 322432 string characters out of 3132381
- 383232 words of memory out of 3000000
- 19426 multiletter control sequences out of 15000+200000
- 10089 words of font info for 37 fonts, out of 3000000 for 9000
+ 16469 strings out of 493634
+ 322882 string characters out of 3132381
+ 383186 words of memory out of 3000000
+ 19444 multiletter control sequences out of 15000+200000
+ 10258 words of font info for 38 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  56i,14n,55p,388b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Computer Six/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmss10.pfb><C:/Users/Computer Six/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/Computer Six/AppData/Local/
+msfonts/cm/cmss12.pfb><C:/Users/Computer Six/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/Computer Six/AppData/Local/
 Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Intro.pdf (6 pages, 473999 bytes).
+Output written on Intro.pdf (10 pages, 1131853 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 63 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
