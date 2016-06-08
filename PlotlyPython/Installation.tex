@@ -1,61 +1,51 @@
-Installation
+%=============================================%
+\begin{frame}
+	\large
+	\texttt{Account Types}
+	\begin{figure}
+		\centering
+		\includegraphics[width=01.1\linewidth]{plotlysubscription}
+	\end{figure}
+	
+\end{frame}
+%=============================================%
+\begin{frame}
+	\large
+	\texttt{Industry}
+	\begin{figure}
+		\centering
+		\includegraphics[width=01.1\linewidth]{plotlyindustry}
+	\end{figure}
+	
+\end{frame}
+
+
+%==============================================%
+\begin{frame}
+	\begin{figure}
+\centering
+\includegraphics[width=1.3\linewidth]{jupyter}
+\end{figure}
+\end{frame}
+%==============================================%
+\begin{frame}
+\texttt{Installation}\\
 To install Plotly's python package, use the package manager pip inside your terminal.
 If you don't have pip installed on your machine, click here for pip's installation instructions. 
-
-\begin{framed}
-\begin{verbatim}
-$ pip install plotly 
-or 
-$ sudo pip install plotly 
-
-Plotly's Python package is updated frequently! To upgrade, run: 
-
-$ pip install plotly --upgrade
-\end{verbatim}
-\end{framed}
 \end{frame}
 %===========================================================%
-
-%===========================================================%
-Initialization for Online Plotting
-Plotly provides a web-service for hosting graphs! 
-Create a free account to get started. 
-Graphs are saved inside your online Plotly account and you control the privacy. 
-Public hosting is free, for private hosting, check out our paid plans. 
-
-After installing the Plotly package, you're ready to fire up python: 
-
 %=======================%
 \begin{frame}[fragile]
-\large
-\texttt{Accessing Your Account}
+	\large
 \begin{framed}
-\begin{verbatim}
-
-import plotly 
-
-plotly.tools.set_credentials_file(
-	username='DemoAccount', 
-	api_key='lr1c37zw81')
-
-\end{verbatim}
+	\begin{verbatim}
+	$ pip install plotly 
+	or 
+	$ sudo pip install plotly 
+	
+	Plotly's Python package is updated frequently! To upgrade, run: 
+	
+	$ pip install plotly --upgrade
+	\end{verbatim}
 \end{framed}
-Find your API key on your account page.
 \end{frame}
-%=======================%
-You'll need to replace 'DemoAccount' and 'lr1c37zw81' with your Plotly username 
-and API key.
-
-
-The initialization step places a special .plotly/.credentials file 
-in your home directory. 
-Your ~/.plotly/.credentials file should look something like this: 
-{
-    "username": "DemoAccount",
-    "stream_ids": ["ylosqsyet5", "h2ct8btk1s", "oxz4fm883b"],
-    "api_key": "lr1c37zw81"
-}
-\end{verbatim}
-\end{framed}
-
-%=======================%
