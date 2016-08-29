@@ -1,3 +1,12 @@
+## Page 267 Correlation Matrix
+## Page 271 Plotting a Function
+## Page 274 Network Graphs
+## Page 281 Heat Maps
+## Page 283 3d Scatterplots
+## Page 291 Dendrograms
+## Page 294 Vector Fields
+## Page 302 Mosaic Plot
+
 
 ########################### Page 281
 
