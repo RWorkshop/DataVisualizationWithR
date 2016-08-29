@@ -44,6 +44,60 @@ ggplot(ce, aes(x=Date, y=Weight)) +
 
 
 
+# Put mdeaths time series data into a data frame
+md <- data.frame(deaths = as.numeric(mdeaths), month = as.numeric(cycle(mdeaths)))
+
+#########################
+
+## 8.16. Making a Circular Graph 
+
+# Calculate average number of deaths in each month
+
+library(plyr) # For the ddply() function
+md <- ddply(md, "month", summarise, deaths = mean(deaths))
+md
+
+#########################
+
+# Make the base plot
+p <- ggplot(md, aes(x=month, y=deaths)) + geom_line() + scale_x_continuous(breaks=1:12)
+
+# With coord_polar
+p + coord_polar()
+
+
+
+######################## Page 203
+# Connect the lines by adding a value for 0 that is the same as 12
+
+mdx <- md[md$month==12, ]
+mdx$month <- 0
+mdnew <- rbind(mdx, md)
+
+# Make the same plot as before, but with the new data, by using %+%
+p %+% mdnew + coord_polar() + ylim(0, max(md$deaths))
+
+
+####################### Page 208
+
+
+# Convert WWWusage time-series object to data frame
+www <- data.frame(minute = as.numeric(time(WWWusage)),
+ users = as.numeric(WWWusage))
+# Define a formatter function - converts time in minutes to a string
+timeHM_formatter <- function(x) {
+ h <- floor(x/60)
+ m <- floor(x %% 60)
+ lab <- sprintf("%d:%02d", h, m) # Format the strings as HH:MM
+ return(lab)
+}
+# Default x axis
+ggplot(www, aes(x=minute, y=users)) + geom_line()
+# With formatted times
+ggplot(www, aes(x=minute, y=users)) + geom_line() +
+ scale_x_continuous(name="time", breaks=seq(0, 100, by=10),
+ labels=timeHM_formatter)
+ 
 ############### Page 253
 
 library(gcookbook) # For the data set
