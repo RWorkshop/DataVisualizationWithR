@@ -1,0 +1,33 @@
+```{r}
+m1 <- vglm(stay ~ age + hmo + died, family = pospoisson(), data = dat)
+summary(m1)
+```
+
+```{r}
+output <- data.frame(resid = resid(m1), fitted = fitted(m1))
+ggplot(output, aes(fitted, resid)) +
+  geom_jitter(position=position_jitter(width=.25), alpha=.5) +
+```
+
+The mean is around zero across all the fitted levels it looks like. However, there are some values that look rather extreme. To see if these have much influence, we can fit lines using quantile regression, these lines represent the 75th, 50th, and 25th percentiles.
+
+
+```{r}
+ggplot(output, aes(fitted, resid)) +
+  geom_jitter(position=position_jitter(width=.25), alpha=.5) +
+  stat_quantile(method="rq")
+```
+
+Here we see the spread narrowing at higher levels. Let's cut the data into intervals and check box plots for each. We will get the breaks from the algorithm for a histogram.
+```{r}
+output <- within(output, {
+  broken <- cut(fitted, hist(fitted, plot=FALSE)$breaks)
+})
+```
+
+```{r}
+ggplot(output, aes(broken, resid)) +
+ geom_boxplot() +
+ geom_jitter(alpha=.25)
+```
+

@@ -1,0 +1,41 @@
+1. Logistic Regression - Binary.CSV - 
+
+```{r}
+newdata1 <- with(mydata,
+  data.frame(gre = mean(gre), gpa = mean(gpa), rank = factor(1:4)))
+```
+
+```{r}
+## view data frame
+newdata1
+##   gre  gpa rank
+## 1 588 3.39    1
+## 2 588 3.39    2
+## 3 588 3.39    3
+## 4 588 3.39    4
+```
+
+```{r}
+newdata1$rankP <- predict(mylogit, newdata = newdata1, type = "response")
+newdata1
+##   gre  gpa rank rankP
+## 1 588 3.39    1 0.517
+## 2 588 3.39    2 0.352
+## 3 588 3.39    3 0.219
+## 4 588 3.39    4 0.185
+```
+
+```{r}
+newdata2 <- with(mydata,
+  data.frame(gre = rep(seq(from = 200, to = 800, length.out = 100), 4),
+  gpa = mean(gpa), rank = factor(rep(1:4, each = 100))))
+```
+
+```{r}
+newdata3 <- cbind(newdata2, predict(mylogit, newdata = newdata2, type="link", se=TRUE))
+newdata3 <- within(newdata3, {
+  PredictedProb <- plogis(fit)
+  LL <- plogis(fit - (1.96 * se.fit))
+  UL <- plogis(fit + (1.96 * se.fit))
+})
+```

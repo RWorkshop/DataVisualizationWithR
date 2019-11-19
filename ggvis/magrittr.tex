@@ -1,0 +1,156 @@
+
+\documentclass[MASTER.tex]{subfiles} 
+\begin{document} 
+
+	%=================================================%
+	\begin{frame}
+		\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{images/pipe}
+
+\end{figure}
+\begin{center}
+		{\huge THE $ \%>\% $ OPERATOR}
+\end{center}
+
+		
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{images/pipe2}
+
+\end{figure}
+
+	\end{frame}
+	%=================================================%
+	\begin{frame}[fragile]
+		\frametitle{ The $\%>\%$ operator}
+		\LARGE
+		% - http://r2014-mtp.sciencesconf.org/file/92631
+		\begin{itemize}
+		\item From \textbf{magrittr} package. 
+		\item Used extensively in \textbf{dplyr}.
+		\item $\%>\%$ is a piping operator, and can be verbalised as ``\textit{then}".
+		\item It takes the output of the left side, and uses it as the first
+		argument of the function on the right side.
+		\end{itemize}
+		\end{frame}
+		%================================================================= %
+		\begin{frame}[fragile]
+			\frametitle{magrittr :  the $\%>\%$ operator}
+			\Large
+		\begin{framed}
+		\begin{verbatim}
+		subset(mtcars, cyl == 6, c(mpg, wt))
+		
+		mtcars %>% subset(cyl == 6, c(mpg, wt))
+		\end{verbatim}
+	\end{framed}
+	
+\end{frame}
+		%================================================================= %
+		\begin{frame}[fragile]
+		\frametitle{magrittr :  the $\%>\%$ operator}
+		\Large
+		\begin{framed}
+		\begin{verbatim}
+			
+		summary(subset(mtcars, cyl == 6, 
+		           c(mpg, wt)), digits=2)
+		  
+		mtcars %>% 
+				   subset(cyl == 6, c(mpg, wt)) %>% 
+				   summary(digits=2)
+		\end{verbatim}
+		\end{framed}
+	
+	\end{frame}
+		%================================================================= %
+		\begin{frame}[fragile]
+			\frametitle{magrittr :  the $\%>\%$ operator}
+			\Large
+			\begin{framed}
+				\begin{verbatim}	
+				mtcars %>% 
+				   subset(cyl == 6, c(mpg, wt)) %>% 
+				      summary(digits=2)
+				\end{verbatim}
+			\end{framed}
+			\begin{itemize}
+				\item Get the mtcars data set
+				\item \textbf{Then} subset it like this
+				\item \textbf{Then} get the summary, with this setting
+			\end{itemize}
+			\end{frame}
+	%================================================================= %
+	\begin{frame}
+		\frametitle{magrittr :  the $\%>\%$ operator}
+		\begin{itemize}
+			\item You can use the $\%>\%$ operator with any \texttt{R} functions.
+			\item The rules are simple: the object on the left hand side is passed as the first argument to the function on the right hand side. So: 
+		\end{itemize}
+		\begin{framed}	
+			my.data $\%>\%$ \texttt{my.function} is the same as \texttt{my.function(my.data)}
+			my.data $\%>\%$ \texttt{my.function(arg=value)} is the same as \texttt{my.function(my.data, arg=value)}
+		\end{framed}
+		
+	\end{frame}
+	%=================================================%
+	\begin{frame}[fragile]
+		\frametitle{The $ \%>\% $ Operator}
+		\Large
+		\textbf{The $ \%>\% $ Operator}
+		\begin{itemize}
+			\item ggvis makes use of the $ \%>\% $ operator from the
+			package magrittr
+			\item This allows us to layer up graphics in the same
+			way we would with ggplot2
+			
+		\end{itemize}
+		
+		
+	\end{frame}
+	%=================================================%
+	\begin{frame}[fragile]
+		\frametitle{The $ \%>\% $ Operator}
+		\textbf{Tube Data Example }\\ (\textit{Dr. Aimee Gott, Mango Solutions})
+%		\begin{itemize}
+%			\item The $ \%>\% $ operator passes the left hand object to the
+%			first argument of the right hand expression
+%			\item We can pass data or objects to functions in this way
+%			
+%		\end{itemize}
+		
+		\begin{framed}
+			\begin{verbatim}
+			> tubeData$Excess %>%  tapply(tubeData$Line, mean)
+			
+			# Bakerloo              5.047714
+			# Central               5.998667
+			# Circle & HamDistrict  7.166095 
+	
+			\end{verbatim}
+		\end{framed}
+		
+	\end{frame}
+	%================================================================= %
+	\begin{frame}
+		\frametitle{magrittr :  the $\%>\%$ operator}
+		\Large
+		\vspace{-1cm}
+		\textbf{	$ \%>\% $ in ggvis}
+		\begin{itemize}
+			\item With ggvis we pass "\texttt{ggvis}" objects
+			\item We create the initial object by passing data to
+			\texttt{ggvis()}
+			\item All other functions expect a ggvis object as the
+			first argument and return a ggvis object
+		\end{itemize}
+		
+	\end{frame}
+	
+	%============================================================================= %
+\end{document}

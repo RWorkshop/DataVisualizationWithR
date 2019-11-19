@@ -1,0 +1,248 @@
+
+
+\documentclass[MASTER.tex]{subfiles} 
+\begin{document} 
+%================================================================================= %
+\begin{frame}[fragile]
+\Large
+\textbf{Recall:}\\
+The \textbf{\textit{magrittr}} package allows you to rewrite the previous function call as:
+\begin{framed}
+\begin{verbatim}
+mtcars %>%
+        ggvis(x = ~wt, y = ~mpg) %>%
+        layer_points()
+\end{verbatim}
+\end{framed}
+\end{frame}
+%================================================================================= %
+\begin{frame}[fragile]
+	\large
+Pipe operator must be at the end of line, if using multiple lines
+		\begin{framed}
+			\begin{verbatim}
+			mtcars %>%
+			ggvis(x = ~wt, y = ~mpg) %>%
+			layer_points()
+			\end{verbatim}
+		\end{framed}
+This following code LOOKS neat, but doesn't work. 
+		\begin{framed}
+		\begin{verbatim}
+		mtcars 
+		    %>% ggvis(x = ~wt, y = ~mpg) 
+		    %>% layer_points()
+		\end{verbatim}
+	\end{framed}
+\end{frame}
+%=================================================================================%
+\begin{frame}
+\frametitle{Data Visualization with ggvis}
+\Large
+\vspace{-1.8cm}
+\begin{itemize}
+% \item Don’t worry if this looks a little strange at first. You’ll soon get used to it!
+\item This style of programming (i.e. using the pipe operator) also allows gives you a lot of power when you start creating a lot of power.
+\item Also it allows you to seemlessly intermingle \textbf{\textit{ggvis}} and \textbf{\textit{dplyr}} code (\textit{Next Slide}).
+
+\end{itemize}
+
+
+\end{frame}
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+\Large	
+\begin{framed}
+\begin{verbatim}
+library(dplyr)
+# convert engine displacment to litres
+
+mtcars %>%
+  ggvis(x = ~mpg, y = ~disp) %>%
+      mutate(disp = disp / 61.0237) %>% 
+         layer_points()
+\end{verbatim}
+\end{framed}
+\end{frame}
+
+%==========================================================================%
+\begin{frame}
+\frametitle{Data Visualization with ggvis}
+
+\Large
+\textbf{Calling Formulas}
+\begin{itemize}
+\item The format of the visual properties needs a little explanation. 
+\item We use $\sim$ before the variable name to indicate that we don’t want to literally use the value of the \textbf{mpg} variable (which doesn’t exist), but instead we want we want to use the \textbf{mpg} variable inside in the dataset. 
+\item This is a common pattern in \textbf{ggvis}: we’ll always use formulas to refer to variables inside the dataset.
+
+\end{itemize}
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+
+\Large
+
+The first two arguments to \texttt{ggvis()} are usually the position, so by convention you can drop \texttt{x} and \texttt{y}:
+\begin{framed}
+	\begin{verbatim}
+mtcars   %>% 
+  ggvis(~mpg, ~disp) %>% 
+  layer_points()
+\end{verbatim}
+\end{framed}
+($x$ for mpg, $y$ for displacement)
+\end{frame}
+%==========================================================================%
+\begin{frame}[fragile]
+	\Large
+\textbf{All the \textit{mtcars} variables}
+
+\begin{framed}
+\begin{verbatim}
+> names(mtcars)
+[1] "mpg"  "cyl"  "disp" "hp"   "drat"
+[6] "wt"   "qsec" "vs"   "am"   "gear"
+[11] "carb"
+> 
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+\Large	
+You can add more variables to the plot by mapping them to other visual properties like \textbf{fill, stroke, size} and \textbf{shape}.
+{
+	\large
+\begin{framed}
+	\begin{verbatim}
+mtcars %>% 
+  ggvis(~mpg, ~disp, stroke = ~vs) %>% 
+     layer_points()
+\end{verbatim}
+\end{framed}
+}
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+		\Large
+
+\textbf{The ``fill" property}		
+\begin{framed}
+	\begin{verbatim}
+ mtcars %>% 
+    ggvis(~mpg, ~disp, fill = ~vs) %>% 
+       layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+		\Large
+	\vspace{-1.4cm}
+	\textbf{The ``size" property}		
+\begin{framed}
+	\begin{verbatim}	
+ mtcars %>% 
+    ggvis(~mpg, ~disp, size = ~vs) %>% 
+        layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+	\Large
+	
+	\textbf{The ``shape" property}	
+\begin{framed}
+	\begin{verbatim}	
+ mtcars %>% 
+    ggvis(~mpg, ~disp, 
+        shape = ~factor(cyl)) %>% 
+    layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+	
+
+%==========================================================================%
+\begin{frame}
+\frametitle{Data Visualization with ggvis}
+\Large
+ \textbf{The ``:=" operator}
+\begin{itemize}
+\item If you want to make the points a fixed colour or size, you need to use \texttt{:=} instead of \texttt{=}. 
+\item The \texttt{:=} operator means to use a raw, unscaled value. 
+\item This seems like something that \texttt{ggvis()} should be able to figure out by itself, but making it explicit allows you to create some useful plots that you couldn’t otherwise. 
+% \item See the properties and scales for more details.
+\end{itemize}
+
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+	\Large
+	
+\begin{framed}
+	\begin{verbatim}
+mtcars  %>% 
+   ggvis(~wt, ~mpg, fill := "red", 
+         stroke := "black") %>% 
+      layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}
+	\Large
+	
+\begin{framed}
+	\begin{verbatim}
+mtcars   %>% 
+     ggvis(~wt, ~mpg, 
+          size := 300, 
+          opacity := 0.4)    %>% 
+     layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+
+%==========================================================================%
+\begin{frame}[fragile]
+	\frametitle{Data Visualization with ggvis}	
+	\Large
+	
+\begin{framed}
+	\begin{verbatim}
+mtcars  %>% 
+    ggvis(~wt, ~mpg, 
+        shape := "cross")   %>% 
+    layer_points()
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+
+\end{document}
+%====================================================================================== %

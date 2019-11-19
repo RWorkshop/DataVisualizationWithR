@@ -1,0 +1,17 @@
+Data Prep 5
+======================
+
+Negative Binomial Regression: ***Fishing.csv***.
+
+```{r}
+# Upload Fishing.csv
+```
+
+
+```{r}
+
+ggplot(fishing, aes(daysabs, fill = prog)) +
+  geom_histogram(binwidth=1) +
+  facet_grid(prog ~ ., margins=TRUE, scales="free")
+
+```

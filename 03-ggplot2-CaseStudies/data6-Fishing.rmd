@@ -1,0 +1,22 @@
+
+6. Zero-inflated Poisson Regression  - Fishing.csv
+
+```{r}
+## histogram with x axis in log10 scale
+ggplot(Fishing, aes(count)) + geom_histogram() + scale_x_log10()
+```
+
+```{r}
+newdata1 <- expand.grid(0:3, factor(0:1), 1:4)
+colnames(newdata1) <- c("child", "camper", "persons")
+newdata1 <- subset(newdata1, subset=(child<=persons))
+newdata1$phat <- predict(m1, newdata1)
+```
+
+```{r}
+ggplot(newdata1, aes(x = child, y = phat, colour = factor(persons))) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~camper) +
+  labs(x = "Number of Children", y = "Predicted Fish Caught")
+```
