@@ -1,0 +1,13 @@
+fix_1_length_data
+Function to avoid the jsonlite::auto_unbox default
+
+#### Description 
+
+Function to avoid the jsonlite::auto_unbox default
+Usage
+fix_1_length_data(x)
+ #### Arguments 
+
+x
+And element, numeric or character12
+get_hc_series_from_df

@@ -1,0 +1,26 @@
+### Beziers
+
+A bezier is a smooth curve defined by its end point and one or two control points. It is well known in vector drawing software such as Adobe Illustrator, where the control points provide an intuitive way to manipulate the curve. In essence the control points define the direction and the force the curve exits the end point with - the more distant the control point is to the end point, the longer the curve travels in the direction of the control point before beginning to move towards the other end point.
+There is no succinct way to describe a bezier in a single row, so all the versions use multiple rows to describe the bezier, grouped by the group aesthetic. The first row is the start point followed by one or two control points and then the end point. As bezierGrob from grid only supports quadratics beziers (2 control points) the 0-version approximates a qubic bezier by placing placing the two control points on top of each other.
+
+```{r}
+beziers <- data.frame(
+    x = c(1, 2, 3, 4, 4, 6, 6),
+    y = c(0, 2, 0, 0, 2, 2, 0),
+    type = rep(c('cubic', 'quadratic'), c(3, 4)),
+    point = c('end', 'control', 'end', 'end', 'control', 'control', 'end')
+)
+help_lines <- data.frame(
+    x = c(1, 3, 4, 6),
+    xend = c(2, 2, 4, 6),
+    y = 0,
+    yend = 2
+)
+ggplot() + geom_segment(aes(x = x, xend = xend, y = y, yend = yend), 
+                        data = help_lines, 
+                        arrow = arrow(length = unit(c(0, 0, 0.5, 0.5), 'cm')), 
+                        colour = 'grey') + 
+    geom_bezier(aes(x= x, y = y, group = type, linetype = type), 
+                data = beziers) + 
+    geom_point(aes(x = x, y = y, colour = point), data = beziers)
+```

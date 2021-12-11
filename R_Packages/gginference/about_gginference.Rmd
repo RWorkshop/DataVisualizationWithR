@@ -1,0 +1,72 @@
+Package ‘gginference’
+November 19, 2018
+Type Package
+Title Visualise the Results of Inferential Statistics using 'ggplot2'
+Version 0.1.0
+Date 2018-10-24
+#### Description Visualise the results of F test to compare two variances, Student's ttest,
+test of equal or given proportions, Pearson's chisquared
+test for count data and test for association/correlation between paired samples.
+Maintainer Kleanthis Koupidis <koupidis@okfn.gr>
+URL https://github.com/okgreece/gginference
+BugReports https://github.com/okgreece/gginference/issues
+Depends R (>= 3.4.0)
+License GPL-2 | file LICENSE
+Encoding UTF-8
+LazyData true
+Imports ggplot2, rlang, stats
+RoxygenNote 6.1.0.9000
+Suggests knitr, MASS, rmarkdown
+NeedsCompilation no
+Author Charalampos Bratsas [aut],
+Anastasia Foudouli [aut],
+Kleanthis Koupidis [aut, cre]
+Repository CRAN
+Date/Publication 2018-11-19 18:10:03 UTC
+R topics documented:
+accidentsData.......... 2
+BirthDeath.......... . . 3
+BirthDeath2000.........3
+1
+2 accidentsData
+births........... 4
+DieselbioRon95.........4
+FuelConsumption......... . . 5
+ggaov........... 5
+ggchisqtest.......... . 6
+ggcortest..........7
+ggproptest.......... . . 8
+ggttest........... 9
+ggvartest..........9
+LaptopRates.......... . 10
+LivLab........... 11
+MilkConsumption......... . . 11
+m_anova..........12
+randexperiment.........12
+Salary_Gender.........13
+Index 14
+
+MilkConsumption Milk consumption
+#### Description
+A data frame containing a sample of the number of cow, sheep and goat milk bottles sold.
+#### Usage
+MilkConsumption
+#### Format
+A data frame with 13 observations of 3 columns:
+Cow.Milk number of cow milk bottles
+Sheep.Milk number of sheep milk bottles
+Goat.Milk number of goat milk bottles
+Source
+The original data are available at Hellenic Statistical Authority
+
+
+
+Salary_Gender Female and male salaries
+#### Description
+A sample data frame with female and male salaries of a company.
+#### Usage
+Salary_Gender
+#### Format
+A data frame with 100 observations of 2 columns:
+Male_sal male salaries
+Female_sal female salaries

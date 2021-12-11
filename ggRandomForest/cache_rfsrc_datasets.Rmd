@@ -1,0 +1,42 @@
+
+4 cache_rfsrc_datasets
+cache_rfsrc_datasets Recreate the cached data sets for the ggRandomForests package
+#### Description 
+
+Recreate the cached data sets for the ggRandomForests package
+#### Usage 
+<pre><code>
+
+cache_rfsrc_datasets(set = NA, save = TRUE, pth, ...)
+
+</code></pre>
+#### Arguments
+
+set Defaults to all sets (NA), however for individual sets specify one or more of
+c("airq", "Boston", "iris", "mtcars", "pbc", "veteran")
+save Defaults to write files to the current data directory.
+pth the directory to store files.
+... extra 
+</code></pre>
+#### Arguments
+ passed to randomForestSRC functions.
+Details
+Constructing random forests are computationally expensive, and the ggRandomForests operates
+directly on randomForestSRC objects. We cache computationally intensive randomForestSRC objects
+to improve the ggRandomForests #### Examples 
+```{r} 
+, diagnostics and vignettes run times. The set of
+precompiled randomForestSRC objects are stored in the package data subfolder, however version
+changes in the dependant packages may break some functionality. This function was created to help
+the package developer deal with thoses changes. We make the function available to end users to
+create objects for further experimentation.
+For the following data sets: #'
+*  _iris - The iris data set.
+*  _airq - The airquality data set.
+*  _mtcars - The mtcars data set.
+*  _Boston - The Boston housing data set (MASS package).
+*  _pbc - The pbc data set (randomForestSRC package).
+*  _veteran - The veteran data set (randomForestSRC package).
+See Also
+iris airq mtcars Boston pbc veteran
+

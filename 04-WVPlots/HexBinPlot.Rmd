@@ -1,0 +1,59 @@
+---
+title: "``HexBinPlot``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+ 
+
+#### Description
+
+Build a hex bin plot with rational color coding.
+ 
+#### Usage
+
+<pre><code>
+
+HexBinPlot(d, xvar, yvar, title, ..., bins = 30, binwidth = NULL,
+na.rm = FALSE)
+
+</code></pre> 
+
+#### Arguments
+
+* ``d ``:data frame
+* ``xvar ``:  name of x variable column
+* ``yvar``: name of y variable column
+* ``title``: plot title
+* ``...``: not used, forces later arguments to bind by name
+* ``bins``: passed to ``geom_hex``
+* ``binwidth``: passed to ``geom_hex``
+* ``na.rm``: passed to ``geom_hex``
+
+
+ 
+#### Examples
+```{r}
+
+if(requireNamespace("hexbin", quietly = TRUE)) {
+set.seed(634267)
+dframe = data.frame(x = rnorm(1000), y = rnorm(1000))
+print(HexBinPlot(dframe, "x", "y", "Example hexbin"))
+diamonds = ggplot2::diamonds
+print(HexBinPlot(diamonds, "carat", "price", "Diamonds example"))
+}
+```
+
+#### Details
+
+Builds a standard ggplot2 hexbin plot, with a color scale such that dense areas are colored darker
+(the default ggplot2 fill scales will color dense areas lighter).
+Requires the hexbin package.
+Value
+a ggplot2 hexbin plot
+See Also
+geom_hex

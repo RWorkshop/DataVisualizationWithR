@@ -1,0 +1,34 @@
+---
+title: "``datetime_to_timestamp``:  Date to Timesstamps"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+
+
+#### Description 
+
+Turn a date time vector to timestamp format
+
+#### Usage
+<pre><code>
+datetime_to_timestamp(dt)
+</code></pre>
+
+#### Arguments 
+* ``dt``: Date or datetime vector
+
+#### Examples
+```{r}
+datetime_to_timestamp(
+as.Date(c("2015-05-08", "2015-09-12"),Format = "%Y-%m-%d"))
+
+```
+

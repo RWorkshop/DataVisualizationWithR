@@ -1,0 +1,49 @@
+
+## hc_chart
+Adding chart options to highchart objects
+
+#### Description 
+
+Options regarding the chart area and plot area as well as general chart options.
+
+#### Usage
+<pre><code>
+hc_chart(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+
+#### Examples
+```{r}
+data(citytemp)
+hc <- highchart() %>%
+hc_xAxis(categories = citytemp$month) %>%
+hc_add_series(name = "Tokyo", data = citytemp$tokyo) %>%
+hc_add_series(name = "London", data = citytemp$london)
+```
+
+```{r}
+hc %>%
+hc_chart(type = "column",
+options3d = list(enabled = TRUE, beta = 15, alpha = 15))
+```
+
+```{r}
+hc %>%
+hc_chart(borderColor = '#EBBA95',
+ borderRadius = 10,
+ borderWidth = 2,
+ backgroundColor = list(
+   linearGradient = c(0, 0, 500, 500),
+     stops = list(
+        list(0, 'rgb(255, 255, 255)'),
+        list(1, 'rgb(200, 200, 255)')
+ )
+ )
+ )
+```
+
+

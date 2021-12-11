@@ -1,0 +1,11 @@
+births Births in Greece, 1976-1989
+#### Description
+A data frame giving the number of births per 1000 people in Greece from 1976 to 1989.
+#### Usage
+births
+#### Format
+A data frame with 14 observations of 2 columns:
+year years from 1976 to 1989
+rate number of births per 1000 people
+Source
+The original data are available at Hellenic Statistical Authority

@@ -1,0 +1,19 @@
+
+geom_factory
+Factory function to control ggplot2::geom_xxx functions
+
+#### Description 
+ 
+Factory function to control ggplot2::geom_xxx functions
+
+#### Usage 
+ <pre><code>
+geom_factory(geomfunc, data = NULL, ...)
+
+#### Arguments 
+ 
+geomfunc ggplot2::geom_xxx function
+data plotting data
+* ``... ``: other arguments passed to methods
+Value
+proto

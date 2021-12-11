@@ -1,0 +1,23 @@
+## ``hc_theme_monokai``
+Monokai theme for highcharts
+
+#### Description 
+
+A well know text editor theme
+
+#### Usage
+
+<pre><code>
+hc_theme_monokai(...)
+</code></pre>
+
+#### Arguments 
+
+* ``...``: Named argument to modify the theme
+
+###Examples
+
+```{r}`
+highcharts_demo() %>%
+  hc_add_theme(hc_theme_monokai())
+```

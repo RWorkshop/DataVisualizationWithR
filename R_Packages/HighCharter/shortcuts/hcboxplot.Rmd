@@ -1,0 +1,35 @@
+---
+title: "``hcboxplot``: Shortcut to make a boxplot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+
+#### Description 
+
+Shortcut to make a boxplot
+
+####  Usage 
+ <pre><code>
+hcboxplot(x = NULL, var = NULL, var2 = NULL, outliers = TRUE, ...)
+</code></pre> 
+
+#### Arguments 
+* ``x``: A numeric vector.
+* ``var``: A string vector same length of x.
+* ``var2``: A string vector same length of x.
+* ``outliers``: A boolean value to show or not the outliers.
+* `` ...  ``: Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).
+
+#### Examples 
+ ```{r}
+hcboxplot(x = iris$Sepal.Length, var = iris$Species, color = "red")
+
+```

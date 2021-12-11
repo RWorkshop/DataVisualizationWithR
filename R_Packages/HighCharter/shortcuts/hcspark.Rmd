@@ -1,0 +1,29 @@
+
+hcspark
+Shorcut to make spkarlines
+
+#### Description 
+
+Shorcut to make spkarlines
+
+####  Usage 
+ <pre><code>
+hcspark(x = NULL, type = NULL, ...)20
+hctreemap
+</code></pre> 
+#### Arguments 
+ 
+
+* ``x`` : A numeric vector.
+* ``type``: Type of sparkline: line, bar, etc.
+* `` ...  ``: Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).
+
+#### Examples 
+ ```{r}
+set.seed(123)
+x <- cumsum(rnorm(10))
+hcspark(x)
+hcspark(x, "column")
+hcspark(c(1, 4, 5), "pie")
+hcspark(x, type = "area")
+```

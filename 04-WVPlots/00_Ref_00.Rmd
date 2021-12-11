@@ -1,0 +1,357 @@
+---
+title: "WVplots"
+author: "Kevin O Brien"
+date: "13 December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Package 'WVPlots'
+November 6, 2018
+Type Package
+Title Common Plots for Analysis
+Version 1.0.6
+Date 2018-11-08
+URL https://github.com/WinVector/WVPlots,
+https://winvector.github.io/WVPlots/
+Maintainer John Mount <jmount@win-vector.com>
+BugReports https://github.com/WinVector/WVPlots/issues
+
+#### Description
+ Select data analysis plots, under a standardized calling interface implemented
+on top of 'ggplot2' and 'plotly'.
+Plots of interest include: 'ROC', gain curve, scatter plot with marginal distributions,
+conditioned scatter plot with marginal densities,
+box and stem with matching theoretical distribution, and density with matching theoretical distribution.
+License GPL-3
+VignetteBuilder knitr
+Depends R (>= 3.4.0)
+Imports ggplot2 (>= 2.2.0), wrapr (>= 1.6.3), sigr (>= 1.0.3), cdata
+(>= 1.0.3), utils, grid, gridExtra, graphics, mgcv
+Suggests knitr, testthat, plotly, hexbin
+RoxygenNote 6.1.0
+ByteCompile true
+NeedsCompilation no
+Author John Mount [aut, cre],
+Nina Zumel [aut],
+Win-Vector LLC [cph]
+Repository CRAN
+Date/Publication 2018-11-06 18:20:03 UTC
+1
+2 BinaryYScatterPlot
+R topics documented:
+BinaryYScatterPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+ClevelandDotPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+ConditionalSmoothedScatterPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+DiscreteDistribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+DoubleDensityPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+DoubleHistogramPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+GainCurvePlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+GainCurvePlotC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+GainCurvePlotWithNotation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+HexBinPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+LiftCurvePlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+LogLogPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+PairPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+PlotDistCountNormal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+PlotDistDensityBeta . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+PlotDistDensityNormal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+PlotDistHistBeta . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+plotlyROC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+plot_fit_trajectory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+plot_Keras_fit_trajectory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+PRPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+ROCPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+ROCPlotPair . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+ROCPlotPair2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+ScatterBoxPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+ScatterBoxPlotH . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+ScatterHist . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+ScatterHistC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+ScatterHistN . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+ShadedDensity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+ShadedDensityCenter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+ShadowHist . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+ShadowPlot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+WVPlots . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Index 37
+BinaryYScatterPlot Plot a scatter plot of a binary variable with smoothing curve.
+
+#### Description
+
+Plot the scatter plot of a binary variable with a smoothing curve.
+
+#### Usage
+
+<pre><code>
+BinaryYScatterPlot(frame, xvar, yvar, title, ..., se = FALSE,use_glm = TRUE)
+</code></pre> 
+
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the independent column in frame
+* ``yvar``:   name of the dependent (output or result to be modeled) column in frame
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+* ``se``: if TRUE, add error bars (defaults to FALSE). Ignored if useGLM is TRUE
+* ``use_glm``: if TRUE, "smooths" with a one-variable logistic regression (defaults to TRUE)
+
+#### Details
+
+The points are jittered for legibility. By default, a logistic regression fit is used, so that the smoothing
+curve represents the probability of y == 1 (as fit by the logistic regression). If ``use_glm`` is set to
+FALSE, a standard smoothing curve (either loess or a spline fit) is used.
+ 
+#### Examples
+```{r}
+
+set.seed(34903490)
+x = rnorm(50)
+y = 0.5*x^2 + 2*x + rnorm(length(x))
+frm = data.frame(x=x,y=y,yC=y>=as.numeric(quantile(y,probs=0.8)))
+frm$absY <- abs(frm$y)
+frm$posY = frm$y > 0
+frm$costX = 1
+WVPlots::BinaryYScatterPlot(frm, "x", "posY",
+title="Example 'Probability of Y' Plot")
+```
+
+
+ClevelandDotPlot Plot a Cleveland dot plot.
+
+#### Description
+
+Plot counts of a categorical variable.
+ 
+#### Usage
+<pre><code>
+
+ClevelandDotPlot(frm, xvar, title, ..., sort = -1, limit_n = NULL,
+stem = TRUE)
+
+
+</code></pre> 
+#### Arguments
+
+* ``frm``: data frame to get values from
+* ``xvar ``:  name of the independent (input or model) column in frame
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+* ``sort`` : if TRUE sort data
+* ``limit_n`` : if not NULL number of items to plot
+* ``stem`` : if TRUE add stems/whiskers to plot
+
+#### Details
+
+Assumes that xvar is a factor or can be coerced to one (character or integral).
+* sort < 0 sorts the factor levels in decreasing order (most frequent level first)
+* sort > 0 sorts the factor levels in increasing order (good when used in conjunction with coord_
+flip())
+* sort = 0 leaves the factor levels in "natural order" - usually alphabetical
+* stem = FALSE will plot only the dots, without the stem to the y=0 line.
+* limit_n = NULL plots all the levels, N an integer limits to the top N most populous levels
+ 
+#### Examples
+```{r}
+
+set.seed(34903490)
+# discrete variable: letters of the alphabet
+# frequencies of letters in English
+# source: http://en.algoritmy.net/article/40379/Letter-frequency-English
+letterFreqs = c(8.167, 1.492, 2.782, 4.253, 12.702, 2.228,
+2.015, 6.094, 6.966, 0.153, 0.772, 4.025, 2.406, 6.749, 7.507, 1.929,
+0.095, 5.987, 6.327, 9.056, 2.758, 0.978, 2.360, 0.150, 1.974, 0.074)
+letterFreqs = letterFreqs/100
+letterFrame = data.frame(letter = letters, freq=letterFreqs)
+# now let's generate letters according to their letter frequencies
+N = 1000
+randomDraws = data.frame(draw=1:N,
+letter=sample(letterFrame$letter, size=N,
+replace=TRUE, prob=letterFrame$freq))
+WVPlots::ClevelandDotPlot(randomDraws, "letter",
+title = "Example Cleveland-style dot plot")
+# Note the use of sort = 0, and that the graph correctly includes counts
+# with no occurrences (5, and 7)
+WVPlots::ClevelandDotPlot(mtcars, "carb", sort = 0, "Example of counting integer values")
+```
+
+ConditionalSmoothedScatterPlot
+Plot a scatter plot with smoothing line.
+
+#### Description
+
+Plot a scatter plot with a smoothing line; the smoothing window is aligned either left, center or
+right.
+ 
+#### Usage
+<pre><code>
+
+ConditionalSmoothedScatterPlot(frame, xvar, yvar, groupvar, title, ...,
+k = 3, align = "center")
+
+</code></pre> 
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the independent column in frame. Assumed to be regularly spaced
+* ``yvar``:   name of the dependent (output or result to be modeled) column in frame
+groupvar name of the grouping column in frame. Can be NULL for an unconditional plot
+* ``title ``:    title for plot
+* ``... `` : no unnamed argument, added to force named binding of later 
+</code></pre> 
+#### Arguments
+.
+k width of smoothing window. Must be odd for a center-aligned plot. Defaults to
+3
+align smoothing window alignment: 'center', 'left', or 'right'. Defaults to 'center'
+
+#### Details
+
+xvar is the continuous independent variable and yvar is the dependent binary variable. Smoothing
+is by a square window of width k.
+ 
+#### Examples
+```{r}
+
+y = c(1,2,3,4,5,10,15,18,20,25)
+x = seq_len(length(y))
+df = data.frame(x=x, y=y, group=x>5)
+WVPlots::ConditionalSmoothedScatterPlot(df, "x", "y", NULL,
+title="left smooth, one groups", align="left")
+WVPlots::ConditionalSmoothedScatterPlot(df, "x", "y", "group",
+title="left smooth, two groups", align="left")
+6 DoubleDensityPlot
+DiscreteDistribution Plot distribution of a single discrete numerical variable.
+
+#### Description
+
+Similar to calling ClevelandDotPlot with sort = 0 on a numerical x variable that takes on a
+discrete set of values.
+ 
+#### Usage
+<pre><code>
+
+DiscreteDistribution(frm, xvar, title, ..., stem = TRUE)
+
+</code></pre> 
+#### Arguments
+
+* ``frm``: data frame to get values from
+xvar numeric: name of the variable whose distribution is to be plotted
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later 
+</code></pre> 
+#### Arguments
+.
+stem if TRUE add whisker/stems to plot
+ 
+#### Examples
+```{r}
+
+frmx = data.frame(x = rbinom(1000, 20, 0.5))
+WVPlots::DiscreteDistribution(frmx, "x","Discrete example")
+DoubleDensityPlot Plot two density plots conditioned on an outcome variable.
+
+#### Description
+
+Plot two density plots conditioned on a binary outcome variable.
+ 
+#### Usage
+<pre><code>
+
+DoubleDensityPlot(frame, xvar, truthVar, title, ...)
+
+</code></pre> 
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the independent (input or model) column in frame
+truthVar name of the dependent (output or result to be modeled) column in frame
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later 
+</code></pre> 
+#### Arguments
+.
+DoubleHistogramPlot 7
+
+#### Details
+
+The use case for this visualization is to plot the distribution of a predictive model score (usually the
+predicted probability of a desired outcome) conditioned on the actual outcome. However, you can
+use it to compare the distribution of any numerical quantity conditioned on a binary feature. See
+the  
+#### Examples
+```{r}
+.
+The plot will degrade gracefully in degenerate conditions, for example when only one category is
+present.
+ 
+#### Examples
+```{r}
+
+mpg = ggplot2::mpg
+mpg$trans = gsub("\\(.*$", '', mpg$trans)
+WVPlots::DoubleDensityPlot(mpg, "cty", "trans", "City driving mpg by transmission type")
+set.seed(34903490)
+x = rnorm(50)
+y = 0.5*x^2 + 2*x + rnorm(length(x))
+frm = data.frame(score=x,
+truth=(y>=as.numeric(quantile(y,probs=0.8))),
+stuck=TRUE,
+rare=FALSE)
+frm[1,'rare'] = TRUE
+WVPlots::DoubleDensityPlot(frm, "score", "truth", title="Example double density plot")
+WVPlots::DoubleDensityPlot(frm, "score", "stuck", title="Example double density plot")
+WVPlots::DoubleDensityPlot(frm, "score", "rare", title="Example double density plot")
+
+
+
+
+
+
+
+
+
+Index
+BinaryYScatterPlot, 2
+ClevelandDotPlot, 3
+ConditionalSmoothedScatterPlot, 5
+DiscreteDistribution, 6
+DoubleDensityPlot, 6
+DoubleHistogramPlot, 7
+GainCurvePlot, 8, 10, 11
+GainCurvePlotC, 9
+GainCurvePlotWithNotation, 10
+geom_hex, 12
+geom_histogram, 35
+HexBinPlot, 11
+LiftCurvePlot, 12
+LogLogPlot, 13
+PairPlot, 14
+plot_fit_trajectory, 19, 22
+plot_Keras_fit_trajectory, 20, 21
+PlotDistCountNormal, 15
+PlotDistDensityBeta, 16
+PlotDistDensityNormal, 17
+PlotDistHistBeta, 17
+plotlyROC, 18
+PRPlot, 22, 24
+ROCPlot, 19, 23, 23, 25, 26
+ROCPlotPair, 24
+ROCPlotPair2, 25
+scale_fill_manual, 35
+ScatterBoxPlot, 27, 28
+ScatterBoxPlotH, 27, 28
+ScatterHist, 29, 31
+ScatterHistC, 30, 30, 32
+ScatterHistN, 31
+ShadedDensity, 32, 34
+ShadedDensityCenter, 33, 33
+ShadowHist, 34
+ShadowPlot, 35
+WVPlots, 36
+WVPlots-package (WVPlots), 36
+37

@@ -1,0 +1,29 @@
+SteamgraphsAvailable as stat_steamgraph.
+
+A steamgraph is a more aesthetically appealing version of a stacked area chart. It tries to highlight the changes in the data by placing the groups with the most variance on the edges, and the groups with the least variance towards the centre. This feature in conjunction with the centred alignment of each of the contributing areas makes it easier for the viewer to compare the contribution of any of the components across time.
+
+# creating some data
+set.seed(10)
+dfData = data.frame(
+   Time = 1:1000,
+   Signal = abs(
+      c(
+         cumsum(rnorm(1000, 0, 3)), 
+         cumsum(rnorm(1000, 0, 4)), 
+         cumsum(rnorm(1000, 0, 1)),
+         cumsum(rnorm(1000, 0, 2))
+      )
+   ),
+   VariableLabel = c(rep('Class A', 1000), rep('Class B', 1000), rep('Class C', 1000), rep('Class D', 1000))
+)
+
+# base plot
+p1 = ggplot(dfData, aes(x = Time, y = Signal, group = VariableLabel, fill = VariableLabel)) +
+  stat_steamgraph()
+
+
+# adding some formatting
+p1 + 
+   xlab('') + 
+   ylab('') + 
+   coord_fixed( 0.2 * diff(range(dfData$Time)) / diff(range(dfData$Signal)))

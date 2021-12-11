@@ -1,0 +1,23 @@
+
+hc_theme_darkunica
+Dark Unica theme for highcharts
+
+#### Description 
+
+Dark Unica theme for highcharts
+
+#### Usage 
+<pre><code>
+hc_theme_darkunica(...)
+</code></pre> 
+#### Arguments 
+ 
+
+...
+Named argument to modify the theme
+
+#### Examples 
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_darkunica())
+```

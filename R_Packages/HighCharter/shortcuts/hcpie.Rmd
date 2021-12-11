@@ -1,0 +1,17 @@
+
+hcpie
+Shorcut to make a pie chart
+
+#### Description 
+
+Shorcut to make a pie chart
+
+####  Usage 
+ <pre><code>
+hcpie(x, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+x A character o factor vector.
+* `` ...  ``: Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).

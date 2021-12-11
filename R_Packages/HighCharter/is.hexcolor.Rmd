@@ -1,0 +1,29 @@
+---
+title: "``is.hexcolor``: Check if a string vector is in hexadecimal color format"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+
+
+#### Description 
+
+Check if a string vector is in hexadecimal color format
+
+#### Usage
+<pre><code>
+is.hexcolor(x)
+</code></pre>
+
+#### Arguments 
+* x: A string vectors
+
+#### Examples
+```{r}
+x <- c("#f0f0f0", "#FFf", "#99990000", "#00FFFFFF")
+is.hexcolor(x)
+```

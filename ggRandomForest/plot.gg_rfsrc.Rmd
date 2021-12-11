@@ -1,0 +1,82 @@
+
+plot.gg_rfsrc Predicted response plot from a gg_rfsrc object.
+#### Description 
+
+Plot the predicted response from a gg_rfsrc object, the rfsrc prediction, using the OOB prediction from the forest.
+#### Usage 
+<pre><code>
+
+## S3 method for class 'gg_rfsrc'
+plot(x, ...)
+
+</code></pre>
+#### Arguments
+*  x gg_rfsrc object created from a rfsrc object
+* ... arguments  passed to gg_rfsrc.
+
+#### Value
+ggplot object
+
+See Also
+gg_rfsrc rfsrc
+#### Examples 
+```{r} 
+
+## Not run:
+## ------------------------------------------------------------
+## classification example
+## ------------------------------------------------------------
+## -------- iris data
+# rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+data(rfsrc_iris, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_iris)
+plot(gg_dta)
+```
+
+```{r} 
+## ------------------------------------------------------------
+## Regression example
+## ------------------------------------------------------------
+## -------- air quality data
+# rfsrc_airq <- rfsrc(Ozone ~ ., data = airquality, na.action = "na.impute")
+data(rfsrc_airq, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_airq)
+plot(gg_dta)
+## -------- Boston data
+data(rfsrc_Boston, package="ggRandomForests")
+plot(rfsrc_Boston)
+```
+
+```{r} 
+## -------- mtcars data
+data(rfsrc_mtcars, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_mtcars)
+plot(gg_dta)
+## ------------------------------------------------------------
+## Survival example
+## ------------------------------------------------------------
+## -------- veteran data
+## randomized trial of two treatment regimens for lung cancer
+# data(veteran, package = "randomForestSRC")
+# rfsrc_veteran <- rfsrc(Surv(time, status) ~ ., data = veteran, ntree = 100)
+data(rfsrc_veteran, package = "ggRandomForests")
+gg_dta <- gg_rfsrc(rfsrc_veteran)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_veteran, conf.int=.95)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_veteran, by="trt")
+plot(gg_dta)
+```
+
+```{r} 
+## -------- pbc data
+data(rfsrc_pbc, package = "ggRandomForests")
+gg_dta <- gg_rfsrc(rfsrc_pbc)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_pbc, conf.int=.95)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_pbc, by="treatment")
+plot(gg_dta)
+## End(Not run)
+```
+

@@ -1,0 +1,69 @@
+---
+title: "``ggRandomForest::nelson``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+
+nelson nonparametric Nelson-Aalen estimates
+#### Description 
+
+nonparametric Nelson-Aalen estimates
+#### Usage 
+<pre><code>
+
+nelson(interval, censor, data, by = NULL, weight = NULL, ...)
+
+</code></pre>
+#### Arguments
+
+* ``interval``: name of the interval variable in the training dataset.
+* ``censor``: name of the censoring variable in the training dataset.
+* ``data``: name of the survival training data.frame by stratifying variable in the training dataset, defaults to NULL
+* ``weight``: for each observation (default=NULL)
+* ``...``: arguments passed to the survfit function
+
+
+#### Examples 
+```{r} 
+
+## Not run:
+# These get run through the gg_survival  Examples 
+
+data(pbc, package="randomForestSRC")
+pbc$time <- pbc$days/364.25
+# This is the same as gg_survival
+gg_dta <- nelson(interval="time", censor="status",
+data=pbc)
+```
+```{r}
+plot(gg_dta, error="none")
+plot(gg_dta)
+```
+```{r}
+# Stratified on treatment variable.
+gg_dta <- gg_survival(interval="time", censor="status",
+data=pbc, by="treatment")
+```
+```{r}
+plot(gg_dta, error="none")
+plot(gg_dta, error="lines")
+plot(gg_dta)
+gg_dta <- gg_survival(interval="time", censor="status",
+```
+```{r}
+data=pbc, by="treatment",
+type="nelson")
+plot(gg_dta, error="bars")
+plot(gg_dta)
+## End(Not run)
+```
+#### Value
+gg_survival object
+See Also
+gg_survival nelson plot.gg_survival
+partial.rfsr 33

@@ -1,0 +1,28 @@
+## Stereographic projection
+
+One of the more "fun and useless" additions to ggforce is facet_stereo which allows the user to create a stereographic projection of the plot in order to make a faux 3D plot. 
+
+``facet_stereo`` shifts features sligtly to the left and right based on the provided depth-aesthetic to simulate how each eye will see a sligtly different picture when looking at a 3D scenery. 
+
+In order to experience the 3D effect, either look at the plot with 3D hardware such as Google Cardboard or by using relaxed focusing where the eyes focus on the far distance while looking 
+at the plot (the same technique used when looking at stereograms such as Magic Eye).
+
+In order to use facet_stereo provide a depth aesthetic to the layers (will generate a warning) and modify the depth perception with scale_depth:
+```{r}
+ggplot(mtcars) + 
+    geom_point(aes(mpg, disp, depth = wt)) + 
+    scale_depth(range = c(0, 0.2)) + 
+    facet_stereo()
+```
+
+To improve the effect you can scale the size of the features as well as the colour to enhance the 3D feeling
+```{r}
+ggplot(mtcars) + 
+    geom_point(aes(mpg, disp, depth = wt, colour = wt, size = wt)) + 
+    scale_size(range = c(1.5, 3)) + 
+    scale_color_gradient(low = 'grey70', high = 'black') + 
+    facet_stereo()
+```
+
+Note that due to the design of ggplot2 there are some limitations to this, most notably that layers will always be placed on top of each other no matter their depth values. 
+This means that you can end up with features occluding other features in front of them. Also, even though grid lines are placed at depth = 0 they will always be behind all features.

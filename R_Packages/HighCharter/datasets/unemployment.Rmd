@@ -1,0 +1,27 @@
+## unemployment
+
+US Counties unemployment rate
+
+#### Description 
+
+This data comes from the https://www.highcharts.com/samples/data/jsonp.php?filename=
+us-counties-unemployment.json and is used in highmaps examples.
+
+#### Usage
+<pre><code>
+unemployment
+</code></pre>
+
+#### Format
+
+A data.frame with 3 variables and 3.216 observations.
+
+#### Variables 
+
+* ``code``: The county code.
+* ``name``: The county name.
+* ``value``: The unemployment.
+
+#### Source
+https://www.highcharts.com/samples/data/jsonp.php?filename=us-counties-unemployment.
+jsonuscountygeojson

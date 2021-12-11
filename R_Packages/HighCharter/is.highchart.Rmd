@@ -1,0 +1,17 @@
+is.highchart
+
+Reports whether x is a highchart object
+
+#### Description 
+
+Reports whether x is a highchart object
+
+#### Usage
+<pre><code>
+is.highchart(x)
+</code></pre>
+
+#### Arguments 
+
+x
+list_parse

@@ -1,0 +1,26 @@
+---
+title: "``hc_annotationsOptions``: Setting Annotations Options"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+#### Description 
+
+Setting Annotations Options
+
+#### Usage
+
+<pre><code>
+hc_annotationsOptions(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Options defined in http://www.highcharts.com/plugin-registry/single/17/Annotations.

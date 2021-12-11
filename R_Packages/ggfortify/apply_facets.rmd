@@ -1,0 +1,26 @@
+
+## apply_facets
+Apply facets to to ggplot2::ggplot
+
+#### Description 
+ 
+Apply facets to to ggplot2::ggplot
+
+#### Usage 
+<pre><code>
+apply_facets(p, formula, facets = TRUE, nrow = NULL, ncol = 1,
+scales = "free_y", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``p`` ggplot2::ggplot instance
+* ``formula`` stats::formula instance
+* ``facets`` Logical value to specify use facets
+* ``nrow`` Number of facet/subplot rows
+* ``ncol`` Number of facet/subplot columns
+* ``scales`` Scale value passed to ggplot2
+* ``...`` other arguments passed to methods
+
+Value
+ggplot

@@ -1,0 +1,33 @@
+---
+title: "``hc_elementId``: Setting elementId"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+
+#### Description 
+
+Function to modify the id for the container.
+
+#### Usage
+<pre><code>
+hc_elementId(hc, id = NULL)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``id``: A string
+
+#### Examples
+```{r}
+hchart(rnorm(10)) %>%
+hc_elementId("newid")
+```

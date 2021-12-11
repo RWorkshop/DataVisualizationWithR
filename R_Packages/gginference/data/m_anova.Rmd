@@ -1,0 +1,14 @@
+12 randexperiment
+m_anova m_anova
+#### Description
+A data frame with the volume of new stores by category for urban, suburban and rural areas.
+#### Usage
+m_anova
+#### Format
+A data frame with 54 observations of 4 columns:
+Categories integer representing three categories
+UrbanAreas coding for urban, suburban and rural areas
+Month integer representing three months
+Volume volume in cubic meters
+Source
+The original data are available at Hellenic Statistical Authority

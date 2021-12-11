@@ -1,0 +1,26 @@
+fortify.density
+Convert stats::density to data.frame
+
+#### Description 
+ 
+Convert stats::density to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'density'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: stats::density instance
+* ``data``: original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(stats::density(stats::rnorm(1:50)))
+
+```

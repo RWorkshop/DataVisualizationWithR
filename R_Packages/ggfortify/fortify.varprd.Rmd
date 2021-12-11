@@ -1,0 +1,31 @@
+fortify.varprd
+Convert vars::varprd to data.frame
+
+#### Description 
+ 
+Convert vars::varprd to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'varprd'
+fortify(model, data = NULL, is.date = NULL,
+ts.connect = FALSE, melt = FALSE, ...)
+
+#### Arguments 
+ 
+model vars::varprd instance
+data original dataset, if needed
+is.date Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12.
+ts.connect Logical frag indicates whether connects original time-series and predicted val-
+ues
+melt Logical flag indicating whether to melt each timeseries as variable
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+
+data(Canada, package = 'vars')
+d.var <- vars::VAR(Canada, p = 3, type = 'const')
+fortify(stats::predict(d.var, n.ahead = 50))

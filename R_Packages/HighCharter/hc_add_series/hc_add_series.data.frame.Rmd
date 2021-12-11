@@ -1,0 +1,24 @@
+hc_add_series.data.frame
+hc_add_series for data frames objects
+
+#### Description 
+
+hc_add_series for data frames objects
+
+#### Usage 
+<pre><code>
+## S3 method for class 'data.frame'
+hc_add_series(hc, data, type = NULL, mapping = hcaes(),
+...)hc_add_series.density
+23
+</code></pre> 
+#### Arguments 
+ 
+
+* ``hc ``: A highchart htmlwidget object.
+data A data.frame object.
+type The type of the series: line, bar, etc.
+mapping The mapping, same idea as ggplot2.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+
+

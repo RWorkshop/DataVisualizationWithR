@@ -1,0 +1,77 @@
+autoplot.tsmodel
+Autoplot time series models (like AR, ARIMA)
+
+#### Description 
+ 
+Autoplot time series models (like AR, ARIMA)autoplot.tsmodel
+33
+
+#### Usage 
+<pre><code>
+## S3 method for class 'tsmodel'
+autoplot(object, data = NULL, predict = NULL,
+is.date = NULL, ts.connect = TRUE, fitted.geom = "line",
+fitted.colour = "#FF0000", fitted.size = NULL, fitted.linetype = NULL,
+fitted.alpha = NULL, fitted.fill = NULL, fitted.shape = NULL,
+predict.geom = "line", predict.colour = "#0000FF", predict.size = NULL,
+predict.linetype = NULL, predict.alpha = NULL, predict.fill = NULL,
+predict.shape = NULL, conf.int = TRUE, conf.int.colour = "#0000FF",
+conf.int.linetype = "none", conf.int.fill = "#000000",
+conf.int.alpha = 0.3, ...)
+</code></pre>
+
+#### Arguments 
+ 
+object Time series model instance
+data original dataset, needed for stats::ar, stats::Arima
+predict Predicted stats::ts If not provided, try to retrieve from current environment
+using variable name.
+is.date Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12
+ts.connect Logical frag indicates whether connects original time-series and predicted values
+fitted.geom geometric string for fitted time-series
+fitted.colour line colour for fitted time-series
+fitted.size
+point size for fitted time-series
+fitted.linetype
+line type for fitted time-series
+fitted.*``alpha``: alpha for fitted time-series
+fitted.fill fill colour for fitted time-series
+fitted.*``shape ``: point shape for fitted time-series
+predict.geom geometric string for predicted time-series
+predict.colour line colour for predicted time-series
+predict.size
+point size for predicted time-series
+predict.linetype
+line type for predicted time-series
+predict.*``alpha``: alpha for predicted time-series
+predict.fill fill colour for predicted time-series
+predict.*``shape ``: point shape for predicted time-series
+conf.int
+Logical flag indicating whether to plot confidence intervals
+conf.int.colour
+line colour for confidence intervals
+conf.int.linetype
+line type for confidence intervals34
+autoplot.varprd
+conf.int.fill
+fill colour for confidence intervals
+conf.int.*``alpha``: alpha for confidence intervals
+...
+Keywords passed to autoplot.ts
+Value
+ggplot
+
+#### Examples 
+```{r}
+d.ar <- stats::ar(AirPassengers)
+autoplot(d.ar)
+autoplot(d.ar, predict = predict(d.ar, n.ahead = 5))
+autoplot(stats::arima(UKgas), data = UKgas)
+autoplot(forecast::arfima(AirPassengers))
+autoplot(forecast::nnetar(UKgas), is.date = FALSE)
+d.holt <- stats::HoltWinters(USAccDeaths)
+autoplot(d.holt)
+autoplot(d.holt, predict = predict(d.holt, n.ahead = 5))
+autoplot(d.holt, predict = predict(d.holt, n.ahead = 5, prediction.interval = TRUE))
+```

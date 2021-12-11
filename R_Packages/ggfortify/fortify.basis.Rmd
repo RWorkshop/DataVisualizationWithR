@@ -1,0 +1,33 @@
+``fortify.basis``: Convert spline basis instances to data.frame
+
+#### Description 
+ 
+Convert spline basis instances to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'basis'
+fortify(model, data, n = 256, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: spline basis object
+* ``data``: x-values at which to evaluate the splines. Optional. By default, an evenly spaced sequence of 256 values covering the range of the splines will be used.
+* ``n``: If data is not provided, instead use an evenly-spaced sequence of x-values of this length (plus one, since both endpoints are included). If data is provided, this argument is ignored.
+* ``... ``: other arguments passed to methods
+
+#### Examples 
+```{r}
+library(splines)
+x <- seq(0, 1, by=0.001)
+spl <- bs(x, df=6)
+fortify(spl)
+
+```
+
+
+#### Value
+data.frame with 3 columns: Spline (character), x (numeric), and y (numeric); giving the interpolated x and y values for each of the splines in the basis.
+
+

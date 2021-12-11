@@ -1,0 +1,50 @@
+Deviation graphs
+===================================
+The deviation graph shows the deviation of quantitatives values to a reference value. In the R code below, we’ll plot the mpg z-score from the mtcars dataset.
+
+Calculate the z-score of the mpg data:
+```{r}
+# Calculate the z-score of the mpg data
+dfm$mpg_z <- (dfm$mpg -mean(dfm$mpg))/sd(dfm$mpg)
+dfm$mpg_grp <- factor(ifelse(dfm$mpg_z < 0, "low", "high"), 
+                     levels = c("low", "high"))
+# Inspect the data
+head(dfm[, c("name", "wt", "mpg", "mpg_z", "mpg_grp", "cyl")])
+#>                                name    wt  mpg      mpg_z mpg_grp cyl
+#> Mazda RX4                 Mazda RX4 2.620 21.0  0.1508848    high   6
+#> Mazda RX4 Wag         Mazda RX4 Wag 2.875 21.0  0.1508848    high   6
+#> Datsun 710               Datsun 710 2.320 22.8  0.4495434    high   4
+#> Hornet 4 Drive       Hornet 4 Drive 3.215 21.4  0.2172534    high   6
+#> Hornet Sportabout Hornet Sportabout 3.440 18.7 -0.2307345     low   8
+#> Valiant                     Valiant 3.460 18.1 -0.3302874     low   6
+```
+Create an ordered barplot, colored according to the level of mpg:
+```{r}
+ggbarplot(dfm, x = "name", y = "mpg_z",
+          fill = "mpg_grp",           # change fill color by mpg_level
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in ascending order
+          sort.by.groups = FALSE,     # Don't sort inside each group
+          x.text.angle = 90,          # Rotate vertically x axis texts
+          ylab = "MPG z-score",
+          xlab = FALSE,
+          legend.title = "MPG Group"
+          )
+```
+Rotate the plot: use ``rotate = TRUE`` and ``sort.val = “desc”``
+```{r}
+ggbarplot(dfm, x = "name", y = "mpg_z",
+          fill = "mpg_grp",           # change fill color by mpg_level
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "desc",          # Sort the value in descending order
+          sort.by.groups = FALSE,     # Don't sort inside each group
+          x.text.angle = 90,          # Rotate vertically x axis texts
+          ylab = "MPG z-score",
+          legend.title = "MPG Group",
+          rotate = TRUE,
+          ggtheme = theme_minimal()
+          )
+```
+          

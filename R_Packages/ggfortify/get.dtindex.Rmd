@@ -1,0 +1,28 @@
+
+get.dtindex
+Convert ts index to Date vector
+
+#### Description 
+ 
+Convert ts index to Date vector
+
+#### Usage 
+ <pre><code>
+get.dtindex(data, is.tsp = FALSE, is.date = NULL)get.dtindex.continuous
+59
+
+#### Arguments 
+ 
+data ts instance
+is.tsp Logical frag whether data is tsp itself or not
+is.date Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12.
+Value
+vector
+
+#### Examples 
+
+ggfortify:::get.dtindex(AirPassengers)
+ggfortify:::get.dtindex(UKgas)
+ggfortify:::get.dtindex(Nile, is.date = FALSE)
+ggfortify:::get.dtindex(Nile, is.date = TRUE)

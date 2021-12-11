@@ -1,0 +1,54 @@
+---
+title: "``ShadedDensity``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+ Plot the distribution of a variable with a tail shaded
+
+#### Description
+
+Plot the distribution of a variable with a tail shaded. Annotate with the area of the shaded region.
+ 
+#### Usage
+<pre><code>
+
+ShadedDensity(frame, xvar, threshold, title, ..., tail = "left",
+linecolor = "darkgray", shading = "darkblue", annotate_area = TRUE)
+
+
+</code></pre> 
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the variable to be density plotted
+* ``threshold``: boundary value for the tail
+* ``title ``:    title to place on plot
+* ```...`` : no unnamed argument, added to force named binding of later arguments
+* ``tail``:    which tail to shade, 'left' (default) or 'right'
+* ``linecolor``:   color of density curve
+* ``shading``:  color of shaded region and boundaries
+* ``annotate_area``: if TRUE (default), report the area of the shaded region
+
+#### Examples
+```{r}
+
+set.seed(52523)
+d = data.frame(meas=rnorm(100))
+threshold = -1.5
+WVPlots::ShadedDensity(d, "meas", threshold,
+title="Example shaded density plot, left tail")
+```
+
+```{r}
+WVPlots::ShadedDensity(d, "meas", -threshold, tail="right",
+title="Example shaded density plot, right tail")
+```
+See Also
+ShadedDensityCenter
+ 
+ 

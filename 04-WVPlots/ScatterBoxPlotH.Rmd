@@ -1,0 +1,48 @@
+
+28 ScatterBoxPlotH
+ScatterBoxPlotH Plot a scatter box plot in horizontal mode.
+
+#### Description
+
+Plot a boxplot with the data points superimposed. Box plots are aligned horizontally.
+ 
+#### Usage
+<pre><code>
+
+ScatterBoxPlotH(frm, xvar, yvar, title, ..., pt_alpha = 0.3)
+
+</code></pre> 
+#### Arguments
+
+* ``frm``: data frame to get values from
+* ``xvar ``:  name of the continuous column in frame
+* ``yvar``:   name of the independent column in frame; assumed discrete
+title plot title
+... (doesn't take additional 
+</code></pre> 
+#### Arguments
+, used to force later arguments
+ by name)
+pt_alpha transparency of points in scatter plot
+
+#### Details
+
+xvar is a continuous variable and yvar is a discrete variable. If frm[[yvar]] is an integer column,
+it will be converted to a factor. This means that additional layers that rely on continuous y scales
+won't work.
+See Also
+ScatterBoxPlot
+ 
+#### Examples
+```{r}
+
+classes = c("a", "b", "c")
+means = c(2, 4, 3)
+names(means) = classes
+label = sample(classes, size=1000, replace=TRUE)
+meas = means[label] + rnorm(1000)
+frm2 = data.frame(label=label,
+meas = meas)
+WVPlots::ScatterBoxPlotH(frm2, "meas", "label", pt_alpha=0.2, title="Example Scatter/Box plot")
+
+```

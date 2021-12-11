@@ -1,0 +1,23 @@
+### Links
+Links are the ggforce equivalent of segments, i.e. connecting two points by a straight line. 
+While ``geom_segment()`` does a decent job of this, the link geoms expand the straight line into the base, 0, and 2 versions making it possible to interpolate aesthetics and add gradients to the segment. The 0 version is just a renamed geom_segment included for completeness.
+
+```{r}
+links <- data.frame(
+    x = 0, y = 0, xend = runif(10), yend = runif(10)
+)
+ggplot() + geom_link(aes(x = x, y = y, xend = xend, yend = yend, 
+                         alpha = ..index..), data = links)
+
+```
+
+
+```{r}
+# The 2 version also allows for drawing paths
+links2 <- data.frame(
+    x = runif(10), y = runif(10), group = rep(c(1,2), each = 5), 
+    colour = sample(5, 10, TRUE)
+)
+ggplot() + geom_link2(aes(x = x, y = y, group = group, colour = factor(colour)), 
+                      data = links2)
+```

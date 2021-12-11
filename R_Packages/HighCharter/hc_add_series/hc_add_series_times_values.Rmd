@@ -1,0 +1,33 @@
+## ``hc_add_series_times_values``
+Shorcut for create/add time series from times and values
+
+#### Description 
+
+This function add a time series to a highchart object.
+
+#### Usage
+<pre><code>
+hc_add_series_times_values(hc, dates, values, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+dates A date vector (same length as values)
+values A numeric vector
+* ``...``: Aditional shared arguments for the data series (http://api.highcharts.com/
+series).
+Details
+This function modify the type of chart to datetime
+
+#### Examples
+```{r}
+
+require("ggplot2")
+data(economics, package = "ggplot2")
+hc_add_series_times_values(hc = highchart(),
+dates = economics$date,
+values = economics$psavert,
+name = "Personal Savings Rate")
+## End(Not run)
+```

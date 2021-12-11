@@ -1,0 +1,36 @@
+Autoplot maps::map
+
+#### Description 
+ 
+Autoplot maps::map
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'SpatialCommon'
+autoplot(object, p = NULL, group = NULL,
+colour = "black", size = NULL, linetype = NULL, alpha = NULL,
+fill = NULL, shape = NULL, xlim = c(NA, NA), ylim = c(NA, NA),
+log = "", main = NULL, xlab = "", ylab = "", asp = NULL, ...)
+
+#### Arguments 
+ 
+object maps::map instance
+p ggplot2::ggplot instance
+group key for grouping geoms
+colour line colour
+size point size
+linetype line type
+alpha alpha
+fill fill colour
+shape point shape
+xlim limits for x axis
+ylim limits for y axis
+log which variables to log transform ("x", "y", or "xy")
+main character vector or expression for plot title
+xlab character vector or expression for x axis label
+ylab character vector or expression for y axis label
+asp the y/x aspect ratio
+... other arguments passed to methods
+Value
+ggplotautoplot.spec
+

@@ -1,0 +1,28 @@
+fortify.forecast
+fortify.factanal
+Convert stats::factanal to data.frame
+
+#### Description 
+ 
+Convert stats::factanal to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'factanal'
+fortify(model, data = NULL, ...)
+
+#### Arguments 
+ 
+model stats::factanal instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+d.factanal <- stats::factanal(state.x77, factors = 3, scores = 'regression')
+fortify(d.factanal)
+fortify(d.factanal, data = state.x77)
+```
+

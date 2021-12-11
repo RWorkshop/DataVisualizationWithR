@@ -1,0 +1,38 @@
+---
+title: "``ggvartest ``: F test plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(gginference)
+```
+
+#### Description
+
+Visualise F test to compare two variances
+
+#### Usage
+
+<pre><code>
+ggvartest(t, colaccept = "lightsteelblue1",
+colreject = "gray84", colstat = "navyblue")
+</code></pre>
+
+#### Arguments
+* ``t``: a list result of var.test of "htest" class
+* ``colaccept``:  color the acceptance area of the test, see colors
+* ``colreject``:   color for the rejection area of the test
+* ``colstat``: color for the test statistic vline
+
+#### Examples
+
+```{r}
+x <- rnorm(50, mean = 0, sd = 2)
+y <- rnorm(30, mean = 1, sd = 1)
+var_test <- var.test(x, y)
+var_test
+ggvartest(var_test)
+
+```

@@ -1,0 +1,39 @@
+---
+title: "``ggttest``: Student's t-test plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(gginference)
+```
+
+#### Description
+
+Visualise one and/or two sample t-tests on vectors of data.
+
+#### Usage
+
+<pre><code>
+ggttest(t, colaccept="lightsteelblue1", colreject="grey84", colstat="navyblue")
+</code></pre>
+
+#### Arguments
+
+* ``t``: a list result of t.test of "***htest***" class
+* ``colaccept``:  color the acceptance area of the test
+* ``colreject``:   color for the rejection area of the test
+* `` colstat``: color for the test statistic vline
+
+#### Examples
+```{r}
+t_test <- t.test(sleep$extra ~ sleep$group)
+t_test
+ggttest(t_test)
+```
+```{r}
+t_test2 <- t.test(x = 1:10, y = c(7:20))
+t_test2
+ggttest(t_test2)
+```

@@ -1,0 +1,35 @@
+as_tibble.basis
+as_tibble.basis
+Convert a spline basis to a tibble
+
+#### Description 
+ 
+Convert a spline basis to a tibble
+
+#### Usage 
+<pre><code>
+## S3 method for class 'basis'
+as_tibble(x, ...)
+</code></pre>
+
+#### Arguments 
+ 
+x object of class "basis"
+... Ignored.
+
+#### Details
+This function is needed because the default method for converting a matrix object with an additional class attribute to a tibble causes issues because each column of the resulting tibble has the attributes, including the matrix class, copied from the source. Having matrices as columns in a tibble causes dplyr to throw errors, so a special method is needed to avoid copying the class attribute.
+
+#### Value
+A tibble constructed from the underlying matrix of the basis object. Each column will possess all
+the attributes from the source object, except that the "class" attribute will be renamed to "basis.class"
+to avoid interfering with dplyr operations.
+
+#### Examples 
+```{r}
+library(splines)
+library(tibble)
+x <- seq(0, 1, by=0.001)
+spl <- bs(x, df=6)
+as_tibble(spl)
+```

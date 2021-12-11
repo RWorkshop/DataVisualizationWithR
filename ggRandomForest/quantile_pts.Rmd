@@ -1,0 +1,48 @@
+---
+title: "``ggRandomForest::quantile_pts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+
+
+quantile_pts Find points evenly distributed along the vectors values.
+#### Description 
+
+This function finds point values from a vector argument to produce groups intervals. Setting groups=2 will return three values, the two end points, and one mid point (at the median value of the vector).
+
+The output can be passed directly into the breaks argument of the cut function for creating groups for coplots.
+
+#### Usage 
+<pre><code>
+
+quantile_pts(object, groups, intervals = FALSE)
+
+</code></pre>
+
+#### Arguments
+* object vector object of values.
+*  groups how many points do we want
+* intervals should we return the raw points or intervals to be passed to the cut function
+
+#### Value
+vector of groups+1 cut point values.
+See Also
+cut gg_partial_coplot
+#### Examples 
+```{r} 
+
+## Not run:
+data(rfsrc_Boston)
+# To create 6 intervals, we want 7 points.
+# quantile_pts will find balanced intervals
+rm_pts <- quantile_pts(rfsrc_Boston$xvar$rm, groups=6, intervals=TRUE)
+# Use cut to create the intervals
+rm_grp <- cut(rfsrc_Boston$xvar$rm, breaks=rm_pts)
+summary(rm_grp)
+## End(Not run)
+```

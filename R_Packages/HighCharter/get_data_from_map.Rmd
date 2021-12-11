@@ -1,0 +1,29 @@
+## get_data_from_map
+
+Auxilar function to get the data inside the map data The urls are listed
+in https://code.highcharts.com/mapdata/.
+
+#### Description 
+
+Auxilar function to get the data inside the map data The urls are listed in https://code.highcharts.
+com/mapdata/.
+
+####  Usage 
+<pre><code>
+get_data_from_map(mapdata)
+</code></pre> 
+#### Arguments 
+ 
+* mapdata A list obtained from download_map_data.
+
+#### Examples 
+ ```{r}
+dta <- download_map_data("https://code.highcharts.com/mapdata/countries/us/us-ca-all.js")
+get_data_from_map(dta)
+```
+
+
+
+### See Also
+download_map_data
+

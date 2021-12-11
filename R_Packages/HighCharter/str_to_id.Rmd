@@ -1,0 +1,19 @@
+
+String to ’id’ format
+
+#### Description 
+
+Turn a string to id format used in treemaps.
+Usage
+str_to_id(x)
+
+#### Arguments 
+* x A vector string.
+
+#### Examples
+```{r}
+str_to_id(" A string _ with sd / sdg
+```
+
+
+

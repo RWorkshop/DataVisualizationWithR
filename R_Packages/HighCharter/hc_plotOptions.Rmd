@@ -1,0 +1,59 @@
+---
+title: "``hc_plotOptions``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+### Adding plot options to highchart objects
+
+#### Description 
+
+The plotOptions is a wrapper object for config objects for each series type. The config objects for
+each series can also be overridden for each series item as given in the series array.
+
+#### Usage
+<pre><code>
+hc_plotOptions(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+... Arguments are defined in http://api.highcharts.com/highcharts#plotOptions.
+
+
+#### Examples
+```{r}
+data(citytemp)
+hc <- highchart() %>%
+hc_plotOptions(line = list(color = "blue",
+  marker = list(
+    fillColor = "white",
+    lineWidth = 2,
+    lineColor = NULL
+   )
+  )) %>%
+hc_add_series(name = "Tokyo", data = citytemp$tokyo) %>%
+hc_add_series(name = "London", data = citytemp$london, marker = list(fillColor = "black"))
+hc
+```
+```{r}
+# override the `blue` option with the explicit parameter
+hc %>%
+hc_add_series(name = "London",
+data = citytemp$new_york,
+color = "red")
+```
+
+####  Details
+
+Configuration options for the series are given in three levels. Options for all series in a chart are
+given with the hc_plotOptions function. Then options for all series of a specific type are given
+in the plotOptions of that type, for example ``hc_plotOptions(line = list(...))``. Next, options
+for one single series are given in the series array.

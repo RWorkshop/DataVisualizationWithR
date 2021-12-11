@@ -1,0 +1,202 @@
+---
+title: "ggfortify"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+autoplot.stepfun
+
+autoplot.varprd
+Autoplot vars::varprd
+
+#### Description 
+ 
+Autoplot vars::varprd
+
+#### Usage 
+<pre><code>
+## S3 method for class 'varprd'
+autoplot(object, is.date = NULL, ts.connect = TRUE,
+scales = "free_y", predict.geom = "line", predict.colour = "#0000FF",
+predict.size = NULL, predict.linetype = NULL, predict.alpha = NULL,
+predict.fill = NULL, predict.shape = NULL, conf.int = TRUE,
+conf.int.colour = "#0000FF", conf.int.linetype = "none",
+conf.int.fill = "#000000", conf.int.alpha = 0.3, ...)
+</code></pre>
+
+#### Arguments 
+ 
+object vars::varpred instance
+is.date Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12.
+ts.connect Logical frag indicates whether connects original time-series and predicted val-
+ues
+scales Scale value passed to ggplot2cbind_wraps
+predict.geom
+35
+geometric string for predicted time-series
+* ``predict.colour``: line colour for predicted time-series
+predict.size
+point size for predicted time-series
+predict.linetype
+line type for predicted time-series
+* ``predict.alpha``: alpha for predicted time-series
+* ``predict.fill``: fill colour for predicted time-series
+predict.shape point shape for predicted time-series
+conf.int
+Logical flag indicating whether to plot confidence intervals
+conf.int.colour
+line colour for confidence intervals
+conf.int.linetype
+line type for confidence intervals
+conf.int.fill
+fill colour for confidence intervals
+* ``conf.int.alpha``: alpha for confidence intervals
+...
+* ``...``: other arguments passed to autoplot.ts
+Value
+ggplot
+
+#### Examples 
+```{r}
+data(Canada, package = 'vars')
+d.var <- vars::VAR(Canada, p = 3, type = 'const')
+autoplot(stats::predict(d.var, n.ahead = 50), is.date = TRUE)
+autoplot(stats::predict(d.var, n.ahead = 50), conf.int = FALSE)
+```
+cbind_wraps
+Wrapper for cbind
+
+#### Description 
+ 
+Wrapper for cbind
+
+#### Usage 
+ <pre><code>
+cbind_wraps(df1, df2)
+</code></pre>
+#### Arguments 
+ 
+df1 1st data
+df2 2nd data36
+confint.acf
+Value
+list
+
+#### Examples 
+```{r}
+ggfortify:::cbind_wraps(iris[1:2], iris[3:5])
+```
+
+check_names
+Check data names are equal with expected
+
+#### Description 
+ 
+Check data names are equal with expected
+
+#### Usage 
+<pre><code>
+check_names(data, expected)
+</code></pre>
+
+#### Arguments 
+ 
+data list instance to be checked
+expected expected character vector
+Value
+logical
+confint.acf
+Calcurate confidence interval for stats::acf
+
+#### Description 
+ 
+Calcurate confidence interval for stats::acf
+
+#### Usage 
+<pre><code>
+## S3 method for class 'acf'
+confint(x, ci = 0.95, ci.type = "white")
+</code></pre>
+
+#### Arguments 
+ 
+* x stats::acf instance
+* ci Float value for confidence interval
+* ci.type "white" or "ma"
+
+Value
+vector
+
+#### Examples 
+```{r}
+air.acf <- acf(AirPassengers, plot = FALSE)
+ggfortify:::confint.acf(air.acf)
+ggfortify:::confint.acf(air.acf, ci.type = 'ma')
+```
+
+deprecate.warning
+Show deprecate warning
+
+#### Description 
+ 
+Show deprecate warning
+
+#### Usage 
+<pre><code>
+deprecate.warning(old.kw, new.kw)
+</code></pre>
+
+#### Arguments 
+
+* old.kw Keyword being deprecated
+* ew.kw Keyword being replaced
+
+#### Examples 
+```{r}
+ggfortify:::deprecate.warning('old', 'new')
+```
+
+fitted.ar
+Calcurate fitted values for stats::ar
+
+#### Description 
+ 
+Calcurate fitted values for stats::ar
+
+#### Usage 
+<pre><code>
+## S3 method for class 'ar'
+fitted(object, ...)
+</code></pre>
+
+#### Arguments 
+ 
+object stats::ar instance
+... other keywords38
+fortify.aareg
+Value
+ts An time series of the one-step forecasts
+
+#### Examples 
+
+fitted(ar(WWWUsage ))
+flatten
+Flatten dataframe contains matrix
+
+#### Description 
+ 
+tains list or matrix as column
+
+#### Usage 
+<pre><code>
+flatten(df)
+</code><pre>
+
+#### Arguments 
+ 
+df

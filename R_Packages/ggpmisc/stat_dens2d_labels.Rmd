@@ -1,0 +1,82 @@
+---
+title: "``hstat_dens2d_labels``:  Reset labels of observations in high density regions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggpmisc)
+library(dplyr)
+library(magrittr)
+```
+
+
+### Description
+stat_low_dens Sets labels to NA in regions of a plot panel with high density of observations.
+
+#### Usage 
+ <pre><code>
+stat_dens2d_labels(mapping = NULL, data = NULL, geom = "text",
+position = "identity", keep.fraction = 0.1, keep.number = Inf,
+h = NULL, n = NULL, label.fill = "", na.rm = TRUE,
+show.legend = FALSE, inherit.aes = TRUE, ...)
+</code></pre>
+
+### Arguments
+
+* ``mapping``: The aesthetic mapping, usually constructed with aes or aes_. Only needs to be
+set at the layer level if you are overriding the plot defaults.
+* ``data ``: A layer specific dataset - only needed if you want to override the plot defaults.
+geom The geometric object to use display the data.
+* ``position``: The position adjustment to use for overlapping points on this layer
+keep.fraction numeric [0..1].
+keep.number integer number of labels to keep.
+h vector of bandwidths for x and y directions. Defaults to normal reference bandwidth
+(see bandwidth.nrd). A scalar value will be taken to apply to both directions.
+n Number of grid points in each direction. Can be scalar or a length-2 integer
+vector
+label.fill character.
+na.rm a logical value indicating whether NA values should be stripped before the computation
+proceeds.
+stat_dens2d_labels 11
+* ``show.legend ``: logical. Should this layer be included in the legends? NA, the default, includes if
+any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+inherit.aes If FALSE, overrides the default aesthetics, rather than combining with them.
+This is most useful for helper functions that define both data and aesthetics and
+shouldn’t inherit behaviour from the default plot specification, e.g. borders.
+* ``...``:   Other arguments passed on to layer. This can include aesthetics whose values
+you want to set, not map. See layer for more details..
+
+####Computed variables
+
+labels x at centre of range
+See Also
+kde2d used internally.
+
+### Examples 
+```{r} 
+library(ggrepel)
+random_string <- function(len = 6) {
+paste(sample(letters, len, replace = TRUE), collapse = "")
+}
+# Make random data.
+set.seed(1001)
+d <- tibble::tibble(
+x = rnorm(100),
+y = rnorm(100),
+group = rep(c("A", "B"), c(50, 50)),
+lab = replicate(100, { random_string() })
+)
+ggplot(data = d, aes(x, y, label = lab)) +
+geom_point() +
+stat_dens2d_labels()
+ggplot(data = d, aes(x, y, label = lab, color = group)) +
+geom_point() +
+stat_dens2d_labels()
+ggplot(data = d, aes(x, y, label = lab, color = group)) +
+geom_point() +
+stat_dens2d_labels(geom = "text_repel")
+ggplot(data = d, aes(x, y, label = lab, color = group)) +
+geom_point() +
+stat_dens2d_labels(geom = "text_repel", label.fill = NA)
+```

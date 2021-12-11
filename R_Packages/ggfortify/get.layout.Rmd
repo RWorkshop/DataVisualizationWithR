@@ -1,0 +1,22 @@
+get.layout
+Calcurate layout matrix for ggmultiplot
+
+#### Description 
+ 
+Calcurate layout matrix for ggmultiplot
+
+#### Usage 
+ <pre><code>
+get.layout(nplots, ncol, nrow)
+
+#### Arguments 
+ 
+nplots Number of plots
+ncol Number of grid columns
+nrow Number of grid rows
+Value
+matrix
+
+#### Examples 
+
+ggfortify:::get.layout(3, 2, 2)

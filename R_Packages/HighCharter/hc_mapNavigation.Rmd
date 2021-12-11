@@ -1,0 +1,26 @@
+---
+title: "hc_mapNavigation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+
+Adding mapNavigation options to highmaps charts
+
+#### Description 
+
+Options regarding the mapNavigation: A collection of options for zooming and panning in a map.
+
+#### Usage
+
+<pre><code>
+hc_mapNavigation(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in http://api.highcharts.com/highmaps#mapNavigation.

@@ -1,0 +1,15 @@
+mutate_mapping
+Modify data frame accoring to mapping
+
+#### Description 
+
+Modify data frame accoring to mapping
+Usage
+mutate_mapping(data, mapping)
+#### Arguments 
+
+data A data frame object.
+mapping A mapping from hcaes function.
+Examples
+mutate_mapping(data = head(mtcars), mapping = hcaes(x = cyl, y = wt + cyl, group = gear))
+

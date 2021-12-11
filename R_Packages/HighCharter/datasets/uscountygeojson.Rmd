@@ -1,0 +1,15 @@
+## ``uscountygeojson``: US Counties map in Geojson format (list)
+
+#### Description 
+
+This data comes from the https://code.highcharts.com/mapdata/countries/us/us-all-all.
+js and is used in highmaps examples.
+
+#### Usage
+<pre><code>
+uscountygeojson
+</code></pre>
+
+#### Format
+
+A list in geojson format.

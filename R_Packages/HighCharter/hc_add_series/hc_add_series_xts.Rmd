@@ -1,0 +1,27 @@
+# hc_add_series_xts
+Shorcut for create highstock chart from xts object
+
+#### Description 
+
+This function helps to create highstock charts from xts objects obtaining by getSymbols function
+from the quantmod.
+Usage
+hc_add_series_xts(hc, x, ...)
+ #### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+x A xts object from the quantmod package.
+* ``...``: Aditional shared arguments for the data series (http://api.highcharts.com/
+highcharts#series).
+
+#### Examples
+```{r}
+
+library("quantmod")
+usdjpy <- getSymbols("USD/JPY", src="oanda", auto.assign = FALSE)
+eurkpw <- getSymbols("EUR/KPW", src="oanda", auto.assign = FALSE)
+highchart(type = "stock") %>%
+hc_add_series_xts(usdjpy, id = "usdjpy") %>%
+hc_add_series_xts(eurkpw, id = "eurkpw")
+## End(Not run)
+```

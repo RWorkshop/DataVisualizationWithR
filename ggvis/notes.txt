@@ -1,6 +1,0 @@
-% - https://rpubs.com/conniez/datavis
-% - http://ggvis.rstudio.com/0.1/quick-examples.html
-
-mtcars %>% 
-  ggvis(~wt, ~mpg) %>% 
-  layer_points(size := 25, shape := "diamond", stroke := "red", fill := NA)

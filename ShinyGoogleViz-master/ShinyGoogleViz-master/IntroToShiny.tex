@@ -1,0 +1,109 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{framed}
+
+%opening
+\title{Shiny}
+\author{Dublin \texttt{R}}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction to Shiny}
+
+\subsection{Introducing Shiny}
+\textbf{Shiny} is a new package from \textit{RStudio} that makes it incredibly easy to build interactive web applications with \textit{R}.
+
+% For an introduction and live examples, visit the Shiny homepage.
+
+\subsection{Features of Shiny}
+\begin{itemize}
+\item Build useful web applications with only a few lines of code—no JavaScript required.
+\item \textbf{Shiny} applications are automatically “live” in the same way that spreadsheets are live. Outputs change instantly as users modify inputs, without requiring a reload of the browser.
+\item \textbf{Shiny} user interfaces can be built entirely using R, or can be written directly in HTML, CSS, and JavaScript for more flexibility.
+\item Works in any R environment (Console R, Rgui for Windows or Mac, ESS, StatET, RStudio, etc.)
+Attractive default UI theme based on Twitter Bootstrap.
+\item A highly customizable slider widget with built-in support for animation.
+Pre-built output widgets for displaying plots, tables, and printed output of \texttt{R} objects.
+\item Fast bidirectional communication between the web browser and R using the websockets package.
+\item Uses a reactive programming model that eliminates messy event handling code, so you can focus on the code that really matters.
+\item Develop and redistribute your own \textbf{Shiny} widgets that other developers can easily drop into their own applications (coming soon!).
+\end{itemize}
+\subsection{Installation}
+Shiny is available on CRAN, so you can install it in the usual way from your R console:
+\begin{framed}
+\begin{verbatim}
+install.packages("shiny")
+\end{verbatim}
+\end{framed}
+
+http://mathsci.ucd.ie/~parnell_a/WebApps/WebApps2.htm
+
+%-------------------------------------------------------%
+library(shiny)
+runExample("01_hello")
+
+
+Application Structure
+
+The application consists of two main parts:
+
+User Interface – ui.R
+* Layouts
+* Panels
+* Inputs (selectInput, numericInput etc…)
+
+Serverside – server.R
+* function listeners
+
+Architecture
+
+The Shiny architecture is made up of a number of parts internally, namely a set of web/browser components including:
+
+Twitter Bootstrap – a UI library that provides scaffolding in terms of layouts with HTML and CSS
+Websockets – a way to do bi-directional communication with a browser/webserver.
+Serverside Shiny makes use of Node.js for hosting (it doesn’t have to), but this to probably the most scalable approach.
+
+Finally, it’s based on the concept of reactive programming which provides a number of parts:
+
+Triggers/Inputs – Source (Shiny Reactive Value)
+Sinks/Outputs – Endpoint (Shiny Observer)
+The triggers are executed when dependencies (inputs) change resulting in a change to the output:
+
+ Bash | 		 copy |	?	 
+shinyServer(function(input, output) {
+ output$plotOut <- renderPlot({
+   hist(faithful$eruptions, breaks = as.numeric(input$nBreaks))
+   if (input$individualObs)
+     rug(faithful$eruptions)
+ })
+ 
+ output$tableOut <- renderTable({
+   if (input$individualObs)
+     faithful
+   else
+     NULL
+ })
+})
+In some cases, changes could take a long time to run (accessing database, read from file). Shiny proposes conductors to encapsulate these operations. Shiny calls these reactive expressions
+
+More info here – http://rstudio.github.io/shiny/tutorial/#reactivity-overview
+
+Deployment
+
+In terms of deployment you have a number of options:
+
+1. You can deploy apps on hosted Shiny Server
+
+2. Run from a Github paste (Gist) or from Github (this is an awesome feature)
+
+ Bash | 		 copy |	?	 
+shiny::runGist('3239667')
+shiny::runGitHub('shiny_example', 'rstudio')
+3. Deploy on Amazon EC2
+
+4. Host yourself by installing Apache and NodeJS
+
+Hope that gives you a good overview of Shiny, come along to the meetup if you want to learn more about it.
+\end{document}

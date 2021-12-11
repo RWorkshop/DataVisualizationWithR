@@ -1,0 +1,17 @@
+Add regression line, correlation coefficient and equantions of the fitted line. 
+
+Key functions: 
+1. ?stat_smooth() [ggplot2]
+2. ?stat_cor() [ggpubr]
+3. ?stat_poly_eq()[ggpmisc]
+
+```{r}
+formula <- y ~ x
+p + 
+  stat_smooth( aes(color = Species, fill = Species), method = "lm") +
+  stat_cor(aes(color = Species), label.y = 4.4)+
+  stat_poly_eq(
+    aes(color = Species, label = ..eq.label..),
+    formula = formula, label.y = 4.2, parse = TRUE)
+```
+

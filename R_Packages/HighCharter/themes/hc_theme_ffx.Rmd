@@ -1,0 +1,22 @@
+hc_theme_ffx
+Firefox theme for highcharts
+
+#### Description 
+
+Theme inspired by https://www.mozilla.org/en-US/styleguide/
+
+#### Usage 
+<pre><code>
+hc_theme_ffx(...)
+</code></pre> 
+#### Arguments 
+ 
+
+...
+Named argument to modify the theme
+
+#### Examples 
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_ffx())
+```

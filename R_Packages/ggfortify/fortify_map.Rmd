@@ -1,0 +1,19 @@
+
+fortify_map
+Convert maps::map to data.frame.
+
+#### Description 
+ 
+Convert maps::map to data.frame.
+
+#### Usage 
+ <pre><code>
+fortify_map(model, data = NULL, ...)
+
+#### Arguments 
+ 
+model maps::map instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame

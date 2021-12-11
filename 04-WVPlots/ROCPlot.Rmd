@@ -1,0 +1,48 @@
+
+ROCPlot Plot receiver operating characteristic plot.
+
+#### Description
+
+Plot receiver operating characteristic plot.
+ 
+#### Usage
+<pre><code>
+
+ROCPlot(frame, xvar, truthVar, truthTarget, title, ...,
+estimate_sig = FALSE, returnScores = FALSE, nrep = 100,
+parallelCluster = NULL)
+24 ROCPlotPair
+
+</code></pre> 
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the independent (input or model) column in frame
+truthVar name of the dependent (output or result to be modeled) column in frame
+truthTarget value we consider to be positive
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later 
+</code></pre> 
+#### Arguments
+.
+* ``estimate_sig``: (logical), if TRUE estimate and display significance of difference from AUC 0.5.
+returnScores logical if TRUE return detailed permutedScores
+nrep number of permutation repetitions to estimate p values.
+parallelCluster
+(optional) a cluster object created by package parallel or package snow.
+
+#### Details
+
+See http://www.nature.com/nmeth/journal/v13/n8/full/nmeth.3945.html for a discussion of true positive
+and false positive rates, and how the ROC plot relates to the precision/recall plot.
+See Also
+PRPlot
+ 
+#### Examples
+```{r}
+
+set.seed(34903490)
+x = rnorm(50)
+y = 0.5*x^2 + 2*x + rnorm(length(x))
+frm = data.frame(x=x,yC=y>=as.numeric(quantile(y,probs=0.8)))
+WVPlots::ROCPlot(frm, "x", "yC", TRUE, title="Example ROC plot", estimate_sig = TRUE)

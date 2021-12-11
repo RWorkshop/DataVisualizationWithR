@@ -1,0 +1,102 @@
+\documentclass[MASTER.tex]{subfiles} 
+\begin{document} 
+	
+%=================================================%
+% COMMON PLOT FUNCTIONS
+
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{Controlling axis and legends}
+\Large
+\begin{itemize}
+\item We can control the axes using the \texttt{add\_axis}
+function
+\item This controls axis labels, tick marks and even grid
+lines
+\end{itemize}
+
+\begin{framed}
+	\begin{verbatim}
+add_axis("x", title = "Month")
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=================================================%
+%=================================================%
+\begin{frame}[fragile]
+\textbf{Controlling axis and legends}
+\Large
+
+\texttt{The add\_legend} and \texttt{hide\_legend} functions allow
+us to control if we see a legend and where it
+appears
+
+\begin{framed}
+\begin{verbatim}
+hide_legend("fill")
+add_legend(c("fill", shape))
+\end{verbatim}
+\end{framed}
+\end{frame}
+%=================================================%
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{Scales}
+\Large
+ggvis has fewer scale functions than in ggplot2
+but control much more
+
+\begin{framed}
+\begin{verbatim}
+> grep("^scale", objects("package:ggvis"), value = TRUE)
+[1] "scale_datetime" "scale_logical" "scale_nominal" "scale_numeric"
+[5] "scale_ordinal" "scale_singular" "scaled_value" 
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=================================================%
+
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{ggvis VS ggplot2 : How are they similar?}
+\Large
+\begin{itemize}
+\item We can layer graphics in a similar fashion
+\item Aesthetics can be set based on variables in the
+data
+\item We can control the type of plot with specific
+functions
+\end{itemize}
+\end{frame}
+%=================================================%
+\begin{frame}
+	\Large
+\textbf{\textit{ggvis} vs \textit{ggplot2} : How are they different?} \\ \bigskip
+
+From point of view of \textbf{\textit{ggvis}}
+\begin{itemize}
+\item Only one main plot function to work with as
+opposed to two
+\item Layering is done using $ \%>\% $ rather than +
+\item Fewer scale functions
+\item Much functionality is not yet available in \textbf{\textit{ggvis}} e.g.
+facetting
+\end{itemize}
+
+\end{frame}
+%=================================================%
+\begin{frame}
+	\Large
+\textbf{Which should I use?}
+\begin{itemize}
+\item For static graphics: \textbf{\textit{ggplot2}}
+\item For interactive graphics: \textbf{\textit{ggvis}}
+\item \textbf{WARNING:} If you are using ggvis remember it's still being actively
+developed and may change in structure and functionality
+\end{itemize}
+\end{frame}
+%=================================================%
+\end{document}
+	

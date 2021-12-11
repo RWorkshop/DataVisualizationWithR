@@ -1,0 +1,113 @@
+---
+title: "``ggRandomForest::gg_vimp``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+plot.gg_roc ROC plot generic function for a gg_roc object.
+#### Description 
+
+ROC plot generic function for a gg_roc object.
+#### Usage 
+<pre><code>
+
+## S3 method for class 'gg_roc'
+plot(x, which.outcome = NULL, ...)
+plot.gg_roc 53
+
+</code></pre>
+#### Arguments
+
+x gg_roc object created from a classification forest
+which.outcome for multiclass problems, choose the class for plotting
+... 
+</code></pre>
+#### Arguments
+ passed to the gg_roc function
+Value
+ggplot object of the ROC curve
+
+See Also
+gg_roc rfsrc
+#### Examples 
+```{r} 
+## Not run:
+## ------------------------------------------------------------
+## classification example
+## ------------------------------------------------------------
+## -------- iris data
+#rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+data(rfsrc_iris, package="ggRandomForests")
+# ROC for setosa
+gg_dta <- gg_roc(rfsrc_iris, which.outcome=1)
+plot.gg_roc(gg_dta)
+# ROC for versicolor
+gg_dta <- gg_roc(rfsrc_iris, which.outcome=2)
+plot.gg_roc(gg_dta)
+# ROC for virginica
+gg_dta <- gg_roc(rfsrc_iris, which.outcome=3)
+plot.gg_roc(gg_dta)
+# Alternatively, you can plot all three outcomes in one go
+# by calling the plot function on the forest object.
+plot.gg_roc(rfsrc_iris)
+## End(Not run)
+```
+
+
+```{r}
+## ------------------------------------------------------------
+## regression example
+## ------------------------------------------------------------
+
+## -------- air quality data
+# rfsrc_airq <- rfsrc(Ozone ~ ., airquality)
+data(rfsrc_airq, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_airq)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- Boston data
+data(rfsrc_Boston, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_Boston)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- mtcars data
+data(rfsrc_mtcars, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_mtcars)
+plot(gg_dta)
+```
+
+
+```{r}
+## ------------------------------------------------------------
+## survival example
+## ------------------------------------------------------------
+## Not run:
+## -------- veteran data
+data(rfsrc_veteran, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_veteran)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- pbc data
+data(rfsrc_pbc, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_pbc)
+plot(gg_dta)
+# Restrict to only the top 10.
+gg_dta <- gg_vimp(rfsrc_pbc, nvar=10)
+plot(gg_dta)
+```

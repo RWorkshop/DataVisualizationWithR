@@ -1,0 +1,44 @@
+---
+title: "``ggfortify::fortify.cpt``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+#### Description 
+ 
+Convert changepoint::cpt and strucchange::breakpoints to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'cpt'
+fortify(model, data = NULL, is.date = NULL, ...)
+</code></pre>
+
+
+#### Arguments 
+ 
+* ``	model	``: 	chantepoint::cpt or strucchange::breakpoints instance
+* ``	data	``: 	original dataset, if needed
+* ``	is.date	``: 	Logical frag indicates whether the stats::ts is date or not. If not provided, regard the input as date when the frequency is 4 or 12.
+* ``	...	``: 	other arguments   passed to methods
+
+Value
+data.frame
+
+#### Examples 
+```{r}
+library(changepoint)
+fortify(cpt.mean(AirPassengers))
+fortify(cpt.var(AirPassengers))
+fortify(cpt.meanvar(AirPassengers))
+library(strucchange)
+bp.nile <- breakpoints(Nile ~ 1)
+fortify(bp.nile)
+fortify(breakpoints(bp.nile, breaks = 2))
+fortify(breakpoints(bp.nile, breaks = 2), data = Nile)
+```
+

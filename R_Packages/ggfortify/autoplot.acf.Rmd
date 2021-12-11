@@ -1,0 +1,47 @@
+autoplot.acf
+Autoplot stats::acf. Note to pass ***plot = FALSE*** to original function to suppress standard plot output
+
+#### Description 
+ 
+Autoplot stats::acf. Note to pass ***plot = FALSE*** to original function to suppress standard plot
+output
+
+#### Usage 
+
+<pre><code>
+## S3 method for class 'acf'
+autoplot(object, colour = "#000000", linetype = "solid",
+conf.int = TRUE, conf.int.colour = "#0000FF", conf.int.linetype = "dashed", conf.int.fill = NULL,
+conf.int.alpha = 0.3, conf.int.value = 0.95, conf.int.type = "white",
+xlim = c(NA, NA), ylim = c(NA, NA), log = "", main = NULL, xlab = NULL, ylab = "ACF", asp = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``	object 	``: 	stats::acf instance
+* ``	colour 	``: 	Line colour
+* ``	linetype 	``: 	Line type
+* ``	conf.int	``: 	Logical flag indicating whether to plot confidence intervals
+* ``	conf.int.colour	``: 	line colour for confidence intervals
+* ``	conf.int.linetype	``: 	line type for confidence intervals
+* ``	conf.int.fill	``: 	fill colour for confidence intervals
+* ``	conf.int.alpha 	``: 	alpha for confidence intervals
+* ``	conf.int.value 	``: 	Coverage probability for confidence interval
+* ``	conf.int.type 	``: 	Type of confidence interval, ***white*** for white noise or ***ma*** MA(k-1) model
+* ``	xlim 	``: 	limits for x axis
+* ``	ylim 	``: 	limits for y axis
+* ``	log 	``: 	which variables to log transform ("x", "y", or "xy") main character vector or expression for plot title
+* ``	xlab 	``: 	character vector or expression for x axis label
+* ``	ylab 	``: 	character vector or expression for y axis label
+* ``	asp	``: 	the y/x aspect ratio
+* ``	... 	``: 	other arguments   passed to methods
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+autoplot(stats::acf(AirPassengers, plot = FALSE))
+autoplot(stats::pacf(AirPassengers, plot = FALSE))
+autoplot(stats::ccf(AirPassengers, AirPassengers, plot = FALSE))
+```

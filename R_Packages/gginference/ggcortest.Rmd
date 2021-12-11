@@ -1,0 +1,35 @@
+---
+title: "``ggcortest ``:  Plot test for association between paired samples"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(gginference)
+```
+
+
+#### Description
+Visualise test for association between paired samples, using Pearson’s product moment correlation
+coefficient.
+
+#### Usage
+<pre><code>
+ggcortest(t, colaccept="lightskyblue1", colreject="grey94", colstat="navy")
+</code></pre>
+
+#### Arguments
+
+* ``t``: a list result of cor.test of "htest" class
+* ``colaccept``:  color the acceptance area of the test
+* ``colreject``:   color for the rejection area of the test
+* `` colstat``: color for the test statistic vline
+
+#### Examples
+
+```{r}
+corr_test <- cor.test(iris$Sepal.Length, iris$Sepal.Width)
+corr_test
+ggcortest(corr_test)
+```

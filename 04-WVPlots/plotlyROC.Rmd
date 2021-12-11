@@ -1,0 +1,51 @@
+---
+title: "``plotlyROC``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+library(plotly)
+```
+
+
+#### Description
+
+Use plotly to produce a ROC plot.
+ 
+#### Usage
+
+<pre><code>
+plotlyROC(d, predCol, outcomeCol, outcomeTarget, title, ...,
+estimate_sig = FALSE)
+</code></pre> 
+
+#### Arguments
+
+* ``d``: dataframe
+* ``predCol``:  name of column with numeric predictions
+* ``outcomeCol``: name of column with truth
+* ``outcomeTarget``: value considered true
+* ``title``: character title for plot
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+* ``estimate_sig``: (logical), if TRUE estimate and display significance of difference from AUC 0.5.
+
+ 
+#### Examples
+```{r}
+
+if(requireNamespace("plotly", quietly = TRUE)) {
+set.seed(34903490)
+x = rnorm(50)
+y = 0.5*x^2 + 2*x + rnorm(length(x))
+frm = data.frame(x=x,yC=y>=as.numeric(quantile(y,probs=0.8)))
+plotlyROC(frm, 'x', 'yC', TRUE, 'example plot', estimate_sig = TRUE)
+}
+```
+
+#### Value
+plotly plot
+
+#### See Also
+ROCPlot

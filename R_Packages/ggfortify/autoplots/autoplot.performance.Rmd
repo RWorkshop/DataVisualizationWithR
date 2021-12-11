@@ -1,0 +1,25 @@
+autoplot.performance
+Autoplot ROCR::performance
+
+#### Description 
+ 
+Autoplot ROCR::performance
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'performance'
+autoplot(object, p = NULL, bins = 5, ...)
+
+#### Arguments 
+ 
+object ROCR::performance instance
+p ggplot2::ggplot instances
+bins If object represents a measure whose value is just a scalar (e.g. performance(predObj, 'auc')),
+a histogram will be plotted of this scalar’s values for different runs. bins is the
+number of bins for this histogram.
+... other 
+#### Arguments 
+  passed to methods
+Value
+ggplotautoplot.RasterCommon
+

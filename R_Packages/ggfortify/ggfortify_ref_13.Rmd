@@ -1,0 +1,337 @@
+---
+title: "ggfortify"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+ggdistribution
+Plot distribution
+
+#### Description 
+ 
+Plot distribution
+
+#### Usage 
+<pre><code>
+ggdistribution(func, x, p = NULL, colour = "#000000", linetype = NULL,
+fill = NULL, alpha = NULL, ...)
+</code</pre>
+
+#### Arguments 
+ 
+* func PDF or CDF function
+* x Numeric vector to be passed to func
+* p ggplot2::ggplot instance to plot
+* colour Line colour
+* linetype Line type
+* fill Fill colour
+* alpha Alpha
+* ... Keywords passed to PDC/CDF func
+
+#### Value
+ggplot
+
+#### Examples 
+```{r}
+ggdistribution(dnorm, seq(-3, 3, 0.1), mean = 0, sd = 1)
+ggdistribution(ppois, seq(0, 30), lambda = 20)
+p <- ggdistribution(pchisq, 0:20, df = 7, fill = 'blue')
+ggdistribution(pchisq, 0:20, p = p, df = 9, fill = 'red')
+```
+
+ggfortify
+ggfortify
+ggfortify
+
+#### Description 
+ 
+Define Fortify and Autoplot to Allow ’ggplot2’ to Draw Some Popular Packages
+ggfreqplot
+Plot seasonal subseries
+stats::monthplot
+of time series,
+generalization
+
+#### Description 
+ 
+Plot seasonal subseries of time series, generalization of stats::monthplot
+
+#### Usage 
+<pre><code>
+ggfreqplot(data, freq = NULL, nrow = NULL, ncol = NULL,
+conf.int = FALSE, conf.int.colour = "#0000FF",
+conf.int.linetype = "dashed", conf.int.fill = NULL,
+conf.int.alpha = 0.3, conf.int.value = 0.95, facet.labeller = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``data ``: stats::ts instance
+* ``freq ``: Length of frequency. If not provided, use time-series frequency
+* ``nrow ``: Number of plot rows
+* ``ncol ``: Number of plot columns
+* ``conf.int ``: Logical flag indicating whether to plot confidence intervals
+* ``conf.int.colour``: line colour for confidence intervals
+* ``conf.int.linetype``: line type for confidence intervals
+* ``conf.int.fill``: fill colour for confidence intervals
+* ``conf.int.alpha``: alpha for confidence intervals
+* ``conf.int.value``: Coverage probability for confidence interval
+* ``facet.labeller``: A vector used as facet labels
+...
+Value
+ggplot
+Keywords passed to autoplot.ts
+
+ggmultiplot-class
+
+#### Examples 
+```{r}
+ggfreqplot(AirPassengers)
+ggfreqplot(AirPassengers, freq = 4)
+ggfreqplot(AirPassengers, conf.int = TRUE)
+```
+
+ggmultiplot-class
+An S4 class to hold multiple ggplot2::ggplot instances
+
+#### Description 
+ 
+An S4 class to hold multiple ggplot2::ggplot instances
+
+#### Usage 
+<pre><code>
+## S4 method for signature 'ggmultiplot'
+length(x)
+## S4 method for signature 'ggmultiplot,ANY,ANY,ANY'
+x[i, j, ..., drop = TRUE]
+## S4 method for signature 'ggmultiplot'
+x[[i, j, ..., drop]]
+## S4 replacement method for signature 'ggmultiplot'
+x[i, j, ...] <- value
+## S4 replacement method for signature 'ggmultiplot'
+x[[i, j, ...]] <- value
+</code></pre>
+
+#### Arguments 
+ 
+* x ggmultiplot
+* i elements to extract or replace
+* j not used
+* ... not used
+* drop not used
+* value value to be set
+* Slots: plots List of ggplot2::ggplot instances
+* ncol Number of grid columns
+* nrow Number of grid rowsggtsdiag
+
+## ggtsdiag
+67
+Plots time-series diagnostics
+
+#### Description 
+ 
+Plots time-series diagnostics
+
+#### Usage 
+<pre><code>
+ggtsdiag(object, gof.lag = 10, conf.int = TRUE,
+conf.int.colour = "#0000FF", conf.int.linetype = "dashed",
+conf.int.fill = NULL, conf.int.alpha = 0.3, ad.colour = "#888888",
+ad.linetype = "dashed", ad.size = 0.2, nrow = NULL, ncol = 1, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``object``: A fitted time-series model
+* ``gof.lag``: The maximum number of lags for a Portmanteau goodness-of-fit test
+* ``conf.int``: Logical flag indicating whether to plot confidence intervals
+* ``conf.int.colour``: line colour for confidence intervals
+* ``conf.int.linetype``: line type for confidence intervals
+* ``conf.int.fill``: fill colour for confidence intervals
+* ``conf.int.alpha``: alpha for confidence intervals
+* ``ad.colour``: Line colour for additional lines
+* ``ad.linetype``: Line type for additional lines
+* ``ad.size``: Fill colour for additional lines
+* ``nrow``: Number of facet/subplot rows
+* ``ncol``: Number of facet/subplot columns
+* ``...``: other keywords
+
+
+Value
+ggplot
+
+#### Examples 
+
+ggtsdiag(arima(AirPassengers))68
+infer
+grid.draw.ggmultiplot The implemented grid.draw method for ggmultiplot, in order to work
+with ggsave() properly
+
+#### Description 
+ 
+The implemented grid.draw method for ggmultiplot, in order to work with ggsave() properly
+
+#### Usage 
+<pre><code>
+## S3 method for class 'ggmultiplot'
+grid.draw(plot)
+</code></pre>
+
+#### Arguments 
+ 
+plot
+infer
+ggmultiplot
+Infer class name
+
+#### Description 
+ 
+Infer class name
+
+#### Usage 
+<pre><code>
+infer(data)
+</code></pre>
+
+#### Arguments 
+ 
+data
+Value
+character
+list instanceis.univariate
+is.univariate
+69
+Check if Validates number of ts variates
+
+#### Description 
+ 
+Check if Validates number of ts variates
+
+#### Usage 
+<pre><code>
+is.univariate(data, raise = TRUE)
+</code></pre>
+
+#### Arguments 
+ 
+data ts instance
+raise Logical flag whether raise an error
+Value
+logical
+
+#### Examples 
+```{r}
+ggfortify:::is.univariate(AirPassengers)
+```
+
+
+is_derived_from
+Check object is target class, or object is data.frame fortified from
+target.
+
+#### Description 
+ 
+Check object is target class, or object is data.frame fortified from target.
+
+#### Usage 
+<pre><code>
+is_derived_from(object, target)
+</code></pre>
+
+#### Arguments 
+ 
+object instance to be checked. For data.frame, check whether it is fortified from target
+class
+target class name
+Value
+logical70
+plot_confint
+
+#### Examples 
+```{r}
+ggfortify:::is_derived_from(prcomp(iris[-5]), 'prcomp')
+```
+
+plot_confint
+Attach confidence interval to ggplot2::ggplot
+
+#### Description 
+ 
+Attach confidence interval to ggplot2::ggplot
+
+#### Usage 
+<pre><code>
+plot_confint(p, data = NULL, lower = "lower", upper = "upper",
+conf.int = TRUE, conf.int.geom = "line", conf.int.group = NULL,
+conf.int.colour = "#0000FF", conf.int.linetype = "none",
+conf.int.fill = "#000000", conf.int.alpha = 0.3)
+</code></pre>
+
+#### Arguments 
+ 
+* ``p:`` ggplot2::ggplot instance
+* ``data:`` data contains lower and upper confidence intervals
+* ``lower:`` column name for lower confidence interval
+* ``upper:`` column name for upper confidence interval
+* ``conf.int:`` Logical flag indicating whether to plot confidence intervals
+* ``conf.int.geom:``  geometric string for confidence interval. ’line’ or ’step’
+* ``conf.int.group:``  name of grouping variable for confidence intervals
+* ``conf.int.colour:``  line colour for confidence intervals
+* ``conf.int.linetype::``  line type for confidence intervals
+* ``conf.int.fill:``  fill colour for confidence intervals
+* ``conf.int.alpha``: alpha for confidence intervals
+Value
+ggplot
+
+#### Examples 
+```{r}
+d <- fortify(stats::acf(AirPassengers, plot = FALSE))
+p <- ggplot(data = d, mapping = aes(x = Lag))
+ggfortify:::plot_confint(p, data = d)
+```
+
+
+plot_label
+plot_label
+71
+Attach label to ggplot2::ggplot
+
+#### Description 
+ 
+Attach label to ggplot2::ggplot
+
+#### Usage 
+<pre><code>
+plot_label(p, data, x = NULL, y = NULL, label = TRUE, label.label = "rownames", label.colour = NULL, 
+  label.alpha = NULL, label.size = NULL, label.angle = NULL, label.family = NULL,
+  label.fontface = NULL, label.lineheight = NULL, label.hjust = NULL,
+  label.vjust = NULL, label.repel = FALSE, label.show.legend = NA)
+</code></pre>
+
+#### Arguments 
+* ``	P	``: 	ggplot2::ggplot instance
+* ``	data 	``: 	Data contains text label
+* ``	x 	``: 	x coordinates for label
+* ``	y 	``: 	y coordinates for label
+* ``	label 	``: 	Logical value whether to display labels
+* ``	label.label 	``: 	Column name used for label text
+* ``	label.colour 	``: 	Colour for text labels
+* ``	label.alpha	``: 	Alpha for text labels
+* ``	label.size 	``: 	Size for text labels
+* ``	label.angle 	``: 	Angle for text labels
+* ``	label.family 	``: 	Font family for text labels
+* ``	label.fontface 	``: 	Fontface for text labels
+* ``	label.lineheight	``: 	Lineheight for text labels
+* ``	label.hjust 	``: 	Horizontal adjustment for text labels
+* ``	label.vjust 	``: 	Vertical adjustment for text labels
+* ``	label.repel	``: 	Logical flag indicating whether to use ggrepel, enabling this may take some time for plotting
+* ``	label.show.legend	``: 	Logical value indicating whether to show the legend of the text labels
+
+Value
+ggplot72
+post_fortify
+post_autoplot

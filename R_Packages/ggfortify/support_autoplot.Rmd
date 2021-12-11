@@ -1,0 +1,54 @@
+---
+title: "support_autoplot"
+author: "Kevin O'Brien"
+date: "17 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+support_autoplot
+Check if passed object is supported by ggplot2::autoplot
+
+#### Description 
+ 
+Check if passed object is supported by ggplot2::autoplot
+
+#### Usage 
+ <pre><code>
+support_autoplot(obj)
+
+#### Arguments 
+ 
+obj
+object
+Value
+logical
+unscale
+Backtransform scale-ed object
+
+#### Description 
+ 
+Backtransform scale-ed object
+
+#### Usage 
+ <pre><code>
+unscale(data, center = NULL, scale = NULL)
+
+#### Arguments 
+ 
+data
+center
+scale
+Scaled data
+Centered vector
+Scale vector
+
+#### Value
+data.frame
+
+#### Examples 
+
+df <- iris[-5]
+ggfortify::unscale(base::scale(df))

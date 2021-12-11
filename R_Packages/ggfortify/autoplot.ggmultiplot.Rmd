@@ -1,0 +1,48 @@
+---
+title: "``ggfortify::autoplot``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+#### Description 
+ 
+Autoplot ggmultiplot instances. It returns the passed instance as it is.
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'ggmultiplot'
+autoplot(object, ...)
+
+#### Arguments 
+ 
+object
+...
+Value
+ggmultiplot
+ggmultiplot instance
+Not used.autoplot.ggplot
+autoplot.ggplot
+15
+Autoplot ggplot instances. It returns the passed instance as it is.
+
+#### Description 
+ 
+Autoplot ggplot instances. It returns the passed instance as it is.
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'ggplot'
+autoplot(object, ...)
+
+#### Arguments 
+ 
+object ggplot instance
+... Not used.
+Value
+ggplot
+
+
+

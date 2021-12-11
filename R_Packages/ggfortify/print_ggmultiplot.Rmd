@@ -1,0 +1,17 @@
+print,ggmultiplot-method
+Generic print function for ggmultiplot
+
+#### Description 
+ 
+Generic print function for ggmultiplot
+
+#### Usage 
+ <pre><code>
+## S4 method for signature 'ggmultiplot'
+print(x)
+
+#### Arguments 
+ 
+x
+rbind_ts
+ggmultiplot

@@ -1,0 +1,25 @@
+residuals.ar
+Calcurate residuals for stats::ar
+
+#### Description 
+ 
+Calcurate residuals for stats::ar
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'ar'
+residuals(object, ...)
+
+#### Arguments 
+ 
+object stats::ar instance
+... other keywords
+Value
+ts Residuals extracted from the object object.
+
+#### Examples 
+
+residuals(ar(WWW
+#### Usage 
+ <pre><code>))
+show,ggmultiplot-method

@@ -1,0 +1,31 @@
+autoplot.RasterCommon Autoplot raster::raster
+
+#### Description 
+ 
+Only plot the first layer of the given raster
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'RasterCommon'
+autoplot(object, raster.layer = NULL, p = NULL,
+alpha = NULL, xlim = c(NA, NA), ylim = c(NA, NA), log = "",
+main = NULL, xlab = "", ylab = "", asp = NULL, ...)
+</code></pre>
+#### Arguments 
+ 
+object raster::raster instance
+raster.layer name of the layer to plot
+p ggplot2::ggplot instance
+alpha alpha
+xlim limits for x axis
+ylim limits for y axis
+log which variables to log transform ("x", "y", or "xy")
+main character vector or expression for plot title
+xlab character vector or expression for x axis label
+ylab character vector or expression for y axis label
+asp the y/x aspect ratio
+... other arguments passed to methods
+
+#### Value
+ggplot
+

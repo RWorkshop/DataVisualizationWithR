@@ -1,0 +1,24 @@
+## globaltemp: Data Set
+
+#### Description 
+
+Temperature information by years.
+
+#### Usage
+<pre><code>
+globaltemp
+</code></pre>
+
+#### Format
+
+A data frame with 1992 observations and 4 variables.
+
+#### Variables 
+
+* date: Date.
+* lower: Minimum temperature.
+* median: Median temperature.
+* upper: Maximun temperature.
+
+#### Source
+http://www.climate-lab-book.ac.uk/2016/spiralling-global-temperatures/

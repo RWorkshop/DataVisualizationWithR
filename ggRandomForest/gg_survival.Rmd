@@ -1,0 +1,64 @@
+---
+title: "gg_survival Nonparametric survival estimates."
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+```
+
+
+#### Description 
+
+Nonparametric survival estimates.
+
+#### Usage 
+
+<pre><code>
+gg_survival(interval = NULL, censor = NULL, by = NULL, data, type = c("kaplan", "nelson"), ...)
+</code></pre>
+
+#### Arguments 
+* ``interval``: name of the interval variable in the training dataset. 
+* ``censor``: name of the censoring variable in the training dataset. 
+* ``by``: stratifying variable in the training dataset, defaults to  NULL 
+* ``data``: name of the training data.frame type one of ("kaplan","nelson"), defaults to kaplan-meier 
+* ``...``: extra arguments passed to kaplan or nelson functions.
+* ``Details``: gg_survival is a wrapper function for generating nonparametric survival estimates using either nelson-aalen or kaplan-meier estimates.
+* ``Value``: A gg_survival object created using the non-parametric kaplan-meier or nelson-aalon estimators.
+
+#### Examples
+
+```{r}
+## Not run: ## -------- pbc data 
+data(pbc, package="randomForestSRC") 
+pbc$time <- pbc$days/364.25
+```
+
+```{r}
+# This is the same as kaplan 
+gg_dta <- gg_survival(interval="time", censor="status", data=pbc)
+plot(gg_dta, error="none") 
+```
+
+```{r}
+plot(gg_dta)
+```
+
+```{r}
+# Stratified on treatment variable. 
+gg_dta <- gg_survival(interval="time", censor="status", data=pbc, by="treatment")
+plot(gg_dta, error="none") 
+```
+
+```{r}
+plot(gg_dta)
+```
+
+```{r}
+# ...with smaller confidence limits. 
+gg_dta <- gg_survival(interval="time", censor="status", data=pbc, by="treatment", conf.int=.68)
+plot(gg_dta, error="lines")
+## End(Not run)
+```

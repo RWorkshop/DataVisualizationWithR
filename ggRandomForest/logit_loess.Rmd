@@ -1,0 +1,29 @@
+---
+title: "``ggRandomForest::logit_loess``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+logit_loess logit_loess takes
+
+#### Description 
+
+logit_loess takes
+
+#### Usage 
+
+<pre><code>
+
+logit_loess(gg_dta, xvar, level)
+
+</code></pre>
+
+#### Arguments
+
+* ``gg_dta``: dataset contains a yhat to smooth
+* ``xvar``: name of x variable to smooth along
+* ``level``: quantile level argument for qnorm function.

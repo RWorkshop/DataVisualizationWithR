@@ -1,0 +1,37 @@
+---
+title: "``PlotDistDensityNormal``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+#### Description
+
+Compares empirical data to a normal distribution with the same mean and standard deviation.
+ 
+#### Usage
+
+<pre><code>
+PlotDistDensityNormal(frm, xvar, title)
+</code></pre> 
+
+#### Arguments
+
+* ``frm``: data frame to get values from
+* ``xvar ``:  name of the independent (input or model) column in frame
+* ``title ``:    title to place on plot
+
+#### Details
+
+Plots the empirical density, the theoretical matching normal, the mean value, and plus/minus one
+standard deviation from the mean.
+ 
+#### Examples
+```{r}
+set.seed(523)
+d <- data.frame(wt=100*rnorm(100))
+PlotDistDensityNormal(d,'wt','example')
+```

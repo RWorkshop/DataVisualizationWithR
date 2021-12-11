@@ -1,0 +1,57 @@
+
+## ``geom_table`` Tables
+### Description
+geom_table adds a textual table directly to the ggplot using syntax similar to that of ``geom_label``.
+
+#### Usage 
+ <pre><code>
+geom_table(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", ..., parse = FALSE, check_overlap = FALSE,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+</code></pre>
+
+### Arguments
+
+* ``mapping``: The aesthetic mapping, usually constructed with aes or aes_. Only needs to be
+set at the layer level if you are overriding the plot defaults.
+* ``data ``: A layer specific dataset - only needed if you want to override the plot defaults.
+* ``stat ``: The statistical transformation to use on the data for this layer, as a string.
+position Position adjustment, either as a string, or the result of a call to a position adjustment
+function.
+... other arguments passed on to layer. This can include aesthetics whose values
+you want to set, not map. See layer for more details..
+parse If TRUE, the labels will be parsed into expressions and displayed as described
+in ?plotmath.
+* ``check_overlap``: If TRUE, text that overlaps previous text in the same layer will not be plotted.
+na.rm If FALSE (the default), removes missing values with a warning. If TRUE silently
+removes missing values.
+* ``show.legend ``: logical. Should this layer be included in the legends? NA, the default, includes if
+any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+* ``inherit.aes``: If FALSE, overrides the default aesthetics, rather than combining with them.
+This is most useful for helper functions that define both data and aesthetics and
+shouldn’t inherit behaviour from the default plot specification, e.g. borders.
+
+#### Details
+Note the "width" and "height" like of a text element are 0, so stacking and dodging tables will not
+work by default, and axis limits are not automatically expanded to include all tables. Obviously,
+tables do have height and width, but they are physical units, not data units. The amount of space
+they occupy on that plot is not constant in data units: when you resize a plot, tables stay the same
+size, but the size of the axes changes.
+
+#### Alignment
+You can modify table alignment with the vjust and hjust aesthetics. These can either be a number
+between 0 (right/bottom) and 1 (top/left) or a character ("left", "middle", "right", "bottom", "center",
+"top").
+
+
+#### Note
+This geom works only with tibbles as data, as it expects a list of data frames or a list of tibbles
+to be mapped to the label aesthetic. In the current version the following aesthetics affect the text
+within the table size, colour, and alpha. The argument to parameter parse is simply passed
+forward to gridExtra::ttheme_default(). As x and y determine the position of the whole table,
+similarly to that of a text label, justification is interpreted as indicating the position of the table with
+respect to the $x$ and $y$ coordinates in the data, and angle is used to rotate the table as a whole.
+Other aesthetics, including fill are not yet implemented, neither are themes for table formatting.
+annotate() cannot be used with geom = "table". Use geom_table directly also for adding annotations.
+#### References
+This geometry is inspired on answers to two questions in Stackoverflow. In contrast to these earlier

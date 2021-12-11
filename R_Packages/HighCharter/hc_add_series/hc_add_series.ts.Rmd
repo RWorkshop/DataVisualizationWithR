@@ -1,0 +1,18 @@
+hc_add_series.ts
+hc_add_series for time series objects
+
+#### Description 
+
+hc_add_series for time series objects
+Usage
+
+## S3 method for class 'ts'
+hc_add_series(hc, data, ...)
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+data A time series ts object.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+
+

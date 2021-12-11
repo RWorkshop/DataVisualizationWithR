@@ -1,0 +1,100 @@
+---
+title: "``ggRandomForest::gg_vimp``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+gg_vimp Variable Importance (VIMP) data object
+
+#### Description 
+
+gg_vimp Extracts the variable importance (VIMP) information from a a rfsrc object.
+#### Usage 
+<pre><code>
+
+gg_vimp(object, nvar, ...)
+
+</code></pre>
+#### Arguments
+
+object A rfsrc object or output from vimp
+nvar argument to control the number of variables included in the output.
+... arguments
+ passed to the vimp.rfsrc function if the rfsrc object does not contain
+importance information.
+
+#### Value
+gg_vimp object. A data.frame of VIMP measures, in rank order.
+
+See Also
+plot.gg_vimp rfsrc vimp
+#### Examples 
+```{r} 
+## ------------------------------------------------------------
+## classification example
+## ------------------------------------------------------------
+## -------- iris data
+rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+#data(rfsrc_iris, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_iris)
+plot(gg_dta)
+```
+
+
+```{r}
+## ------------------------------------------------------------
+## regression example
+## ------------------------------------------------------------
+
+## -------- air quality data
+# rfsrc_airq <- rfsrc(Ozone ~ ., airquality)
+data(rfsrc_airq, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_airq)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- Boston data
+data(rfsrc_Boston, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_Boston)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- mtcars data
+data(rfsrc_mtcars, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_mtcars)
+plot(gg_dta)
+```
+
+
+```{r}
+## ------------------------------------------------------------
+## survival example
+## ------------------------------------------------------------
+## Not run:
+## -------- veteran data
+data(rfsrc_veteran, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_veteran)
+plot(gg_dta)
+## End(Not run)
+```
+
+
+```{r}
+## -------- pbc data
+data(rfsrc_pbc, package="ggRandomForests")
+gg_dta <- gg_vimp(rfsrc_pbc)
+plot(gg_dta)
+# Restrict to only the top 10.
+gg_dta <- gg_vimp(rfsrc_pbc, nvar=10)
+plot(gg_dta)
+```

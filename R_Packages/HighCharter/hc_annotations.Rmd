@@ -1,0 +1,28 @@
+---
+title: "hc_annotations"
+author: "Kevin O'Brien"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Adding annotations to highcharts objects
+
+#### Description 
+
+Helper function to add annotations to highcharts library.
+Usage
+<pre><code>
+hc_annotations(hc, ...)
+hc_add_annotation(hc, ...)
+hc_add_annotations(hc, x)
+</code></pre>
+#### Arguments 
+
+* ``hc`` : A highchart htmlwidget object.
+* ``...`` : Arguments defined in http://www.highcharts.com/plugin-registry/single/17/Annotations.
+* ``x`` : A list or a data.frame of annotations.hc_annotationsOptions
+
+The x elemens must have xValue and yValue elements

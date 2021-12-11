@@ -1,0 +1,33 @@
+## ``hc_add_series_ts``
+Shorcut for create/add time series charts from a ts object
+
+#### Description 
+
+This function add a time series to a highchart object from a ts object.
+Usage
+hc_add_series_ts(hc, ts, ...)
+ #### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+ts A time series object.
+* ``...``: Aditional shared arguments for the data series (http://api.highcharts.com/
+series).
+Details
+This function modify the type of chart to datetime
+
+#### Examples
+```{r}
+
+highchart() %>%
+hc_title(text = "Monthly Airline Passenger Numbers 1949-1960") %>%
+hc_subtitle(text = "The classic Box and Jenkins airline data") %>%
+hc_add_series_ts(AirPassengers, name = "passengers") %>%
+hc_tooltip(pointFormat = '{point.y} passengers')
+highchart() %>%
+hc_title(text = "Monthly Deaths from Lung Diseases in the UK") %>%
+hc_add_series_ts(fdeaths, name = "Female") %>%hc_add_series_xts
+hc_add_series_ts(mdeaths, name = "Male")
+## End(Not run)
+```
+
+

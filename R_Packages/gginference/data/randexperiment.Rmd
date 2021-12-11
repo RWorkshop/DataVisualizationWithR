@@ -1,0 +1,10 @@
+
+randexperiment Random experiment results
+#### Description
+A data frame with 128 sample results of a repeated experiment. Success is noted with 1 and failure
+with 0.
+#### Usage
+randexperiment
+#### Format
+A data frame with 128 observations of 1 column.
+Salary_Gender 13

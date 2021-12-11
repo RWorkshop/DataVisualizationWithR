@@ -1,0 +1,33 @@
+fortify.forecast
+Convert forecast::forecast to data.frame
+
+#### Description 
+ 
+Convert forecast::forecast to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'forecast'
+fortify(model, data = NULL, is.date = NULL,
+ts.connect = FALSE, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: forecast::forecast instance
+* ``data``: original dataset, if needed
+* ``is.date``: Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12.
+* ``ts.connect Logical frag indicates whether connects original time-series and predicted val-
+ues
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+d.arima <- forecast::auto.arima(AirPassengers)
+d.forecast <- forecast::forecast(d.arima, level = c(95), h = 50)
+fortify(d.forecast)
+fortify(d.forecast, ts.connect = TRUE)
+```

@@ -1,0 +1,21 @@
+## ``hc_theme_db``: Dotabuff theme for highcharts
+
+#### Description 
+
+Dotabuff theme for highcharts
+
+#### Usage 
+<pre><code>
+hc_theme_db(...)
+</code></pre> 
+
+#### Arguments 
+ 
+* ``...``: Named argument to modify the theme
+
+#### Examples
+ 
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_db())
+```

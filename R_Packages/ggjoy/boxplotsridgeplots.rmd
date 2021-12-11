@@ -1,0 +1,156 @@
+```{r}
+library(gapminder)
+library(ggplot2)
+```
+
+
+1. Box Plots and Relations
+2. Boxplots
+3. Violin Plots
+4. Beeswarm Plots
+5. Effectiveness and Scalability
+6. Ridge Plots
+
+## Boxplots
+Boxplots, or box-and-whisker plots, provide a skeletal representation of a distribution.
+
+They are very well suited for showing distributions for multiple groups.
+
+There are many variations of boxplots:
+
+Most start with a box from the first to the third quartiles and divided by the median.
+
+The simplest form then adds a whisker from the lower quartile to the minimum and from the upper quartile to the maximum.
+
+More common is to draw the upper whisker to the largest point below the upper quartile +1.5∗IQR, and the lower whisker analogously.
+
+Outliers falling outside the range of the whiskers are then drawn directly:
+
+```{r}
+ggplot(gapminder) + geom_boxplot(aes(x = continent, y = gdpPercap))
+```
+There are variants that distinguish between mild outliers and extreme outliers.
+
+A common variant is to show an approximate 95% confidence interval for the population median as a notch.
+```{r}
+ggplot(gapminder) +
+    geom_boxplot(aes(x = continent, y = gdpPercap), notch = TRUE)
+```
+Another variant is to use a width proportional to the square root 
+of the sample size to reflect the strength of evidence in the data:
+```{r}
+ggplot(gapminder) +
+    geom_boxplot(aes(x = continent, y = gdpPercap),
+                 notch = TRUE, varwidth = TRUE)
+```
+With moderate sample sizes it can be useful to super-impose the original data, perhaps with jittering and alpha blending. The outliers in the box plot can be turned off with ``outlier.color = NA`` so they are not shown twice:
+
+```{r}
+p <- ggplot(gapminder) +
+    geom_boxplot(aes(x = continent, y = gdpPercap),
+                 notch = TRUE, varwidth = TRUE,
+                 outlier.color = NA)
+p + geom_point(aes(x = continent, y = gdpPercap),
+               position = position_jitter(width = 0.1), alpha = 0.1)
+```
+### Violin Plots
+A variant of the boxplot is the violin plot:
+
+*Hintze, J. L., Nelson, R. D. (1998), “Violin Plots: A Box Plot-Density Trace Synergism,” The American Statistician 52, 181-184.*
+
+The violin plot uses density estimates to show the distributions:
+```{r}
+ggplot(gapminder) + geom_violin(aes(x = continent, y = gdpPercap))
+```
+By default the “violins” are scaled to have the same area. 
+They can also be scaled to have the same maximum height or to have areas proportional to sample sizes. This is done by adding ``scale = "width"`` or  ``scale = "count"`` to the geom_violin call.
+
+A comparison of boxplots and violin plots:
+```{r}
+ggplot(gapminder) +
+    geom_boxplot(aes(x = continent, y = gdpPercap)) +
+    geom_violin(aes(x = continent, y = gdpPercap),
+                fill = NA, scale = "width", linetype = 2)
+```
+A Combination of boxplots and violin plots:
+```{r}
+ggplot(gapminder) +
+    geom_violin(aes(x = continent, y = gdpPercap), scale = "width") +
+    geom_boxplot(aes(x = continent, y = gdpPercap), width = .1)
+```
+There are other variations, e.g. vase plots.
+
+## Beeswarm Plots
+Beeswarm plots, also called violin scatterplots, try to show both 
+the full data and the density of the data distribution.
+
+The ggbeeswarm package provides one implementation with two 
+variants:
+
+* ``geom_quasirandom``
+* ``geom_beeswarm``
+
+The ``quasi_random`` version seems to work a bit better on many 
+examples, e.g.
+```{r}
+library(ggbeeswarm)
+ggplot(gapminder) +
+geom_quasirandom(aes(x = continent, y = gdpPercap), size = 0.2)
+```
+Combined with a width-scaled violin plot:
+```{r}
+ggplot(gapminder) +
+    geom_violin(aes(x = continent, y = gdpPercap), scale = "width") +
+    geom_quasirandom(aes(x = continent, y = gdpPercap), color = "blue")
+```
+### Effectiveness and Scalability
+* Boxplots are very simple and easy to compare.
+* Boxplots strongly emphasize the middle half of the data.
+* Boxplots may not be easy for a lay viewer to understand.
+* Box plots scale fairly well visually and computationally in the number of observations; over-plotting/storage of outliers becomes an issue for larger data sets
+
+Violin plots scale well both visually and computationally in the 
+number of observations.
+
+```{r}
+library(gridExtra)
+p1 <- ggplot(diamonds) + geom_boxplot(aes(x = cut, y = price))
+p2 <- ggplot(diamonds) + geom_violin(aes(x = cut, y = price))
+grid.arrange(p1, p2, nrow = 1)
+```
+Scalability in the number of cases for beeswarm plots is more limited.
+
+The number of groups that can be handled for comparison by these plots is in the range of a few dozen.
+```{r}
+library(lattice)
+p1 <- ggplot(barley) + geom_boxplot(aes(x = site, y = yield, fill = year))
+p2 <- ggplot(barley) + geom_violin(aes(x = site, y = yield, fill = year))
+grid.arrange(p1, p2, nrow = 1)
+```
+### Ridge Plots
+Ridgeline plots, also called joy plots, are another way to show 
+density estimates for a number of groups that has become popular recently.
+
+The package ggridges defines ``geom_density_ridges`` for creating 
+these plots:
+```{r}
+library(ggridges)
+ggplot(barley) + geom_density_ridges(aes(x=yield,y=site,fill = year))
+```
+## Picking joint bandwidth of 2.39
+
+Alpha blending may sometimes help:
+
+```{r}
+ggplot(barley) +
+    geom_density_ridges(aes(x=yield,y=site,fill = year), alpha = 0.8)
+## Picking joint bandwidth of 2.39
+```
+Adjusting the vertical scale may also help:
+```{r}
+ggplot(barley) +
+    geom_density_ridges(aes(x=yield,y=site,fill = year), scale = 0.8)
+```
+## Picking joint bandwidth of 2.39
+
+This work is licensed under the CC BY-NC 3.0 Creative Commons License.

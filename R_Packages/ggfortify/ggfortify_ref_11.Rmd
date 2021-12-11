@@ -1,0 +1,227 @@
+---
+title: "``fortify.performance``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+Convert ROCR::performance objects to data.frame
+
+#### Description 
+ 
+Convert ROCR::performance objects to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'performance'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: performance instances
+* ``data``: original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+fortify.prcomp
+Convert stats::prcomp, stats::princomp to data.frame
+
+#### Description 
+ 
+Convert stats::prcomp, stats::princomp to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'prcomp'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: stats::prcomp or stats::princomp instance
+* ``data``: original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(stats::prcomp(iris[-5]))
+fortify(stats::prcomp(iris[-5]), data = iris)
+fortify(stats::princomp(iris[-5]))
+fortify(stats::princomp(iris[-5]), data = iris)
+```
+
+fortify.RasterCommon
+Convert raster to data.frame
+
+#### Description 
+ 
+Convert raster to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'RasterCommon'
+fortify(model, data = NULL, maxpixels = 1e+05,
+rename = TRUE, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: raster instances
+* ``data``: original dataset, if needed
+* ``maxpixels``: number of pixels for resampling
+* ``rename``: logical flag indicating whether to rename coordinates to long and lat
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+
+fortify.SpatialCommon Convert sp instances to data.frame.
+
+#### Description 
+ 
+Convert sp instances to data.frame.
+
+#### Usage 
+<pre><code>
+## S3 method for class 'SpatialCommon'
+fortify(model, data = NULL, rename = TRUE, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* model sp instances
+* data original dataset, if needed
+* rename logical flag indicating whether to rename coordinates to long and lat
+* ``... ``: other arguments passed to methods
+
+#### Value
+data.frame
+
+## ``fortify.spec``
+Convert stats::spec to data.frame
+
+#### Description 
+ 
+Convert stats::spec to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'spec'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+
+#### Arguments 
+ 
+model stats::spec instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(spectrum(AirPassengers))
+fortify(stats::spec.ar(AirPassengers))
+fortify(stats::spec.pgram(AirPassengers))52
+fortify.survfit
+```
+
+
+fortify.stepfun
+Convert stats::stepfun to data.frame
+
+
+#### Description 
+ 
+Convert stats::stepfun to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'stepfun'
+fortify(model, data, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: stats::stepfun instance
+* ``data``: original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(stepfun(c(1, 2, 3), c(4, 5, 6, 7)))
+fortify(stepfun(c(1), c(4, 5)))
+fortify(stepfun(c(1, 3, 4, 8), c(4, 5, 2, 3, 5)))
+fortify(stepfun(c(1, 2, 3, 4, 5, 6, 7, 8, 10), c(4, 5, 6, 7, 8, 9, 10, 11, 12, 9)))
+```
+
+## ``fortify.survfit``
+Convert survival::survfit to data.frame
+
+#### Description 
+ 
+Convert ``survival::survfit`` to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'survfit'
+fortify(model, data = NULL, surv.connect = FALSE,
+fun = NULL, ...)
+</code><pre>
+
+
+#### Arguments 
+ 
+* ``model``: survival::survfit instance
+* ``data``: original dataset, if needed
+* ``surv.connect`` logical frag indicates whether connects survival curve to the origin
+* ``fun``: an arbitrary function defining a transformation of the survival curve
+* ``...``: other arguments passed to methods
+
+#### Value
+data.frame
+
+#### Examples 
+```{r}
+library(survival)
+fortify(survfit(Surv(time, status) ~ sex, data = lung))
+fortify(survfit(Surv(time, status) ~ 1, data = lung))
+fortify(survfit(coxph(Surv(time, status) ~ sex, data = lung)))
+fortify(survfit(coxph(Surv(time, status) ~ 1, data = lung)))
+```
+
+## ``fortify.table``
+Convert base::table to data.frame
+
+#### Description 
+ 
+Convert base::table to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'table'
+fortify(model, data, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* model base::table instance
+* data original dataset, if needed
+* ``... ``: other arguments passed to methods
+
+#### Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(Titanic)
+```

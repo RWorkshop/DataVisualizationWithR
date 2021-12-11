@@ -1,0 +1,37 @@
+hc_add_series_treemap Shorcut for create treemaps
+
+#### Description 
+
+This function helps to create higcharts treemaps from treemap objects from the package treemap.
+Usage
+hc_add_series_treemap(hc, tm, ...)
+ #### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+tm A treemap object from the treemap package.
+* ``...``: Aditional shared arguments for the data series (http://api.highcharts.com/
+highcharts#series).
+
+#### Examples
+```{r}
+
+## Not run:
+library("treemap")
+library("viridis")
+data(GNI2014)
+head(GNI2014)
+tm <- treemap(GNI2014, index = c("continent", "iso3"),
+vSize = "population", vColor = "GNI",
+type = "comp", palette = rev(viridis(6)),
+draw = FALSE)36
+hc_add_series_ts
+highchart(height = 800) %>%
+hc_add_series_treemap(tm, allowDrillToNode = TRUE,
+layoutAlgorithm = "squarified",
+name = "tmdata") %>%
+hc_title(text = "Gross National Income World Data") %>%
+hc_tooltip(pointFormat = "<b>{point.name}</b>:<br>
+Pop: {point.value:,.0f}<br>
+GNI: {point.valuecolor:,.0f}")
+## End(Not run)
+```

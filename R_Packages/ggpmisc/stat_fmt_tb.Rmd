@@ -1,0 +1,59 @@
+
+---
+title: "``ggpmisc::stat_fmt_tb``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggpmisc)
+```
+
+Select and slice a tibble nested in data
+
+### Description
+stat_partial_tb selects columns and/or remanes them and/or slices rows from a tible nested in data. This stat is designed to be used to pre-process tibble objects mapped to the label aesthetic before adding them to a plot with geom_table.
+
+#### Usage 
+<pre><code>
+stat_fmt_tb(mapping = NULL, data = NULL, geom = "table", tb.vars = NULL, tb.rows = NULL, digits = 3, position = "identity", na.rm = FALSE, show.legend = FALSE, inherit.aes = TRUE, ...)
+</code></pre>
+### Arguments
+
+* ``mapping``: The aesthetic mapping, usually constructed with aes or aes_. Only needs to be
+set at the layer level if you are overriding the plot defaults.
+* ``data ``: A layer specific dataset - only needed if you want to override the plot defaults.
+* geom The geometric object to use display the data
+* tb.vars character vector, optionally named, used to select and or rename the columns of the table returned.
+* tb.rows integer vector of row indexes of rows to be retained.
+* digits integer indicating the number of significant digits to be retained in data.
+* ``position``: The position adjustment to use for overlapping points on this layer
+* ``na.rm``: a logical indicating whether NA values should be stripped before the computation proceeds.
+* ``show.legend ``: logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+* inherit.aes If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn’t inherit behaviour from the default plot specification, e.g. borders.
+* ``...``:   Other arguments passed on to layer. This can include aesthetics whose values
+you want to set, not map. See layer for more details..
+
+
+### Examples 
+```{r} 
+library(ggplot2)
+my.df <- tibble::tibble(x = c(1, 2),
+y = c(0, 4),
+group = c("A", "B"),
+tbs = list(a = tibble::tibble(X = 1:6, Y = rep(c("x", "y"), 3)),
+b = tibble::tibble(X = 1:3, Y = "x")))
+ggplot(my.df, aes(x, y, label = tbs)) +
+stat_fmt_tb() +
+expand_limits(x = c(0,3), y = c(-2, 6))
+ggplot(my.df, aes(x, y, label = tbs)) +
+stat_fmt_tb(tb.vars = c(value = "X", group = "Y"),
+tb.rows = 1:3) +
+expand_limits(x = c(0,3), y = c(-2, 6))
+```
+
+####Computed variables
+
+The output of sequentially applying slice with tb.rows as argument and select with tb.vars to
+a list variable list mapped to label and containing a single tibble per row in data.

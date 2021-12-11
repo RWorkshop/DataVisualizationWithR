@@ -1,0 +1,17 @@
+hc_add_series.density hc_add_series for density objects
+
+#### Description 
+
+hc_add_series for density objects
+
+#### Usage 
+<pre><code>
+## S3 method for class 'density'
+hc_add_series(hc, data, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+* ``hc ``: A highchart htmlwidget object.
+data A density object.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.

@@ -1,0 +1,24 @@
+---
+title: "show"
+author: "Kevin O'Brien"
+date: "17 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Generic show function for ggmultiplot
+
+#### Description 
+ 
+Generic show function for ggmultiplot
+
+#### Usage 
+ <pre><code>
+## S4 method for signature 'ggmultiplot'
+show(object)
+#### Arguments 
+ 
+object
+ggmultiplot

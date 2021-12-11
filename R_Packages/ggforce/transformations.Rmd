@@ -1,0 +1,38 @@
+## Transformations
+Transformations are not really a part of ggplot2, but rather the scales package. Nevertheless it is an integral part of working with ggplot2 through its use in manipulating scales. ggforce expands the use of transformations to also include coordinate transformations.
+#### Univariate transformations
+This section describes the new transformations offered by ggforce for manipulating scales. In general the scales package has you well covered but there are some missing pieces:
+#### Power transformations
+Suspicously missing from the scales package is a generalized power transformation that is, e.g. x2. This type of transformation is only represented by the square root transformation which equals x1/2. ggforce provides a constructor for power transformations that can be used on scales etc.
+```{r}
+p3 <- power_trans(3)
+p3
+## Transformer:  power of 3
+p3$transform(1:5)
+## [1]   1   8  27  64 125
+ggplot(mtcars) + geom_point(aes(mpg, cyl)) + scale_y_continuous(trans = p3)
+```
+#### Reversing transformations
+Scales provide ``reverse_trans()`` to create a reverse linear transformation. Unfortunatly you’re out of luck if you want a reverse log transformation etc. ggforce provides a transformation modifier that can reverse any transformation object passed into it:
+```{r}
+p3r <- trans_reverser(p3)
+p3r
+## Transformer:  reverse-power of 3
+ggplot(mtcars) + geom_point(aes(mpg, cyl)) + scale_y_continuous(trans = p3r)
+```
+#### Coordinate transformations
+Coordinate transformation takes coordinates and does something to them. It can be simple rotations, shearing and reflections as you know from different image processing applications, or translating between different ways of representing data, e.g. radial to cartesian transformations. These types of transformations are closely linked to applying different coordinate systems to your plot, e.g. using coord polar, but can be applied to your data upfront instead of on the whole plot.
+
+#### Radial transformations
+``radial_trans()`` converts radi and angle to x and y positions in a cartesian coordinate system. That means that if you have a point defined by its position on a circle you can easily get the x and y coordinates for it. The angle doesn’t need to be provided in radians or degrees as both the angular range and the radius range are defined when the transformation object is created. On top of that it can be defined where 0 starts (defaults to 12 o’clock) and which direction is used among others - see the documentation for radial_trans for a more in-depth description
+```{r}
+line <- data.frame(
+    x = seq(0, 10, length.out = 100), 
+    y = seq(0, 10, length.out = 100)
+)
+r_trans <- radial_trans(r.range = c(0, 1), a.range = c(0, 2))
+spiral <- r_trans$transform(r = line$x, a = line$y)
+ggplot() + geom_path(aes(x, y), data = line, colour = 'red') + 
+    geom_path(aes(x, y), data = spiral, colour = 'green')
+
+```

@@ -1,0 +1,22 @@
+## hc_theme_elementary
+Elementary (OS) theme for highcharts
+
+#### Description 
+
+Elementary (OS) theme for highcharts based on https://elementary.io
+
+#### Usage 
+<pre><code>
+hc_theme_elementary(...)
+</code></pre>
+ 
+#### Arguments 
+ 
+* ``...``: Named argument to modify the theme
+
+#### Examples 
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_elementary())
+
+```

@@ -1,0 +1,103 @@
+Package 'ggRandomForests'
+September 7, 2016
+Type Package
+Title Visually Exploring Random Forests
+Version 2.0.1
+Date 2016-09-07
+Author John Ehrlinger <john.ehrlinger@gmail.com>
+Maintainer John Ehrlinger <john.ehrlinger@gmail.com>
+License GPL (>= 3)
+URL https://github.com/ehrlinger/ggRandomForests
+BugReports https://github.com/ehrlinger/ggRandomForests/issues
+#### Description 
+ Graphic elements for exploring Random Forests using the 'randomForest' or
+'randomForestSRC' package for survival, regression and classification forests and
+'ggplot2' package plotting.
+Depends R (>= 3.1.0), randomForestSRC (>= 1.5.5)
+Imports randomForest, ggplot2, survival, parallel, tidyr
+Suggests testthat, rmdformats, RColorBrewer, MASS, dplyr, knitr,
+rmarkdown, plot3D
+RoxygenNote 5.0.1
+NeedsCompilation no
+Repository CRAN
+Date/Publication 2016-09-07 23:21:30
+R topics documented:
+ggRandomForests-package . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+cache_rfsrc_datasets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+calc_auc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+calc_roc.rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+combine.gg_partial . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+gg_error . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+gg_interaction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1
+2 ggRandomForests-package
+gg_minimal_depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+gg_minimal_vimp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+gg_partial . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+gg_partial_coplot.rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+gg_rfsrc.rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+gg_roc.rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+gg_survival . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+gg_variable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+gg_vimp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+kaplan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+logit_loess . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+nelson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+partial.rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+plot.gg_error . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+plot.gg_interaction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+plot.gg_minimal_depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+plot.gg_minimal_vimp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+plot.gg_partial . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+plot.gg_partial_list . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+plot.gg_rfsrc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+plot.gg_roc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+plot.gg_survival . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+plot.gg_variable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+plot.gg_vimp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+print.gg_minimal_depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+quantile_pts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+shift . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+surface_matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+Index 64
+ggRandomForests-package
+ggRandomForests: Visually Exploring Random Forests
+#### Description 
+
+ggRandomForests is a utility package for randomForestSRC (Iswaran et.al. 2014, 2008, 2007) for
+survival, regression and classification forests and uses the ggplot2 (Wickham 2009) package for
+plotting results. ggRandomForests is structured to extract data objects from the random forest and
+provides S3 functions for printing and plotting these objects.
+The randomForestSRC package provides a unified treatment of Breiman's (2001) random forests
+for a variety of data settings. Regression and classification forests are grown when the response
+is numeric or categorical (factor) while survival and competing risk forests (Ishwaran et al. 2008,
+2012) are grown for right-censored survival data.
+Many of the figures created by the ggRandomForests package are also available directly from
+within the randomForestSRC package. However, ggRandomForests offers the following advantages:
+ggRandomForests-package 3
+*  Separation of data and figures: ggRandomForest contains functions that operate on either
+the rfsrc forest object directly, or on the output from randomForestSRC post processing
+functions (i.e. plot.variable, var.select, find.interaction) to generate intermediate
+ggRandomForests data objects. S3 functions are provide to further process these objects
+and plot results using the ggplot2 graphics package. Alternatively, users can use these data
+objects for additional custom plotting or analysis operations.
+*  Each data object/figure is a single, self contained object. This allows simple modification and
+manipulation of the data or ggplot2 objects to meet users specific needs and requirements.
+*  The use of ggplot2 for plotting. We chose to use the ggplot2 package for our figures to
+allow users flexibility in modifying the figures to their liking. Each S3 plot function returns
+either a single ggplot2 object, or a list of ggplot2 objects, allowing users to use additional
+ggplot2 functions or themes to modify and customise the figures to their liking.
+The ggRandomForests package contains the following data functions:
+*  gg_rfsrc: randomForest[SRC] predictions.
+*  gg_error: randomForest[SRC] convergence rate based on the OOB error rate.
+*  gg_roc: ROC curves for randomForest classification models.
+*  gg_vimp: Variable Importance ranking for variable selection.
+*  gg_minimal_depth: Minimal Depth ranking for variable selection (Ishwaran et.al. 2010).
+*  gg_minimal_vimp: Comparing Minimal Depth and VIMP rankings for variable selection.
+*  gg_interaction: Minimal Depth interaction detection (Ishwaran et.al. 2010)
+*  gg_variable: Marginal variable dependence.
+*  gg_partial: Partial (risk adjusted) variable dependence.
+*  gg_partial_coplot: Partial variable conditional dependence (computationally expensive).
+*  gg_survival: Kaplan-Meier/Nelson-Aalon hazard analysis.
+Each of these data functions has an associated S3 plot function that returns ggplot2 objects, either
+individually or as a list, which can be further customised using standard ggplot2 commands.

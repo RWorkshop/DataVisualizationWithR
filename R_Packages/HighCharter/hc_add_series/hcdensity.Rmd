@@ -1,0 +1,29 @@
+---
+title: "hcdensity: Shorcut to make density charts"
+author: "Kevin O'Brien"
+date: "12 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+
+
+#### Description 
+
+Shorcut to make density charts
+
+#### Usage
+
+hcdensity(x, ...)
+
+#### Arguments 
+
+* x A numeric vector or a density object.
+* ... Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).
+
+```{r}
+hcdensity(iris$Sepal.Length)
+```

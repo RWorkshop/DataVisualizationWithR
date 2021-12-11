@@ -1,0 +1,47 @@
+---
+title: "``autoplot.density``Autoplot stats::density"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+#### Description 
+ 
+Autoplot stats::density
+
+#### Usage 
+<pre><code>
+## S3 method for class 'density'
+autoplot(object, p = NULL, colour = "#000000",
+  linetype = NULL, fill = NULL, alpha = NULL, xlim = c(NA, NA),
+  ylim = c(NA, NA), log = "", main = NULL, xlab = NULL, ylab = NULL,
+  asp = NULL, ...)
+</code></pre>
+#### Arguments 
+* ``object``: ***stats::density*** instance
+* ``p``: ggplot2::ggplot instance to plot
+* ``colour``: Line colour
+* ``linetype``: Line type
+* ``fill``: Fill colour
+* ``alpha``: Alpha
+* ``xlim``: limits for x axis
+* ``ylim``: limits for y axis
+* ``log``: which variables to log transform ("x", "y", or "xy")
+* ``main``: character vector or expression for plot title
+* ``xlab``: character vector or expression for x axis label
+* ``ylab``: character vector or expression for y axis label
+* ``asp``: the y/x aspect ratio
+* ``...``: other arguments passed to PDC/CDF func
+
+#### Value
+ggplot
+
+#### Examples 
+```{r}
+autoplot(stats::density(stats::rnorm(1:50)))
+```
+```{r}
+autoplot(stats::density(stats::rnorm(1:50)), fill = 'blue')
+```

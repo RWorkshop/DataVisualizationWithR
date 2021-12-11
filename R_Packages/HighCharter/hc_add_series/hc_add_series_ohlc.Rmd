@@ -1,0 +1,38 @@
+## ``hc_add_series_ohlc``
+Shorcut for create candlestick charts
+
+#### Description 
+
+This function helps to create candlestick from xts objects obtaining by getSymbols function from
+the quantmod.
+Usage
+hc_add_series_ohlc(hc, x, type = "candlestick", ...)
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* x A OHLC object from the quantmod package.
+* type The type of chart. Can be candlestick or ohlc.
+* ... Aditional shared arguments for the data series (http://api.highcharts.com/
+highcharts#series).
+
+###Examples
+```{r}
+library("xts")
+data(sample_matrix)
+matrix_xts <- as.xts(sample_matrix, dateFormat = "Date")
+head(matrix_xts)
+class(matrix_xts)
+highchart() %>%
+hc_add_series_ohlc(matrix_xts)
+```
+```{r}
+library("quantmod")
+x <- getSymbols("AAPL", auto.assign = FALSE)
+y <- getSymbols("SPY", auto.assign = FALSE)
+highchart() %>%
+hc_add_series_ohlc(x) %>%
+hc_add_series_ohlc(y)
+## End(Not run)
+
+```

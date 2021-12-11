@@ -1,0 +1,67 @@
+## Contextual zoom
+
+Zooming in ggplot2 has always been done in one of two ways: By limiting the positional scale or by limiting the coordinate system. In the former actual data values are 
+removed leading to a potential change in derived calculations (e.g. a fitted line had different parameters) while the later behaves more as you would expect. 
+
+ggforce provides a third option in the form of a new facetting function: facet_zoom(). Instead of describing it lets see how it works:
+```{r}
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+    geom_point() +
+    facet_zoom(x = Species == "versicolor")
+```
+
+As can be seen the main plot is now zoomed in on the data points that satisfies the condition given in the constructor, but an overview plot is retained along with an 
+indication of the position of the zoomed in area. The example above is zooming in on the x-axis, but y-axis zoom is supported as well:
+```{r}
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+    geom_point() +
+    facet_zoom(y = Species == "versicolor")
+```
+
+Both axes can be zoomed in as well. If the same condition is used for both axes the xy shorthand can be used:
+
+```{r}
+# Zoom in on versicolor on both axes
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+    geom_point() +
+    facet_zoom(xy = Species == "versicolor")
+```
+
+```{r}
+# Use different zoom criteria on each axis
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+    geom_point() +
+    facet_zoom(x = Species != 'setosa', y = Species == 'versicolor')
+```
+
+For a truly fanzy representation each axis zoom can be shown individually as well:
+```{r}
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+    geom_point() +
+    facet_zoom(x = Species != 'setosa', y = Species == 'versicolor', 
+               split = TRUE)
+```
+
+The relative size of the zoom area can be controlled with the zoom.size argument, while the appearance of the indicator can be controlled by modifying the ``strip.background`` theme 
+setting (or zoom though it requires validate = FALSE) or potentially be removed completely by settingshow.area = FALSEinfacet_zoom()`.
+
+If you want to control the zoom area directly this can be done using the xlim and ylim arguments instead of x and/or y. This lets you set the range for the zoom panel. 
+
+Furthermore it is possible to control which data gets plotted in the context and zoom panels selectively through the ``zoom.data`` argument that takes an expression to evaulate 
+for each row in the data (as x, y, and xy) and assigns data to the zoom panel if it evaluates to TRUE, the context panel if it evaluates to FALSE and both if it evaulates to NA (the default). 
+Combining all this into one plot we can get this:
+
+```{r}
+volcano3d <- structure(reshape2::melt(volcano), names = c('x', 'y', 'z'))
+```
+
+```{r}
+ggplot() + 
+    stat_contour(aes(x, y, z = z), data = cbind(volcano3d, zoom = FALSE), geom = 'contour', colour = 'grey20') + 
+    stat_contour(aes(x, y, z = z, fill = ..level..), data = cbind(volcano3d, zoom = TRUE), geom = 'polygon', bins = 30) + 
+    facet_zoom(xlim = c(25, 50), ylim = c(20, 40), horizontal = FALSE, zoom.data = zoom, split = T) + 
+    scale_fill_distiller(direction = 1, palette = 2) + 
+    theme_minimal() + 
+    theme(zoom = element_rect(fill = 'grey75', colour = NA), validate = FALSE)
+
+```

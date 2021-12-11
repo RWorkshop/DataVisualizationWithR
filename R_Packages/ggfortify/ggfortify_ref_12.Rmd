@@ -1,0 +1,86 @@
+---
+title: "ggfortify"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+fortify.ts
+fortify.ts
+Convert time-series-like to data.frame
+
+#### Description 
+ 
+Convert time-series-like to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'ts'
+fortify(model, data = NULL, columns = NULL, is.date = NULL,
+index.name = "Index", data.name = "Data", scale = FALSE, melt = FALSE,
+...)
+
+#### Arguments 
+ 
+model time-series-like instance
+data original dataset, if needed
+columns character vector specifies target column name(s)
+is.date logical frag indicates whether the stats::ts is date or not If not provided,
+regard the input as date when the frequency is 4 or 12
+index.name specify column name for time series index
+data.name specify column name for univariate time series data. Ignored in multivariate
+time series.
+scale logical flag indicating whether to perform scaling each timeseries
+melt logical flag indicating whether to melt each timeseries as variable
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+
+fortify(AirPassengers)
+fortify(timeSeries::as.timeSeries(AirPassengers))
+fortify(tseries::irts(cumsum(rexp(10, rate = 0.1)), matrix(rnorm(20), ncol=2)))
+fortify(stats::stl(UKgas, s.window = 'periodic'))
+fortify(stats::decompose(UKgas))
+```
+
+### ggcpgram
+Plots a cumulative periodogram
+
+#### Description 
+ 
+Plots a cumulative periodogram
+
+#### Usage 
+ <pre><code>
+ggcpgram(ts, taper = 0.1, colour = "#000000", linetype = "solid",
+conf.int = TRUE, conf.int.colour = "#0000FF",
+conf.int.linetype = "dashed", conf.int.fill = NULL,
+conf.int.alpha = 0.3)
+
+#### Arguments 
+ 
+ts stats::ts instance
+taper Proportion tapered in forming the periodogram
+colour Line colour
+linetype Line type
+conf.int
+Logical flag indicating whether to plot confidence intervals
+conf.int.colour
+line colour for confidence intervals
+conf.int.linetype
+line type for confidence intervals
+conf.int.fill
+fill colour for confidence intervals
+* ``conf.int.alpha``: alpha for confidence intervals64
+ggdistribution
+Value
+ggplot
+
+#### Examples 
+
+ggcpgram(AirPassengers)

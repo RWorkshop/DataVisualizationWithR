@@ -1,0 +1,34 @@
+---
+title: "``get_hc_series_from_df``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+ 
+ 
+ 
+###  Auxiliar function to get series and options from tidy frame for hchart.data.frame
+
+#### Description 
+
+This function is used in ``hchart.data.frame`` and ``hc_add_series_df``
+
+#### Usage
+
+<pre><code>
+get_hc_series_from_df(data, type = NULL, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``data``: A data.frame object.
+* ``type``: The type of chart. Possible values are line, scatter, point, column.
+* ``...``: Aesthetic mappings as x y group color low high.
+
+#### Examples
+<pre><code>
+get_hc_series_from_df(iris, type = "point", x = Sepal.Width)
+</code></pre>

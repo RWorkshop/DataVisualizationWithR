@@ -1,0 +1,23 @@
+
+## ``hc_add_series.geo_json``
+hc_add_series for geo_json & geo_list objects
+
+#### Description 
+
+hc_add_series for geo_json & geo_list objects
+
+#### Usage 
+<pre><code>
+## S3 method for class 'geo_json'
+hc_add_series(hc, data, type = NULL, ...)
+## S3 method for class 'geo_list'
+hc_add_series(hc, data, type = NULL, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``data``: A geo_json or geo_list object.
+* ``type``: Type of series. Can be ’mapline’, ’mapoint’.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+

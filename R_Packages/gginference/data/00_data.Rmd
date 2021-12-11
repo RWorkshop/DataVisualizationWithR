@@ -1,0 +1,58 @@
+accidentsData Car accident data
+#### Description
+A data frame showing the use of seat belt and the driver status after a car accident in Greece.
+#### Usage
+accidentsData
+#### Format
+A data frame with 383 observations of 2 columns:
+record factor representing the driver status
+seatBelt factor indicating whether the driver wore a seatbelt
+Source
+The original data are available at Hellenic Statistical Authority
+BirthDeath 3
+BirthDeath Number of births and death in Greece
+#### Description
+A data frame containing the number of births and deaths along with their rates from 1932 to 2016.
+#### Usage
+BirthDeath
+#### Format
+A data frame with 71 observations of 5 columns:
+Year years 1932-2016
+Deaths number of deaths
+DeathsRate number of deaths per 1000 citizen
+Births number of births
+BirthRate number of births per 1000 citizen
+Source
+The original data are available at Hellenic Statistical Authority
+BirthDeath2000 Birth and Deaths before and after 2000
+#### Description
+A data frame containing samples with the number of births and deaths before and after 2000.
+#### Usage
+BirthDeath2000
+#### Format
+A data frame with 30 observations of 3 columns:
+deaths number of deaths
+births number of births
+type factor indicating if the number of births and deaths correspond before 2000 or after 2000
+Source
+The original data are available at Hellenic Statistical Authority
+4 DieselbioRon95
+
+DieselbioRon95 Bio diesel and RON 95 consumption
+#### Description
+A data frame including a sample of bio diesel and RON 95 consumption in Greece.
+#### Usage
+DieselbioRon95
+#### Format
+A data frame with 24 observations of 5 columns:
+region factor of Greek regions
+DieselBio_consumption2006 metric tons of bio-diesel consumption in 2006
+DieselBio_consumption2016 metric tons of bio-diesel consumption in 2016
+RON95_consumption2006 metric tons of ron 95 consumption in 2006
+RON95_consumption2016 metric tons of ron 95 consumption in 2016
+Source
+The original data are available at Hellenic Statistical Authority
+
+
+
+

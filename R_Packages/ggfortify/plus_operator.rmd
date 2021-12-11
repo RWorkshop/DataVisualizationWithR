@@ -1,0 +1,32 @@
+---
+title: "``autoplot.density``Autoplot stats::density"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+
++,ggmultiplot,ANY-method
+Generic add operator for ggmultiplot
+
+#### Description 
+ 
+Generic add operator for ggmultiplot
+
+#### Usage 
+
+<pre><code>
+## S4 method for signature 'ggmultiplot,ANY'
+e1 + e2
+</code></pre>
+
+#### Arguments 
+ 
+e1 first argument
+e2 second argument
+
+Value
+ggmultiplot

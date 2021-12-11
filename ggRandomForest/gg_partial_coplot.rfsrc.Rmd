@@ -1,0 +1,74 @@
+---
+title: "gg_partial_coplot.rfsrc Data structures for stratified partial coplots"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(randomForestSRC)
+library(magrittr)
+```
+
+
+Description Data structures for stratified partial coplots
+
+#### Usage
+<pre><code>
+## S3 method for class 'rfsrc' 
+gg_partial_coplot(object, xvar, groups, 
+  surv_type = c("mort", "rel.freq", "surv", "years.lost", "cif", "chf"),
+  time, ...)
+</code></pre>
+
+#### Arguments 
+* ``object``: rfsrc object
+* ``xvar``: list of partial plot variables groups vector of strati???cation variable. 
+* ``surv_type``: forsurvival random forests,``c("mort","rel.freq","surv","years.lost","cif","chf")`` 
+* ``time``: vector of time points for survival random forests partial plots. 
+* ``...``: extra arguments passed to plot.variable function
+
+#### Value
+gg_partial_coplot object. An subclass of a gg_partial_list object
+
+#### Examples
+
+```{r}
+# Load the forest 
+data(pbc, package = "randomForestSRC")
+#rfsrc_pbc
+```
+
+```{r}
+rfsrc_pbc <- rfsrc(Surv(days, status) ~ ., pbc, nsplit = 3)
+
+
+# Create the variable plot. 
+ggvar <- gg_variable(rfsrc_pbc, time = 45)
+```
+```{r}
+ggvar %>% head()
+```
+
+```{r}
+# Find intervals with similar number of observations. 
+copper_cts <-quantile_pts(ggvar$copper, groups = 6, intervals = TRUE)
+```
+```{r}
+# Create the conditional groups and add to the gg_variable object 
+copper_grp <- cut(ggvar$copper, breaks = copper_cts)
+```
+```{r}
+## We would run this, but it's expensive 
+partial_coplot_pbc <- gg_partial_coplot(rfsrc_pbc, xvar = "bili", 
+                                        groups = copper_grp, 
+                                        surv_type = "surv", time = 50, show.plots = FALSE)
+```
+```{r}
+## so load the cached set 
+data(partial_coplot_pbc, package="ggRandomForests")
+# Partial coplot 
+```
+```{r}
+plot(partial_coplot_pbc) #, se = FALSE)
+```

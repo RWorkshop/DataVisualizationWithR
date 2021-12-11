@@ -1,0 +1,56 @@
+##``autoplot.forecast``
+Autoplot forecast::forecast
+
+#### Description 
+ 
+Autoplot forecast::forecast
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'forecast'
+autoplot(object, is.date = NULL, ts.connect = TRUE,
+ predict.geom = "line", predict.colour = "#0000FF", predict.size = NULL,
+ predict.linetype = NULL, predict.alpha = NULL, predict.fill = NULL,
+ predict.shape = NULL, conf.int = TRUE, conf.int.colour = "#0000FF",
+ conf.int.linetype = "none", conf.int.fill = "#000000",
+ conf.int.alpha = 0.3, ...)
+</code></pre>
+#### Arguments 
+ 
+* object forecast::forecast instance
+* is.date Logical frag indicates whether the stats::ts is date or not. If not provided,
+regard the input as date when the frequency is 4 or 12
+* ts.connect Logical frag indicates whether connects original time-series and predicted values
+* predict.geom geometric string for predicted time-series
+* predict.colour line colour for predicted time-series
+* predict.size point size for predicted time-series
+* predict.linetype line type for predicted time-series14
+* autoplot.ggmultiplot
+* predict.alpha alpha for predicted time-series
+* predict.fill fill colour for predicted time-series
+* predict.shape point shape for predicted time-series
+* conf.int Logical flag indicating whether to plot confidence intervals
+* conf.int.colour line colour for confidence intervals
+* conf.int.linetype line type for confidence intervals
+* conf.int.fill fill colour for confidence intervals
+* conf.int.alpha alpha for confidence intervals
+...
+other 
+#### Arguments 
+  passed to autoplot.ts
+Value
+ggplot
+
+#### Examples 
+```{r}
+d.arima <- forecast::auto.arima(AirPassengers)
+autoplot(forecast::forecast(d.arima, h = 10))
+autoplot(forecast::forecast(d.arima, level = c(85), h = 10))
+```
+```{r}
+autoplot(forecast::forecast(d.arima, h = 5), conf.int = FALSE, is.date = FALSE)
+autoplot(forecast::forecast(stats::HoltWinters(UKgas), h = 10))
+## Not run:
+autoplot(forecast::forecast(forecast::ets(UKgas), h = 5))
+## End(Not run)
+```

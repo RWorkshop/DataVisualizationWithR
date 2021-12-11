@@ -1,0 +1,94 @@
+
+gg_minimal_depth 13
+gg_minimal_depth Minimal depth data object ([randomForestSRC]{var.select})
+#### Description 
+
+the [randomForestSRC]{var.select} function implements random forest variable selection using
+tree minimal depth methodology. The gg_minimal_depth function takes the output from
+[randomForestSRC]{var.select} and creates a data.frame formatted for the plot.gg_minimal_depth
+function.
+#### Usage 
+<pre><code>
+
+gg_minimal_depth(object, ...)
+
+</code></pre>
+#### Arguments
+* object A [randomForestSRC]{rfsrc} object, [randomForestSRC]{predict} object or the list from the [randomForestSRC]{var.select.rfsrc} function.
+* ... optional arguments passed to the [randomForestSRC]{var.select} function if operating on an [randomForestSRC]{rfsrc} object.
+
+#### Value
+gg_minimal_depth object, A modified list of variables from the [randomForestSRC]{var.select} function, ordered by minimal depth rank.
+
+#### See Also
+[randomForestSRC]{var.select} plot.gg_minimal_depth
+
+#### Examples 
+```{r} 
+
+## #### Examples from RFSRC package...
+## ------------------------------------------------------------
+## classification example
+## ------------------------------------------------------------
+## Not run:
+## -------- iris data
+## You can build a randomForest
+# rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+# varsel_iris <- randomForestSRC::var.select(rfsrc_iris)
+# ... or load a cached randomForestSRC object
+data(varsel_iris, package="ggRandomForests")
+# Get a data.frame containing minimaldepth measures
+gg_dta<- gg_minimal_depth(varsel_iris)
+# Plot the gg_minimal_depth object
+plot(gg_dta)
+## End(Not run)
+## ------------------------------------------------------------
+## Regression example
+## ------------------------------------------------------------
+## Not run:
+## -------- air quality data
+# rfsrc_airq <- rfsrc(Ozone ~ ., data = airquality, na.action = "na.impute")
+# varsel_airq <- randomForestSRC::var.select(rfsrc_airq)
+# ... or load a cached randomForestSRC object
+data(varsel_airq, package="ggRandomForests")
+# Get a data.frame containing error rates
+gg_dta<- gg_minimal_depth(varsel_airq)
+# Plot the gg_minimal_depth object
+plot(gg_dta)
+## End(Not run)
+## Not run:
+## -------- Boston data
+data(varsel_Boston, package="ggRandomForests")
+# Get a data.frame containing error rates
+plot(gg_minimal_depth(varsel_Boston))
+## End(Not run)
+## Not run:
+## -------- mtcars data
+data(varsel_mtcars, package="ggRandomForests")
+# Get a data.frame containing error rates
+plot.gg_minimal_depth(varsel_mtcars)
+## End(Not run)
+## ------------------------------------------------------------
+## Survival example
+## ------------------------------------------------------------
+## Not run:
+## -------- veteran data
+## veteran data
+## randomized trial of two treatment regimens for lung cancer
+# data(veteran, package = "randomForestSRC")
+# rfsrc_veteran <- rfsrc(Surv(time, status) ~ ., data = veteran, ntree = 100)
+# varsel_veteran <- randomForestSRC::var.select(rfsrc_veteran)
+# Load a cached randomForestSRC object
+data(varsel_veteran, package="ggRandomForests")
+gg_dta <- gg_minimal_depth(varsel_veteran)
+plot(gg_dta)
+## End(Not run)
+gg_minimal_vimp 15
+## Not run:
+## -------- pbc data
+data(varsel_pbc, package="ggRandomForests")
+gg_dta <- gg_minimal_depth(varsel_pbc)
+plot(gg_dta)
+## End(Not run)
+```
+

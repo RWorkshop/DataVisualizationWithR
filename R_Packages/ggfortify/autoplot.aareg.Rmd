@@ -1,0 +1,43 @@
+---
+title: "``ggfortify::autoplot``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+autoplot.aareg Autoplot survival::aareg
+
+#### Description 
+ 
+Autoplot survival::aareg
+
+#### Usage 
+<pre><code>
+## S3 method for class 'aareg'
+autoplot(object, maxtime = NULL, surv.connect = TRUE,
+facets = TRUE, ncol = NULL, xlab = "", ylab = "", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``object``: survival::aareg instance
+* ``maxtime``: truncate the input to the model at time "maxtime"
+* ``surv.connect``: logical frag indicates whether connects survival curve to the origin
+* ``facets``: Logical value to specify use facets
+* ``ncol``: Number of facet/subplot columns
+* ``xlab``: character vector or expression for x axis label
+* ``ylab``: character vector or expression for y axis label
+* ``...``: other arguments passed to autoplot.survfit
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+library(survival)
+autoplot(aareg(Surv(time, status) ~ age + sex + ph.ecog, data = lung, nmin = 1))
+```
+

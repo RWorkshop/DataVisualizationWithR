@@ -1,0 +1,21 @@
+
+hc_add_series for character and factor objects
+
+#### Description 
+
+hc_add_series for character and factor objects
+
+#### Usage 
+<pre><code>
+## S3 method for class 'character'
+hc_add_series(hc, data, ...)
+## S3 method for class 'factor'
+hc_add_series(hc, data, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``data``: A character or factor object.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+

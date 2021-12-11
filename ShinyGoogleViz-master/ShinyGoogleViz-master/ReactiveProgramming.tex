@@ -1,0 +1,26 @@
+% http://trestletechnology.net/wp-content/uploads/2013/02/shiny_introduction.pdf
+
+%----------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Reactive Programming}
+\begin{itemize}
+\item A modern spreadsheet program is an example of reactive programming. 
+\item Spreadsheet cells can contain literal values, or formulas such as \texttt{"=B1+C1"} that are evaluated based on other cells. 
+\item Whenever the value of the other cells change, the value of the formula is automatically updated.
+\end{frame}
+%----------------------------------------------------------------------------%
+
+
+%---------------------------------------------------%
+\begin{frame}[fragile]
+\begin{verbatim}
+a <- 3
+b <- a + 2 
+a <- 7 
+b == ?
+\end{verbatim}
+Imperative: b = 5 
+Reactive: b = 9
+\end{frame}
+%---------------------------------------------------%
+

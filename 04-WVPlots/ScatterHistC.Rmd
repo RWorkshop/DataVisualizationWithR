@@ -1,0 +1,61 @@
+---
+title: "``ScatterHistC``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+Plot a conditional scatter plot with marginals.
+
+#### Description
+
+Plot a scatter plot conditioned on a discrete variable, with marginal conditional density plots.
+ 
+#### Usage
+<pre><code>
+
+ScatterHistC(frame, xvar, yvar, cvar, title, ..., annot_size = 3,
+colorPalette = "Dark2", adjust_x = 1, adjust_y = 1)
+
+
+</code></pre> 
+#### Arguments
+
+* ``frame``: data frame to get values from
+* ``xvar ``:  name of the x variable
+* ``yvar``:  name of the y variable
+* ``cvar``: name of condition variable
+* ``title ``:    title to place on plot
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+
+* ``annot_size`` : (numeric) scale annotation text (if present)
+* ``colorPalette`` : name of a Brewer palette (see http://colorbrewer2.org/ )
+* ``adjust_x`` : (numeric) adjust x density plot
+* ``adjust_y`` : (numeric) adjust y density plot
+
+
+#### Examples
+```{r}
+
+set.seed(34903490)
+frm = data.frame(x=rnorm(50),y=rnorm(50))
+frm$cat <- frm$x+frm$y>0
+WVPlots::ScatterHistC(frm, "x", "y", "cat",
+title="Example Conditional Distribution")
+
+```
+
+#### Details
+
+xvar and yvar are the coordinates of the points, and cvar is the discrete conditioning variable that
+indicates which category each point (x,y) belongs to.
+
+#### Value
+plot grid
+
+#### See Also
+ScatterHist
+ 

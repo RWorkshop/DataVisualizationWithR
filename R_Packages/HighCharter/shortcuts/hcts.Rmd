@@ -1,0 +1,17 @@
+hcts
+Shorcut to make time series or line charts
+
+#### Description 
+
+Shorcut to make time series or line charts
+
+#### Usage 
+<pre><code>
+hcts(x, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+* ``x``: A numeric vector or a time series object.
+* ``... ``: Aditional argumentsfor the data series (http://api.highcharts.com/highcharts#series).
+

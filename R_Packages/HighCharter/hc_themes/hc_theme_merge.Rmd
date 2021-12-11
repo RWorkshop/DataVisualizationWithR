@@ -1,0 +1,33 @@
+## ``hc_theme_merge``
+Merge themes
+
+#### Description 
+
+Function to combine hc_theme objects.
+
+#### Usage
+<pre><code>
+hc_theme_merge(...)
+</code></pre>
+#### Arguments 
+*``...``: hc_theme objects.
+
+#### Examples
+```{r}`
+thm <- hc_theme_merge(
+  hc_theme_darkunica(),
+  hc_theme(
+    chart = list(
+      backgroundColor = "transparent",
+      divBackgroundImage = "http://cdn.wall-pix.net/albums/art-3Dview/00025095.jpg"
+    ),hc_theme_monokai
+  )
+)
+61
+title = list(
+  style = list(
+    color = 'white',
+    fontFamily = "Erica One"
+  )
+)
+```

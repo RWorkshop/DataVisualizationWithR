@@ -1,0 +1,22 @@
+hc_theme_economist
+Economist theme for highcharts
+
+#### Description 
+
+Economist theme for highcharts
+
+#### Usage 
+<pre><code>
+hc_theme_economist(...)
+</code></pre> 
+#### Arguments 
+ 
+
+...
+Named argument to modify the theme
+
+#### Examples 
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_economist())
+```

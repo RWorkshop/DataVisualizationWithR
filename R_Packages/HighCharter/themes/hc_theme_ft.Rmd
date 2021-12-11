@@ -1,0 +1,24 @@
+## ``hc_theme_ft``:
+
+Financial Times theme for highcharts
+
+#### Description 
+
+Financial Times theme for highcharts
+
+#### Usage
+
+<pre><code>
+hc_theme_ft(...)
+</code></pre>
+
+#### Arguments 
+
+* ... Named argument to modify the theme
+
+#### Examples
+
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_ft())
+```

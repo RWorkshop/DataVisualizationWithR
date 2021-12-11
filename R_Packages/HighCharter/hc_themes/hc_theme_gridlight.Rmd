@@ -1,0 +1,24 @@
+## ``hc_theme_gridlight``
+Grid Light theme for highcharts
+
+#### Description 
+
+Grid Light theme for highcharts
+
+##### Usage
+
+<pre><code>
+  hc_theme_gridlight(...)
+</code></pre>
+  
+  
+#### Arguments 
+
+* ``...``: Named argument to modify the theme
+
+#### Examples
+
+```{r}`
+highcharts_demo() %>%
+  hc_add_theme(hc_theme_gridlight())
+```

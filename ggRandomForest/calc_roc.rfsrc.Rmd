@@ -1,0 +1,58 @@
+---
+title: "``ggRandomForest::calc_roc.rfsrc``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+
+calc_roc.rfsrc Reciever Operator Characteristic calculator
+
+#### Description 
+
+Reciever Operator Characteristic calculator
+
+#### Usage 
+
+<pre><code>
+
+calc_roc.rfsrc(object, yvar, which.outcome = "all", oob = TRUE)
+
+</code></pre>
+
+#### Arguments
+
+* ``object``: rfsrc or predict.rfsrc object containing predicted response
+* ``yvar``: True response variable
+* ``which.outcome``: If defined, only show ROC for this response.
+* ``oob``: Use OOB estimates, the normal validation method (TRUE)
+
+#### Examples 
+```{r} 
+
+## Taken from the gg_roc example
+rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+#data(rfsrc_iris)
+gg_dta <- calc_roc.rfsrc(rfsrc_iris, rfsrc_iris$yvar, which.outcome=1, oob=TRUE)
+gg_dta <- calc_roc.rfsrc(rfsrc_iris, rfsrc_iris$yvar, which.outcome=1, oob=FALSE)
+
+```
+
+```{r}
+
+ggplot(gg_dta,aes(x=(1-spec),y=sens)) + geom_line()
+```
+
+#### Details
+
+For a randomForestSRC prediction and the actual response value, calculate the specificity (1-False
+Positive Rate) and sensitivity (True Positive Rate) of a predictor.
+This is a helper function for the ``gg_roc()`` functions, and not intended for use by the end user.
+
+#### Value
+A gg_roc object
+See Also
+calc_auc gg_roc plot.gg_roc

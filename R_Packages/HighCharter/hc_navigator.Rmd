@@ -1,0 +1,30 @@
+---
+title: "``hc_navigator``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+### Adding navigator options to highstock charts
+
+#### Description 
+
+Options regarding the navigator: The miniseries below chart in a highstock chart.
+
+#### Usage
+<pre><code>
+hc_navigator(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in http://api.highcharts.com/highstock#navigator.
+
+
+

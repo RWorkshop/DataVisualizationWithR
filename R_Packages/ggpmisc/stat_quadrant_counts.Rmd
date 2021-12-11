@@ -1,0 +1,107 @@
+---
+title: "``hcboxplot``: Shortcut to make a boxplot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggpmisc)
+library(dplyr)
+library(magrittr)
+```
+
+## ``stat_quadrant_counts`` Number of observations in quadrants
+
+### Description
+``stat_quadrant_counts()`` counts the number of observations in each quadrant of a plot panel. By default it adds a text label to the far corner of each quadrant. It can also be used to obtain the total number of observations in each of two pairs of quadrants or in the whole panel. Grouping is ignored, so en every case a single count is computed for each quadrant in a plot panel.
+
+#### Usage 
+
+<pre><code>
+stat_quadrant_counts(mapping = NULL, data = NULL, geom = "text",  position = "identity", quadrants = NULL, pool.along = "none",  origin.x = 0, origin.y = 0, labels.range.x = NULL,
+ labels.range.y = NULL, na.rm = FALSE, show.legend = FALSE,
+ inherit.aes = TRUE, ...)
+</code></pre>
+
+### Arguments
+
+* ``mapping``: The aesthetic mapping, usually constructed with aes or aes_. Only needs to be
+set at the layer level if you are overriding the plot defaults.
+* ``data ``: A layer specific dataset - only needed if you want to override the plot defaults.
+* ``geom``: The geometric object to use display the data
+* ``position``: The position adjustment to use for overlapping points on this layer
+* quadrants integer vector indicating which quadrants are of interest, with a OL indicating the whole plot.
+* ``pool.along ``: character, one of "none", "x" or "y", indicating which quadrants to pool to calculate counts by pair of quadrants.
+* origin.x, origin.y: numeric the coordinates of the origin of the quadrants.
+* ``labels.range.x``, ``labels.range.y``:  numeric Coordinates (in data units) to be used for absolute positioning of the labels.
+* ``na.rm``: a logical indicating whether NA values should be stripped before the computation
+proceeds.
+* ``show.legend ``: logical. Should this layer be included in the legends? NA, the default, includes if
+any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+* inherit.aes If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and should not inherit behaviour from the default plot specification, e.g. borders.
+* ``...``:   Other arguments passed on to layer. This can include aesthetics whose values
+you want to set, not map. See layer for more details..
+
+#### Details
+This stat can be used to automatically count observations in each of the four quadrants of a plot,
+and by default add these counts as text labels.
+
+
+
+#### Examples 
+
+```{r} 
+library(ggplot2)
+# generate artificial data
+set.seed(4321)
+x <- 1:100
+y <- rnorm(length(x), mean = 10)
+my.data <- data.frame(x, y)
+```
+
+```{r}
+ggplot(my.data, aes(x, y)) +
+geom_point() +
+stat_quadrant_counts()
+```
+
+```{r}
+ggplot(my.data, aes(x - 50, y - 10)) +
+geom_hline(yintercept = 0, colour = "blue") +
+geom_vline(xintercept = 0, colour = "blue") +
+geom_point() +
+stat_quadrant_counts(colour = "blue")
+```
+
+```{r}
+ggplot(my.data, aes(x - 50, y - 10)) +
+geom_hline(yintercept = 0, colour = "blue") +
+geom_point() +
+stat_quadrant_counts(colour = "blue", pool.along = "x")
+```
+
+```{r}
+ggplot(my.data, aes(x - 50, y - 10)) +
+geom_vline(xintercept = 0, colour = "blue") +
+geom_point() +
+stat_quadrant_counts(colour = "blue", pool.along = "y")
+```
+
+```{r}
+ggplot(my.data, aes(x - 50, y - 10)) +
+geom_point() +
+stat_quadrant_counts(quadrants = 0)
+```
+
+####Computed variables
+
+Data frame with one to four rows, one for each quadrant for which observations are present in data.
+* quadrant integer, one of 0:4
+* x extreme x value in the quadrant
+* y extreme y value in the quadrant
+* count number of observations
+
+#### Note
+
+Values exactly equal to zero are counted as belonging to the positve quadrant. An argument value of zero, passed to formal parameter quadrants is interpreted as a request for the count of all observations in each plot panel. By default, which quadrants to compute counts for is decided based on which quadrants are expected to be visible in the plot. In the current implementation, the default
+positions of the labels is based on the range of the data ploted in a given panel. Consequently, when using facets unless using free limits for x and y axes, the location of the labels will need supplied by the user when consistent placement accross panels is desired.

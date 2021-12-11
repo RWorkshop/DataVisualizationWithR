@@ -1,0 +1,97 @@
+
+\documentclass[MASTER.tex]{subfiles} 
+\begin{document} 
+%=================================================%
+\begin{frame}[fragile]
+	\frametitle{Multiple Layers for ggvis}
+	\LARGE
+\vspace{-1.5cm}
+\textbf{Multiple layers}
+\begin{itemize}
+\item Rich graphics can be created by combining multiple layers on the same plot. 
+% \item This easier to do: just layer on multiple elements:
+\end{itemize}
+\end{frame}
+%=================================================%
+\begin{frame}[fragile]
+	\frametitle{Multiple Layers}
+	\LARGE
+	\textbf{Starting Off}
+	\begin{framed}
+		\begin{verbatim}
+mtcars %>% 
+    ggvis(~wt, ~mpg) %>% 
+      layer_smooths() %>% 
+      layer_points()
+\end{verbatim}
+\end{framed}
+{
+	\large
+(Indentation not abssolutely necessary in \texttt{R}, but helpful for readers )
+}
+\end{frame}
+%=================================================%
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{Multiple Layers}
+\Large
+\textbf{Mutliple Smoothers}\\
+You could use this approach to add two smoothers with varying degrees of \textit{wiggliness}:
+\begin{framed}
+\begin{verbatim}
+mtcars  %>% 
+    ggvis(~wt, ~mpg) %>% 
+       layer_smooths(span = 1)   %>% 
+       layer_smooths(span = 0.3, 
+			            stroke := "red")
+\end{verbatim}
+\end{framed}
+\end{frame}
+%=================================================%
+%=================================================%
+\begin{frame}[fragile]
+	\frametitle{Multiple Layers}
+	\Large
+	\vspace{-1cm}
+	\textbf{Exercises}
+	\begin{itemize}
+	\item Try out the previous code with different setting for \texttt{span} and \texttt{stroke}.
+	\item Try out a similar exercise for the \textit{iris} data set, using pairings of the following variables
+		\vspace{0.3cm}
+	\begin{itemize}
+		\item {\Large \texttt{Sepal.Length, Sepal.Width, Petal.Length, Petal.Width}}
+	\end{itemize}
+	\item Try out the code on the next slide.
+\end{itemize}
+\end{frame}
+%=================================================%
+\begin{frame}[fragile]
+	\frametitle{Multiple Layers}
+	\Large
+	Slider to specify the smoothing parameter and point size:
+	\vspace{-0.2cm}
+	\begin{framed}
+		\begin{verbatim}
+				mtcars %>%
+		    ggvis(~wt, ~mpg) %>%
+		       layer_smooths(span = 
+		            input_slider(0.5, 1, 
+		            value = 1)) %>%
+		       layer_points(size := 
+		            input_slider(100, 1000, 
+		            value = 100))
+		\end{verbatim}
+		\end{framed}
+\end{frame}
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{Multiple Layers}
+	\Large
+	\vspace{-2.5cm}
+\begin{itemize}
+\item You can learn more about building up rich hierarchical graphics in Hadley Wickham's ``\textbf{Data \textit{Hierarchy}}" vignette.
+\end{itemize}
+
+
+\end{frame}
+\end{document}

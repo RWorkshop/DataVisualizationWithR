@@ -1,0 +1,20 @@
+## ``hc_theme_chalk``: Chalk theme for highcharts
+
+#### Description 
+
+Chalk theme for highcharts. Inspirated by https://www.amcharts.com/inspiration/chalk/
+
+####  Usage
+<pre><code>
+hc_theme_chalk(...)
+</code></pre>
+
+#### Arguments 
+
+* ``...`` : Named argument to modify the theme
+
+### Examples
+```{r}
+highcharts_demo() %>%
+  hc_add_theme(hc_theme_chalk())
+```

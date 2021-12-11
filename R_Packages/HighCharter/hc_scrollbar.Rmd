@@ -1,0 +1,25 @@
+---
+title: "``hc_scrollbar``: Adding scrollbar options to highstock objects"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+ 
+ 
+
+#### Description 
+
+Options regarding the scrollbar which is a means of panning over the X axis of a chart.
+
+#### Usage
+<pre><code>
+hc_scrollbar(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in http://api.highcharts.com/highstock#scrollbar.

@@ -1,0 +1,35 @@
+27
+autoplot.spec
+Autoplot stats::spec
+
+#### Description 
+ 
+Autoplot stats::spec
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'spec'
+autoplot(object, xlim = c(NA, NA), ylim = c(NA, NA),
+log = "y", main = NULL, xlab = NULL, ylab = NULL, asp = NULL, ...)
+
+#### Arguments 
+ 
+object stats::spec instance
+xlim limits for x axis
+ylim limits for y axis
+log which variables to log transform ("x", "y", or "xy")
+main character vector or expression for plot title
+xlab character vector or expression for x axis label
+ylab character vector or expression for y axis label
+asp the y/x aspect ratio
+... other 
+#### Arguments 
+  passed to methods
+Value
+ggplot
+
+#### Examples 
+
+autoplot(stats::spec.ar(AirPassengers))
+autoplot(stats::spec.pgram(AirPassengers))
+

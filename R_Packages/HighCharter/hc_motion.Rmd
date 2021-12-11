@@ -1,0 +1,34 @@
+---
+title: "``hc_motion``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+### Adding options to Motion options to highcharts objects
+
+#### Description 
+
+The Motion Highcharts Plugin adds an interactive HTML5 player to any Highcharts chart (High-
+charts, Highmaps and Highstock).
+
+#### Usage
+<pre><code>
+hc_motion(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in https://github.com/larsac07/Motion-Highcharts-Plugin/wiki.
+
+
+
+
+
+

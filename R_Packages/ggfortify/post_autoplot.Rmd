@@ -1,0 +1,39 @@
+---
+title: "dataviz"
+author: "Kevin O'Brien"
+date: "17 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Post process for fortify. Based on ggplot2::qplot
+
+#### Description 
+ 
+Post process for fortify. Based on ggplot2::qplot
+
+#### Usage 
+ <pre><code>
+post_autoplot(p, xlim = c(NA, NA), ylim = c(NA, NA), log = "",
+main = NULL, xlab = NULL, ylab = NULL, asp = NULL)
+
+#### Arguments 
+ 
+p ggplot2::ggplot instances
+xlim limits for x axis
+ylim limits for y axis
+log which variables to log transform ("x", "y", or "xy")
+main character vector or expression for plot title
+xlab character vector or expression for x axis label
+ylab character vector or expression for y axis label
+asp the y/x aspect ratio
+Value
+data.frame
+
+#### Examples 
+
+p <- qplot(Petal.Length, Petal.Width, data = iris)
+ggfortify:::post_autoplot(p, xlim = c(1, 5), ylim = c(1, 5), log = 'xy', main = 'title',
+xlab = 'x', ylab = 'y', asp = 1.5)

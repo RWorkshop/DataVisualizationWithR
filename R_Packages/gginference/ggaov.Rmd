@@ -1,0 +1,37 @@
+---
+title: "``ggaov``:  Anova F test plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(gginference)
+```
+
+
+#### Description
+Visualise anova F-test to determine whether group means are equal
+
+#### Usage
+<pre><code>
+ggaov(t, alpha=0.05, colaccept="lightsteelblue1",
+colreject="grey84", colstat="navyblue")
+</code></pre>
+
+#### Arguments
+* ``t``: an object of class aov
+* ``alpha``: alpha level for finding critical F value
+* ``colaccept``:  color for the acceptance region of the test
+* ``colreject``:   color for the area of rejection of the test
+* ``colstat``: color of the statistic of the test line
+
+#### Examples
+
+```{r}
+# 21-th day
+chick21 <- ChickWeight[ChickWeight$Time == 21,]
+chickaov <- aov(weight~Diet, data = chick21)
+summary(chickaov)
+ggaov(chickaov, colaccept = "grey89", colreject = "black")
+```

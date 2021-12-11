@@ -1,0 +1,21 @@
+---
+title: "``highcarter-exports``: highcharter exported operators and S3 methods"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+
+#### Description 
+
+The following functions are imported and then re-exported from the highcarter package to avoid
+listing the magrittr as Depends of highcarters.
+
+
+

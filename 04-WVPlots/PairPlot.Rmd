@@ -1,0 +1,42 @@
+---
+title: "``PairPlot`` Build a pair plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+#### Usage
+
+<pre><code>
+
+PairPlot(d, meas_vars, title, ..., group_var = NULL, palette = "Dark2")
+
+</code></pre> 
+
+#### Arguments
+
+* ``d``: data frame
+* ``meas_vars``: the variables to be plotted
+* ``title``: plot title
+* ``...``: not used, forces later arguments to bind by name
+* ``group_var``: variable for grouping and colorcoding
+* ``palette``: name of a brewer palette (NULL for ggplot2 default coloring)
+
+ 
+#### Examples
+
+```{r}
+WVPlots::PairPlot(iris, colnames(iris)[1:4], "Example plot", group_var = "Species")
+```
+
+```{r}
+# no color-coding
+WVPlots::PairPlot(iris, colnames(iris)[1:4], "Example plot")
+```
+
+#### Value
+
+a ggplot2 pair plot

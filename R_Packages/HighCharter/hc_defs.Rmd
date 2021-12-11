@@ -1,0 +1,25 @@
+---
+title: "``hc_defs``: Adding patterns to be used in highcharts series"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+```
+
+#### Description 
+
+Helper function to use the fill patter plugin 
+http://www.highcharts.com/plugin-registry/single/9/Pattern-Fill.
+
+#### Usage
+<pre><code>
+hc_defs(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+
+* ``...``: Arguments defined in http://www.highcharts.com/plugin-registry/single/9/Pattern-Fill.

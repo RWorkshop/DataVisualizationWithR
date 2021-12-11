@@ -1,0 +1,19 @@
+ 5
+FuelConsumption FuelConsumption
+#### Description
+A data frame containing the fuel consumption in Greece.
+#### Usage
+FuelConsumption
+#### Format
+A data frame with 50 observations of 8 columns:
+Geographic.area factor with geographic area of Greece
+Regions factor with regions of Greece
+Runits factor with regional units of Greece
+RON95 metric tons of ron 95 consumption
+RON98_100 metric tons of ron 98 consumption
+DieselBio metric tons of bio diesel consumption
+LPG metric tons of liquefied petroleum gas consumption
+DieselC metric tons of heating oil consumption
+Source
+The original data are available at Hellenic Statistical Authority
+

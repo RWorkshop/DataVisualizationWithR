@@ -1,0 +1,93 @@
+
+gg_rfsrc.rfsrc Predicted response data object
+#### Description 
+
+Extracts the predicted response values from the rfsrc object, and formats data for plotting the
+response using plot.gg_rfsrc.
+#### Usage 
+<pre><code>
+
+## S3 method for class 'rfsrc'
+gg_rfsrc(object, oob = TRUE, by, ...)
+
+</code></pre>
+#### Arguments
+
+object rfsrc object
+oob boolean, should we return the oob prediction , or the full forest prediction.
+by stratifying variable in the training dataset, defaults to NULL
+... extra arguments
+
+Details
+surv_type ("surv", "chf", "mortality", "hazard") for survival forests
+oob boolean, should we return the oob prediction , or the full forest prediction.
+Value
+gg_rfsrc object
+See Also
+plot.gg_rfsrc rfsrc plot.rfsrc gg_survival
+#### Examples 
+```{r} 
+
+## ------------------------------------------------------------
+## classification example
+## ------------------------------------------------------------
+## -------- iris data
+rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+#data(rfsrc_iris, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_iris)
+plot(gg_dta)
+## ------------------------------------------------------------
+## Regression example
+## ------------------------------------------------------------
+gg_rfsrc.rfsrc 23
+## Not run:
+## -------- air quality data
+# rfsrc_airq <- rfsrc(Ozone ~ ., data = airquality, na.action = "na.impute")
+data(rfsrc_airq, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_airq)
+plot(gg_dta)
+## End(Not run)
+## Not run:
+## -------- Boston data
+data(rfsrc_Boston, package="ggRandomForests")
+plot(rfsrc_Boston)
+## End(Not run)
+## Not run:
+## -------- mtcars data
+data(rfsrc_mtcars, package="ggRandomForests")
+gg_dta<- gg_rfsrc(rfsrc_mtcars)
+plot(gg_dta)
+## End(Not run)
+## ------------------------------------------------------------
+## Survival example
+## ------------------------------------------------------------
+## Not run:
+## -------- veteran data
+## randomized trial of two treatment regimens for lung cancer
+# data(veteran, package = "randomForestSRC")
+# rfsrc_veteran <- rfsrc(Surv(time, status) ~ ., data = veteran, ntree = 100)
+data(rfsrc_veteran, package = "ggRandomForests")
+gg_dta <- gg_rfsrc(rfsrc_veteran)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_veteran, conf.int=.95)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_veteran, by="trt")
+plot(gg_dta)
+## End(Not run)
+## Not run:
+## -------- pbc data
+## We don't run this because of bootstrap confidence limits
+data(rfsrc_pbc, package = "ggRandomForests")
+## End(Not run)
+## Not run:
+gg_dta <- gg_rfsrc(rfsrc_pbc)
+plot(gg_dta)
+gg_dta <- gg_rfsrc(rfsrc_pbc, conf.int=.95)
+24 gg_roc.rfsrc
+plot(gg_dta)
+## End(Not run)
+## Not run:
+gg_dta <- gg_rfsrc(rfsrc_pbc, by="treatment")
+plot(gg_dta)
+## End(Not run)
+```

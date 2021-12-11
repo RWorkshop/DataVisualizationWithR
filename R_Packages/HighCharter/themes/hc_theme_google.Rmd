@@ -1,0 +1,16 @@
+## hc_theme_google
+
+Google theme for highcharts
+
+#### Description 
+Google theme for highcharts based on https://books.google.com/ngrams/
+
+#### Usage
+hc_theme_google(...)
+
+#### Arguments 
+* ... Named argument to modify the theme
+
+#### Examples
+highcharts_demo() %>%
+hc_add_theme(hc_theme_google())

@@ -1,0 +1,193 @@
+---
+title: "ggfortify"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+fortify.glmnet
+Convert glmnet::glmnet to data.frame
+
+#### Description 
+ 
+Convert glmnet::glmnet to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'glmnet'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+model glmnet::glmnet instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(glmnet::glmnet(data.matrix(Orange[-3]), data.matrix(Orange[3])))
+```
+
+fortify.kmeans
+Convert cluster instances to data.frame
+
+#### Description 
+ 
+Convert cluster instances to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'kmeans'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+model
+data
+...
+Clustered instance
+original dataset, if needed
+other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(stats::kmeans(iris[-5], 3))
+fortify(stats::kmeans(iris[-5], 3), data = iris)
+fortify(cluster::clara(iris[-5], 3))
+fortify(cluster::fanny(iris[-5], 3))
+fortify(cluster::pam(iris[-5], 3), data = iris)
+```
+
+
+fortify.lfda
+Convert lfda::lfda or lfda::klfda or lfda::self to data.frame
+
+#### Description 
+ 
+Convert lfda::lfda or lfda::klfda or lfda::self to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'lfda'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+model
+data
+...
+lfda::lfda or lfda::klfda or lfda::self instance
+original dataset, if needed
+other arguments 
+  passed to methods
+  
+Value
+data.frame
+
+#### Examples 
+```{r}
+## Not run:
+model <- lfda::lfda(iris[, -5], iris[, 5], 3, metric = "plain")
+fortify(model)
+## End(Not run)
+```
+fortify.list
+Convert list to data.frame
+
+#### Description 
+ 
+Convert list to data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'list'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* model list instance
+* data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+fortify.matrix
+Convert base::matrix to data.frame
+
+#### Description 
+ 
+Different from as.data.frame
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'matrix'
+fortify(model, data = NULL, compat = FALSE, ...)
+</code></pre>
+
+
+#### Arguments 
+ 
+model
+data
+compat
+...
+base::matrix instance
+original dataset, if needed
+Logical frag to specify the behaviour when converting matrix which has no col-
+umn name. If FALSE, result has character columns like c("1", "2", ...). If TRUE,
+result has character columns like c("V1", "V2", ...).
+other 
+#### Arguments 
+  passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(matrix(1:6, nrow=2, ncol=3))
+```
+
+fortify.MSM.lm
+Convert MSwM::MSM.lm to data.frame
+
+#### Description 
+ 
+Convert MSwM::MSM.lm to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'MSM.lm'
+fortify(model, data = NULL, melt = FALSE, ...)
+</code></pre>
+
+#### Arguments 
+ 
+model
+data
+melt
+...
+MSwM::MSM.lm instance
+original dataset, if needed
+Logical flag indicating whether to melt each models
+other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+library(MSwM)
+d <- data.frame(Data = c(rnorm(50, mean = -10), rnorm(50, mean = 10)),
+exog = cos(seq(-pi/2, pi/2, length.out = 100)))
+d.mswm <- MSwM::msmFit(lm(Data ~.-1, data = d), k=2, sw=rep(TRUE, 2),
+control = list(parallelization = FALSE))
+fortify(d.mswm)
+```

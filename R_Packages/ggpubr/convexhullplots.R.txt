@@ -1,0 +1,7 @@
+library(ggpubr)
+
+ggscatter(iris, x = "Petal.Length", y = "Petal.Width", color = "Species",alpha=0.2)+
+  stat_chull(aes(color = Species, fill = Species), alpha = 0.25, geom = "polygon")  +
+  scale_colour_manual(name = "Species",values = c("green","red","blue")) + 
+  scale_fill_manual(name = "Species",values = c("green","red","blue")) +
+  geom_vline(xintercept=0) + geom_hline(yintercept=0) +  geom_abline(intercept=0,slope=1,lty=2)

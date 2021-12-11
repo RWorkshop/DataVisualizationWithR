@@ -1,0 +1,57 @@
+---
+title: "``ShadowHist`` Plot a Shadow Histogram Plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+#### Description
+
+* Plot a histogram of a continuous variable xvar, faceted on a categorical conditioning variable,
+***condvar***. 
+* Each faceted plot also shows a "shadow plot" of the unconditioned histogram for comparison.
+ 
+#### Usage
+
+<pre><code>
+
+ShadowHist(frm, xvar, condvar, title, ..., ncol = 1, palette = "Dark2",
+bins = 30, binwidth = NULL)
+
+</code></pre> 
+
+#### Arguments
+
+* ``frm``: data frame to get values from.
+* ``xvar ``:  name of the primary continuous variable
+* ``condvar ``:   name of conditioning variable (categorical variable, controls faceting).
+* ``title ``:    title to place on plot.
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+* ``ncol``:  (numeric): number of columns in facet_wrap.
+* ``palette``:  (character): name of brewer color palette (can be NULL)
+* ``bins``: number of bins. Defaults to thirty.
+* ``binwidth``: width of the bins. Overrides bins.
+
+
+ 
+#### Examples
+
+```{r}
+
+ShadowHist(iris, "Petal.Length", "Species",
+title = "Petal Length distribution by Species")
+```
+
+#### Details
+
+* Currently supports only the bins and binwidth arguments (see geom_histogram), but not the
+center, boundary, or breaks arguments
+* By default, the facet plots are arranged in a single column. This can be changed with the optional
+ncol argument.
+* If palette is NULL, plot colors will be chosen from the default ggplot2 palette. Setting palette
+to NULL allows the user to choose a non-Brewer palette, for example with scale_fill_manual.
+* Please see here for some interesting discussion https://drsimonj.svbtle.com/plotting-background-data-for-groups-Value
+a ggplot2 histogram plot

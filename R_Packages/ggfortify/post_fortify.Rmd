@@ -1,0 +1,20 @@
+post_fortify
+Post process for fortify.
+
+#### Description 
+ 
+Post process for fortify.
+
+#### Usage 
+ <pre><code>
+post_fortify(data, klass = NULL)print,ggmultiplot-method
+73
+
+#### Arguments 
+ 
+data
+klass
+data.frame
+instance to be added as base_class attr, should be original model before fortified
+Value
+data.frame

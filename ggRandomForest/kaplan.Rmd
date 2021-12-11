@@ -1,0 +1,54 @@
+---
+title: "``ggRandomForest::kaplan``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+kaplan nonparametric kaplan-meier estimates
+
+
+#### Description 
+
+nonparametric kaplan-meier estimates
+#### Usage 
+<pre><code>
+
+kaplan(interval, censor, data, by = NULL, ...)
+
+</code></pre>
+#### Arguments
+
+interval name of the interval variable in the training dataset.
+censor name of the censoring variable in the training dataset.
+data name of the training set data.frame
+by stratifying variable in the training dataset, defaults to NULL
+... 
+</code></pre>
+#### Arguments
+ passed to the survfit function
+Value
+gg_survival object
+See Also
+gg_survival nelson plot.gg_survival
+#### Examples 
+```{r} 
+## Not run:
+# These get run through the gg_survival #### Examples 
+
+data(pbc, package="randomForestSRC")
+pbc$time <- pbc$days/364.25
+# This is the same as gg_survival
+gg_dta <- kaplan(interval="time", censor="status",
+data=pbc)
+plot(gg_dta, error="none")
+plot(gg_dta)
+# Stratified on treatment variable.
+gg_dta <- gg_survival(interval="time", censor="status",
+data=pbc, by="treatment")
+plot(gg_dta, error="none")
+plot(gg_dta)
+```

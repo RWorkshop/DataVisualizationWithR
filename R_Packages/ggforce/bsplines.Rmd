@@ -1,0 +1,10 @@
+
+B-splines
+Like beziers b-splines are smooth curves, but unlike beziers b-splines are defined by a vector of control points along which the curve will flow, without necessarily passing through any of the control points. The 0-version is impemented using xsplineGrob with shape = 1, which approximates a b-spline, but a slight variation is expected due to this.
+spline <- data.frame(
+    x = runif(5), y = runif(5), group = 1
+)
+ggplot(spline) + geom_path(aes(x = x, y = y, group = group), colour = 'grey') + 
+    geom_bspline(aes(x = x, y = y, group = group)) + 
+    geom_point(aes(x = x, y = y))
+

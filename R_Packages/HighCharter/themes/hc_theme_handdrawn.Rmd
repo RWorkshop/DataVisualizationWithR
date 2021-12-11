@@ -1,0 +1,20 @@
+## ``hc_theme_handdrawn``
+Hand Drawn theme for highcharts
+
+#### Description 
+
+Hand Drawn theme for highcharts. Inspirated by https://www.amcharts.com/inspiration/hand-drawn/
+
+#### Usage
+
+hc_theme_handdrawn(...)
+
+#### Arguments 
+
+*  ... Named argument to modify the theme
+
+#### Examples
+```{r}
+highcharts_demo() %>%
+hc_add_theme(hc_theme_handdrawn())
+```

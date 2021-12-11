@@ -1,0 +1,31 @@
+---
+title: "``download_map_data``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+#### Description 
+* Auxillary function to download the map data form a url 
+* The urls are listed in https://code.highcharts.com/mapdata/.
+
+#### Usage
+<pre><code>
+download_map_data(url = "custom/world.js", showinfo = FALSE)
+</code></pre>
+
+#### Arguments 
+* url The map'’'s url.
+* showinfo Show the properties of the downloaded map to know how are the keys to add data in hcmap.
+
+#### Examples
+```{r}
+mpdta <- download_map_data("https://code.highcharts.com/mapdata/countries/us/us-ca-all.js")
+str(mpdta, 1)
+```

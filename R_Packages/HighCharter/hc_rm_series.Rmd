@@ -1,0 +1,25 @@
+---
+title: "``hc_rm_series``: Removing series to highchart objects"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+#### Description 
+
+Removing series to highchart objects
+
+#### Usage
+<pre><code>
+hc_rm_series(hc, names = NULL)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``names``: The series names to delete.

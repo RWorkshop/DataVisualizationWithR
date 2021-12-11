@@ -1,0 +1,57 @@
+---
+title: "hc_add_series_flags"
+author: "KevinO'Brien"
+date: "11 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+library(treemap)
+library(quantmod)
+```
+hc_add_series_flags
+Shorcut for add flags to highstock chart
+
+#### Description 
+
+This function helps to add flags highstock charts created from xts objects.
+
+#### Usage
+<pre><code>
+hc_add_series_flags(hc, dates, title = LETTERS[seq(length(dates))],
+text = title, id = NULL, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``dates``: Date vector.
+* ``title``: A character vector with titles.
+* ``text``: A character vector with the description.
+* ``id``: The name of the series to add the flags. A previous series must be added whith
+this id.
+* ``...``: Additional shared arguments for the *flags* data series 
+(http://api.highcharts.com/highstock#plotOptions.flags)
+
+#### Examples
+```{r}
+library("quantmod")
+usdjpy <- getSymbols("USD/JPY", src="oanda", auto.assign = FALSE)
+dates <- as.Date(c("2015-05-08", "2015-09-12"), format = "%Y-%m-%d")
+highchart(type = "stock") %>%
+hc_add_series_xts(usdjpy, id = "usdjpy") %>%
+hc_add_series_flags(dates,
+title = c("E1", "E2"),
+text = c("This is event 1", "This is the event 2"),
+id = "usdjpy")
+```
+
+
+
+
+
+

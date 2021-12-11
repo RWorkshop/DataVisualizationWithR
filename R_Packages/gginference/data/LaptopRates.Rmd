@@ -1,0 +1,13 @@
+
+LaptopRates LaptopRates
+#### Description
+A data frame that contains sample ratings of 18 laptops, by three experts.
+#### Usage
+LaptopRates
+#### Format
+A data frame with 54 observations of 3 columns:
+laptop laptop id, 1-18
+expert a character of expert1,expert2,expert3 values
+rating ratings-5 likert scale, 5 indicates a very good rate
+LivLab 11
+

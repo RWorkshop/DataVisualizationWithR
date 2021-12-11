@@ -1,0 +1,26 @@
+hc_add_series.forecast
+
+``hc_add_series for forecast objects``
+
+#### Description 
+
+hc_add_series for forecast objects
+
+#### Usage 
+<pre><code>
+## S3 method for class 'forecast'
+hc_add_series(hc, data, addOriginal = FALSE,
+addLevels = TRUE, fillOpacity = 0.1, ...)24
+hc_add_series.numeric
+</code></pre> 
+#### Arguments 
+ 
+
+* ``hc ``: A highchart htmlwidget object.
+data A forecast object.
+addOriginal Logical value to add the original series or not.
+addLevels Logical value to show predicctions bands.
+fillOpacity The opacity of bands
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#chart.
+
+

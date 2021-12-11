@@ -1,0 +1,54 @@
+---
+title: "``ScatterBoxPlot``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+#### Description
+
+Plot a boxplot with the data points superimposed.
+ 
+#### Usage
+
+<pre><code>
+
+ScatterBoxPlot(frm, xvar, yvar, title, ..., pt_alpha = 0.3)
+
+</code></pre> 
+
+#### Arguments
+
+* ``frm``: data frame to get values from
+* ``xvar ``:  name of the independent column in frame; assumed discrete
+* ``yvar``:   name of the continuous column in frame title plot title
+* ``...``: (doesn't take additional arguments, used to force later arguments by name)
+* ``pt_alpha``: transparency of points in scatter plot
+
+
+
+#### Examples
+
+```{r}
+
+classes = c("a", "b", "c")
+means = c(2, 4, 3)
+names(means) = classes
+label = sample(classes, size=1000, replace=TRUE)
+meas = means[label] + rnorm(1000)
+frm2 = data.frame(label=label,
+meas = meas)
+
+WVPlots::ScatterBoxPlot(frm2, "label", "meas", pt_alpha=0.2, title="Example Scatter/Box plot")
+```
+
+#### Details
+
+xvar is a discrete variable and yvar is a continuous variable. If frm[[xvar]] is an integer column,
+it will be converted to a factor. This means that additional layers that rely on continuous x scales
+(like geom_smooth) won't work.
+See Also
+ScatterBoxPlotH

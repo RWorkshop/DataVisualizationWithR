@@ -1,0 +1,75 @@
+
+Autoplot survival::survfit
+
+#### Description 
+ 
+Autoplot survival::survfit
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'survfit'
+autoplot(object, fun = NULL, surv.geom = "step",
+surv.colour = NULL, surv.size = NULL, surv.linetype = NULL,
+surv.alpha = NULL, surv.fill = NULL, surv.shape = NULL,
+surv.connect = TRUE, conf.int = TRUE, conf.int.colour = "#0000FF",
+conf.int.linetype = "none", conf.int.fill = "#000000",
+conf.int.alpha = 0.3, censor = TRUE, censor.colour = NULL,
+censor.size = 3, censor.alpha = NULL, censor.shape = "+",
+facets = FALSE, nrow = NULL, ncol = 1, grid = FALSE,
+strip_swap = FALSE, scales = "free_y", xlim = c(NA, NA), ylim = c(NA,
+NA), log = "", main = NULL, xlab = NULL, ylab = NULL, asp = NULL,
+...)
+
+#### Arguments 
+ 
+* object survival::survfit instance
+* fun an arbitrary function defining a transformation of the survival curve
+* surv.geom geometric string for survival curve. ’step’, ’line’ or ’point’
+* surv.colour line colour for survival curve
+* surv.size point size for survival curve
+*``surv.linetype``: line type for survival curve
+*``surv.alpha``: alpha for survival curve
+*``surv.fill``: fill colour survival curve
+*``surv.shape``: point shape survival curve
+*``surv.connect``: logical frag indicates whether connects survival curve to the origin
+*``conf.int``: Logical flag indicating whether to plot confidence intervals
+*``conf.int.colour``: line colour for confidence intervals
+*``conf.int.linetype``: line type for confidence intervals
+*``conf.int.fill``: fill colour for confidence intervals
+*``conf.int.alpha``: alpha for confidence intervals
+* censor Logical flag indicating whether to plot censors
+*``censor.colour``: colour for censors
+*``censor.size``: size for censors
+*``censor.alpha``: alpha for censors
+* censor.shape shape for censors
+* facets Logical value to specify use facets
+* nrow Number of facet/subplot rows
+* ncol Number of facet/subplot columns
+* grid Logical flag indicating whether to draw grid
+* strip_swap swap facet or grid strips
+* scales Scale value passed to ggplot2
+* xlim limits for x axis
+* ylim limits for y axis
+* log which variables to log transform ("x", "y", or "xy")
+* ``main``:  character vector or expression for plot title
+* ``xlab``:  character vector or expression for x axis label
+* ``ylab``:  character vector or expression for y axis label
+asp the y/x aspect ratio
+* ``...``: other  arguments passed to methods
+
+#### Examples 
+```{r}
+library(survival)
+autoplot(survfit(Surv(time, status) ~ sex, data = lung))
+autoplot(survfit(Surv(time, status) ~ sex, data = lung), facets = TRUE)
+autoplot(survfit(Surv(time, status) ~ 1, data = lung))
+```
+```{r}
+autoplot(survfit(Surv(time, status) ~ sex, data=lung), conf.int = FALSE, censor = FALSE)
+autoplot(survfit(coxph(Surv(time, status) ~ sex, data = lung)))
+
+```
+
+#### Value
+ggplot
+

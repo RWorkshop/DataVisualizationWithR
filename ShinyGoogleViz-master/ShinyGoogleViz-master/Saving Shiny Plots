@@ -1,0 +1,15 @@
+Here's a solution that allows using ggsave for saving shiny plots. It uses a logical checkbox and text input to call ggsave(). Add this to the ui.R file inside sidebarPanel:
+
+textInput('filename', "Filename"),
+checkboxInput('savePlot', "Check to save")
+Then add this to the server.R file instead of the current output$plot reactivePlot function:
+
+output$plot <- reactivePlot(function() {
+    name <- paste0(input$filename, ".png")
+    if(input$savePlot) {
+      ggsave(name, plotInput(), type="cairo-png")
+    }
+    else print(plotInput())
+  })
+A user can then type the desired filename in the textbox (without extension) and tick the checkbox to save in the app directory. Unchecking the box prints the plot again. I'm sure there are neater ways of doing this, 
+but at least I can now use ggsave and cairo in windows for much nicer png graphics.

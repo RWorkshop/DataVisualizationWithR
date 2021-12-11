@@ -1,0 +1,20 @@
+apply_grid
+Apply grid to to ggplot2::ggplot
+
+#### Description 
+ 
+Apply grid to to ggplot2::ggplot
+
+#### Usage 
+<pre><code>
+apply_grid(p, formula, scales = "free_y", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``p`` ggplot2::ggplot instance
+* ``formula`` stats::formula instance
+* ``scales`` Scale value passed to ggplot2
+* ``...`` other arguments passed to methods
+
+

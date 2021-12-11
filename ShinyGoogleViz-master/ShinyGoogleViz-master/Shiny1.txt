@@ -1,0 +1,173 @@
+Shiny
+
+%--------------------------------------------------------------%
+
+Fully customizable and extensible with HTML/CSS/JAvascript
+
+%--------------------------------------------------------------%
+server.R
+Specifies the logic behind the user interface
+call shinServer, apssing a function wiht the parameters (input,output,session)
+Define outputs usings
+output$id <- renderType({})
+Define reusbake reactive expressions
+
+Access reactive experssions and inpputs
+
+http://glimmer.rstudio.com/pssguy/TVShowRatings/
+
+https://gist.github.com/pssguy/5498431
+
+http://www.premiersoccerstats.com/wordpress/?p=1273
+
+http://glimmer.rstudio.com/systematicin/retirement.withdrawal/
+
+http://glimmer.rstudio.com/jcheng/diamonds/
+
+%--------------------------------------------------------------%
+ Basic Shiny Code
+
+the shiny R package
+
+Rtools
+devtools?
+% http://blog.snap.uaf.edu/2013/05/20/introducing-r-shiny-web-apps/
+% http://www.stanford.edu/~cengel/cgi-bin/anthrospace/building-my-first-shiny-application-with-ggplot
+
+The R Shiny package is a great way for interactively showcasing and sharing statistical analyses and results performed and generated in R on the web. 
+
+The shiny package is a powerful tool for statisticians and data analysts who wish to share their work in an interactive fashion.
+
+An R Shiny app consists of two scripts, ui.R and server.R, the user-interface and server-side scripts, respectively, as well as any data or other files that may be needed by the app, depending on its complexity.
+
+
+-------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Shiny : Easy web applications in R}
+
+Shiny makes it super simple for R users like you to turn analyses into interactive web 
+applications that anyone can use. Let your users choose input parameters using friendly 
+controls like sliders, drop-downs, and text fields. Easily incorporate any number 
+of outputs like plots, tables, and summaries.
+
+No HTML or JavaScript knowledge is necessary. If you have some experience with R, 
+you’re just minutes away from combining the statistical power of R with the 
+simplicity of a web page.
+\end{frame}
+-------------------------------------------------------------------------
+%------------------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Components of Shiny}
+\begin{description}
+\item[ui.R] the position and type of inputs and outputs (UI: User Interface)
+\item[server.R]
+with the data processing functions, outputs, and any reactive objects that are required
+\end{frame}
+
+%------------------------------------------------------------------------%
+
+\begin{frame}
+To run a Shiny program on your local machine you just need to do the following:
+
+\begin{enumerate}
+\item Make sure that server.R and
+ui.R are in the same folder.
+\item Make this the R's working directory (using the setwd() command, forexample setwd("~/shinyFiles/minimalExample"))
+\item Load the Shiny package 
+\texttt{library(shiny)}
+\item Type
+\texttt{runApp()}
+at the console.
+\enumerate}
+\end{frame}
+
+%------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{ui.R of minimal example}
+
+
+The ui.R file is a description of the UI and is often the shortest and simplest part ofa Shiny application. 
+Note the use of the
+hashtag character, which marks lines of code as comments that will not be run, but which are for the beneﬁt of humans producing
+the code:
+\end{frame}
+
+%------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{Standard Shiny Layout}
+
+\begin{itemize} 
+\item controls on theleft
+\item output on the right
+\end{itemize}
+
+\begin{description}
+\item[Header Panel] give the interface a title
+\item[Side Panel] all the UI controls go in here
+\item[Main Panel] all of the output elements go in here
+\end{description}
+\end{frame}
+%------------------------------------------------------------------------%
+
+\begin{frame}[fragile]
+\frametitle{minimal example – ui.R}
+\begin{verbatim}
+library(shiny) 
+
+shinyUI(pageWithSidebar( , 
+
+   headerPanel("Minimal example"), 
+   
+   sidebarPanel( 
+		# this is the name of the variable
+		# this will be passed to server.R
+       textInput(inputId = "comment", 
+       label = "SayThis", # display label for the variable
+              value = "" )), 
+
+   mainPanel(           
+      # title with HTML     
+      h3("This is you saying it"), 
+
+      # this is the name of the output
+      # element as defined in server.R
+      helpertextOutput("textDisplay") )
+            )
+
+))
+\end{frame}
+
+
+%------------------------------------------------------------------------%
+
+\begin{frame}[fragile]
+
+The first instruction,
+\begin{verbatim}
+shinyUI(pageWithSidebar(...
+\end{verbatim}
+specifies the ``vanilla" UI layout, which places all the controls on the left-hand side ,leaving a large space on the right-hand side for output.
+All of the UI elements are defined within this instruction.
+
+
+\end{frame}
+
+
+%------------------------------------------------------------------------%
+
+library(shiny) # load shiny at beginning at both scripts
+
+shinyServer(function(input, output) { 
+
+# server is defined within these parentheses 
+
+output$textDisplay <- renderText({ # mark function as reactive
+                                   # and assign to# output$textDisplay for# passing to ui.R 
+paste0("You said '", input$comment, "'. There are ", nchar(input$comment),  as" characters in this." )
+
+# from the textinput control defined in ui.R
+})
+})
+
+

@@ -1,0 +1,145 @@
+ 
+stat_seas: X13 seasonal adjustment Stat
+============================================
+
+Conducts X13-SEATS-ARIMA seasonal adjustment on the fly for ggplot2
+
+
+
+
+#### Usage
+<pre><code>
+stat_seas(mapping = NULL, data = NULL, geom = "line",
+  position = "identity", show.legend = NA, inherit.aes = TRUE,
+  x13_params = NULL, index.ref = NULL, index.basis = 100,
+  frequency = NULL, start = NULL, ...)
+</code></pre>
+
+
+
+
+#### Examples
+```{r}
+ap_df <- tsdf(AirPassengers)
+
+# SEATS with defaults:
+ggplot(ap_df, aes(x = x, y = y)) +
+   stat_seas()
+   
+# X11 with no outlier treatment:
+ggplot(ap_df, aes(x = x, y = y)) +
+  stat_seas(x13_params = list(x11 = "", outlier = NULL))
+```
+```{r}
+# Multiple time series example:    
+ggplot(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex)) +
+  geom_point() +
+  facet_wrap(~sex) +
+  stat_seas() +
+  ggtitle("Seasonally adjusted lung deaths")
+```
+```{r}  
+# example use of index:  
+ggplot(ap_df, aes(x = x, y = y)) +
+  stat_seas(x13_params = list(x11 = "", outlier = NULL),
+  index.ref = 1, index.basis = 1000) +
+  labs(y = "Seasonally adjusted index\n(first observation = 1000)")
+```
+```{r}  
+# if the x value is not a decimal eg not created with time(your_ts_object),
+# you need to specify start and frequency by hand:
+ggplot(subset(nzbop, Account == "Current account"), 
+      aes(x = TimePeriod, y = Value)) +
+   stat_seas(start = c(1971, 2), frequency = 12) +
+   facet_wrap(~Category, scales = "free_y")
+```
+
+ 
+
+
+#### Arguments
+* ``	mapping	`` : 	Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
+			
+* ``	data	`` : 	The data to be displayed in this layer. There are three options:
+	-		If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot().
+			
+	-		A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.
+	-		A function will be called with a single argument, the plot data. The return value must be a data.frame., and will be used as the layer data.
+			
+			
+			
+* ``	geom	`` : 	The geometric object to use display the data
+			
+* ``	position	`` : 	Position adjustment, either as a string, or the result of a call to a position adjustment function.
+			
+* ``	show.legend	`` : 	logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
+			
+* ``	inherit.aes	`` : 	If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
+			
+* ``	x13_params	`` : 	a list of other parameters for seas
+			
+* ``	index.ref	`` : 	if not NULL, a vector of integers indicating which elements of the beginning of each series to use as a reference point for converting to an index. If NULL, no conversion takes place and the data are presented on the original scale.
+			
+* ``	index.basis	`` : 	if index.ref is not NULL, the basis point for converting to an index, most commonly 100 or 1000. See examples.
+			
+* ``	frequency	`` : 	The frequency for the time series
+			
+* ``	start	`` : 	The starting point for the time series, in a format suitable for ts()
+			
+* ``	...	`` : 	other arguments for the geom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## New example
+Use markdown to format your example
+
+R code blocks are runnable and interactive:
+```r
+a <- 2
+print(a)
+```
+
+You can also display normal code blocks
+```
+var a = b
+```
+
+
+
+
+
+
+
+?
+
+
+
+
+Submit your example 
+
+? API documentation  
+
+ 
+R package
+  
+
+ 
+Rdocumentation.org
+  
+
+Created by DataCamp.com
+
+ Learn R at work  Try it free ? 
+                       

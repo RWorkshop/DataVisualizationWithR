@@ -1,0 +1,37 @@
+
+hciconarray
+Shorcut to make icon arrays charts
+
+#### Description 
+
+Shorcut to make icon arrays charts
+
+####  Usage 
+ <pre><code>
+hciconarray(labels, counts, rows = NULL, icons = NULL, size = 4, ...)
+</code></pre> 
+#### Arguments 
+ 
+
+* ``labels``: A character vector
+* ``counts``:  A integer vector
+* ``rows ``:  A integer to set
+* `` icons  ``:  A character vector  same length (o length 1) as labels
+* ``size  ``:  Font size
+* `` ...  ``: Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).18
+hcmap
+
+#### Examples 
+ ```{r}
+hciconarray(c("nice", "good"), c(10, 20))
+hciconarray(c("nice", "good"), c(10, 20), size = 10)
+hciconarray(c("nice", "good"), c(100, 200), icons = "child")
+hciconarray(c("car", "truck", "plane"), c(75, 30, 20), icons = c("car", "truck", "plane")) %>%
+hc_add_theme(
+hc_theme_merge(
+hc_theme_flatdark(),
+hc_theme_null(chart = list(backgroundColor = "#34495e"))
+)
+)
+```
+

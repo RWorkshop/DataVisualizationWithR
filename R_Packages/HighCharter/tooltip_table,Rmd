@@ -1,0 +1,27 @@
+## ``tooltip_table``: Helper for make table in tooltips
+
+#### Description 
+
+Helper to make table in tooltips for the pointFormat parameter in hc_tooltip
+
+#### Usage
+<pre><code>
+tooltip_table(x, y, title = NULL, img = NULL, ...)
+</code></pre>
+
+#### Arguments 
+* x A string vector with description text
+* y A string with accesors ex: point.series.name, point.x
+* title A title tag with accessor or string
+* img Img tag
+* ... html attributes for the table element
+
+#### Examples
+```{r}
+x <- c("Income:", "Genre", "Runtime")
+y <- c("$ {point.y}", "{point.series.options.extra.genre}",
+"{point.series.options.extra.runtime}")
+tooltip_table(x, y)
+```
+
+

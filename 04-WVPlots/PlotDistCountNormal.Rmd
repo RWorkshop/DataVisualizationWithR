@@ -1,0 +1,48 @@
+---
+title: "``PlotDistCountNormal`` Plot distribution "
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+#### Description
+
+Compares empirical data to a normal distribution with the same mean and standard deviation.
+ 
+#### Usage
+
+<pre><code>
+
+PlotDistCountNormal(frm, xvar, title, ..., binWidth = c())
+
+</code></pre> 
+
+#### Arguments
+
+* ``frm``: data frame to get values from
+* ``xvar ``:  name of the independent (input or model) column in frame
+* ``title ``:    title to place on plot
+* ``...``: no unarmed argument, added to force named binding of later arguments
+* ``binWidth``: width of histogram bins
+
+#### Details
+
+Plots the histograms of the empirical distribution and of the matching normal distribution. Also plots the mean and plus/minus one standard deviation. Bin width for the histogram is calculated automatically to yield approximately 50 bins across the range of the data, unless the binWidth argument is explicitly passed in. binWidth is reported in the subtitle of the plot.
+
+#### Examples
+
+```{r}
+
+set.seed(52523)
+d <- data.frame(wt=100*rnorm(100))
+PlotDistCountNormal(d,'wt','example')
+```
+```{r}
+
+set.seed(52123)
+d <- data.frame(wt=600*rnorm(100))
+PlotDistCountNormal(d,'wt','example')
+```

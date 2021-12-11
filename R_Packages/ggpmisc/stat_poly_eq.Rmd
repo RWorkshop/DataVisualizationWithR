@@ -1,0 +1,150 @@
+
+---
+title: "``ggpmisc::stat_poly_eq``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggpmisc)
+```
+
+
+Equation, p-value, R^2, AIC or BIC of fitted polynomial
+
+### Description
+
+stat_poly_eq fits a polynomial and generates several labels including the equation and/or p-value, coefficient of determination (R^2), ’AIC’ or ’BIC’.
+
+
+#### Usage 
+<pre><code>
+stat_poly_eq(mapping = NULL, data = NULL, geom = "text", formula = NULL,
+eq.with.lhs = "italic(y)~`=`~", eq.x.rhs = NULL, coef.digits = 3,
+rr.digits = 2, label.x.npc = "left", label.y.npc = "top",
+label.x = NULL, label.y = NULL, output.type = "expression",
+position = "identity", na.rm = FALSE, show.legend = FALSE,
+inherit.aes = TRUE, ...)
+</code></pre>
+
+### Arguments
+
+* ``mapping``: The aesthetic mapping, usually constructed with aes or aes_. Only needs to be set at the layer level if you are overriding the plot defaults.
+* ``data ``: A layer specific dataset - only needed if you want to override the plot defaults.
+* ``geom``: The geometric object to use display the data
+* ``formula``: a formula object.
+* ``eq.with.lhs``: If character the string is pasted to the front of the equation label before parsing or a logical (see note).
+* ``eq.x.rhs``: character this string will be used as replacement for "x" in the model equation when generating the label before parsing it.
+* ``coef.digits``, ``rr.digits``: integer Number of significant digits to use in for the vector of fitted coefficients and for $R^2$ labels.
+* ``label.x.npc``,``label.y.npc``: numeric with range 0..1 or character. Coordinates to be used for positioning the
+output, expressed in "normalized parent coordinates" or character string. If too short they will be recycled.
+* ``label.x``, ``label.y``: numeric Coordinates (in data units) to be used for absolute positioning of the output. If too short they will be recycled.
+* output.type character One of "expression", "LaTeX" or "text".
+* position The position adjustment to use for overlapping points on this layer
+* na.rm a logical indicating whether NA values should be stripped before the computation proceeds.
+* ``show.legend ``: logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+* ``inherit.aes``: If FALSE, overrides the default aesthetics, rather than combining with them.
+This is most useful for helper functions that define both data and aesthetics and shouldn’t inherit behaviour from the default plot specification, e.g. borders.
+* ``...``:   Other arguments passed on to layer. This can include aesthetics whose values
+you want to set, not map. See layer for more details..
+
+
+### Examples 
+```{r}
+library(ggplot2)
+# generate artificial data
+set.seed(4321)
+x <- 1:100
+y <- (x + x^2 + x^3) + rnorm(length(x), mean = 0, sd = mean(x^3) / 4)
+my.data <- data.frame(x = x, y = y,
+group = c("A", "B"),
+y2 = y * c(0.5,2),
+w = sqrt(x))
+# give a name to a formula
+formula <- y ~ poly(x, 3, raw = TRUE)
+```
+
+```{r}
+# no weights
+ggplot(my.data, aes(x, y)) +
+geom_point() +
+geom_smooth(method = "lm", formula = formula) +
+stat_poly_eq(formula = formula, parse = TRUE)
+```
+
+```{r}
+# using weights
+ggplot(my.data, aes(x, y, weight = w)) +
+geom_point() +
+geom_smooth(method = "lm", formula = formula) +
+stat_poly_eq(formula = formula, parse = TRUE)
+```
+
+```{r}
+# no weights, digits for R square
+ggplot(my.data, aes(x, y)) +
+geom_point() +
+geom_smooth(method = "lm", formula = formula) +
+stat_poly_eq(formula = formula, rr.digits = 4, parse = TRUE)
+```
+
+```{r}
+# user specified label
+ggplot(my.data, aes(x, y)) +
+geom_point() +
+geom_smooth(method = "lm", formula = formula) +
+stat_poly_eq(aes(label = paste(stat(eq.label), stat(adj.rr.label), sep = "~~~~")),
+formula = formula, parse = TRUE)
+```
+
+```{r}
+# user specified label and digits
+ggplot(my.data, aes(x, y)) +
+geom_point() +
+geom_smooth(method = "lm", formula = formula) +
+stat_poly_eq(aes(label = paste(stat(eq.label), stat(adj.rr.label), sep = "~~~~")),
+formula = formula, rr.digits = 3, coef.digits = 2, parse = TRUE)
+```
+
+#### Warning!
+if using output.type = "expression", then parse = TRUE is needed, while if using output.type = "LaTeX"
+parse = FALSE, the default of geom_text and geom_label, should be used.
+#### Note
+For backward compatibility a logical is accepted as argument for eq.with.lhs, giving the same
+output than the current default character value. By default "x" is retained as independent variable as
+this is the name of the aesthetic. However, it can be substituted by providing a suitable replacement
+character string through eq.x.rhs.
+
+
+### Details
+This stat can be used to automatically annotate a plot with R^2, adjusted R^2 or the fitted model
+equation. It supports only linear models fitted with function lm(). The R^2 and adjusted R^2 annotations
+can be used with any linear model formula. The fitted equation label is correctly generated
+for polynomials or quasi-polynomials through the origin. Model formulas can use poly() or be
+defined algebraically with terms of powers of increasing magnitude with no missing intermediate
+terms, except possibly for the intercept indicated by "- 1" or "-1" in the formula. The validity of the
+formula is not checked in the current implementation, and for this reason the default aesthetics sets
+R^2 as label for the annotation. This stat only generates the label, the predicted values need to be
+separately added to the plot, so to make sure that the same model formula is used in all steps it is
+best to save the formula as an object and supply this object as argument to the different statistics.
+
+#### Aesthetics
+stat_poly_eq understands x and y, to be referenced in the formula and weight passed as argument
+to parameter weights of lm(). All three must be mappeed to numeric variables. In addition the
+aesthetics undertood by the geom used ("text" by default) are understood and grouping respected.
+
+#### Computed variables
+
+* x x position for left edge
+* y y position near upper edge
+* eq.label equation for the fitted polynomial as a character string to be parsed
+* rr.label R2 of the fitted model as a character string to be parsed
+* adj.rr.label Adjusted R2 of the fitted model as a character string to be parsed
+* AIC.label AIC for the fitted model.
+* BIC.label BIC for the fitted model.
+* hjust Set to zero to override the default of the "text" geom.
+
+#### References
+Written as an answer to a question at Stackoverflow. https://stackoverflow.com/questions/
+7549694/adding-regression-line-equation-and-r2-on-graph

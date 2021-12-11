@@ -1,0 +1,57 @@
+
+colorize
+Create vector of color from vector
+
+#### Description 
+
+Create vector of color from vector
+Usage
+colorize(x, colors = c("#440154", "#21908C", "#FDE725"))
+ #### Arguments 
+
+x A numeric, character or factor object.
+colors A character string of colors (ordered) to colorize x
+Examples
+colorize(runif(10))
+colorize(LETTERS[rbinom(20, 5, 0.5)], c("#FF0000", "#00FFFF"))
+color_classes
+Function to create dataClasses argument in hc_colorAxis
+
+#### Description 
+
+Function to create dataClasses argument in hc_colorAxis
+Usage
+color_classes(breaks = NULL, colors = c("#440154", "#21908C", "#FDE725"))6
+create_yaxis
+ #### Arguments 
+
+breaks A numeric vector
+colors A character string of colors (ordered)
+Examples
+color_classes(c(0, 10, 20, 50))
+color_stops
+Function to create stops argument in hc_colorAxis
+
+#### Description 
+
+Function to create stops argument in hc_colorAxis
+Usage
+color_stops(n = 10, colors = c("#440154", "#21908C", "#FDE725"))
+ #### Arguments 
+
+n A numeric indicating how much quantiles generate.
+colors A character string of colors (ordered)
+Examples
+color_stops(5)
+
+dash_styles
+Get dash styles
+
+#### Description 
+
+Get dash style to use on highcharts objects.
+Usage
+dash_styles()
+
+
+

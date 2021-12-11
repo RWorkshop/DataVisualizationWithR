@@ -1,0 +1,46 @@
+autoplot.glmnet
+Autoplot glmnet::glmnet
+
+#### Description 
+ 
+Autoplot glmnet::glmnet
+
+#### Usage 
+
+<pre><code>
+## S3 method for class 'glmnet'
+autoplot(object, xvar = c("norm", "lambda", "dev"), label.n = 7, label = TRUE, label.label = "Df", label.colour = NULL, label.alpha = NULL, label.size = NULL, label.angle = NULL, label.family = NULL, label.fontface = NULL, label.lineheight = NULL, label.hjust = NULL, label.vjust = NULL, xlim = c(NA, NA), ylim = c(NA,
+NA), log = "", main = NULL, xlab = NULL, ylab = "Coefficients", asp = NULL, ...)16
+autoplot.glmnet
+</code></pre>
+
+#### Arguments 
+ 
+* ``	object 	``: 	glmnet::glmnet instance
+* ``	xvar 	``: 	values to be dranw on the X axis. Either "norm" (L1-norm), "lambda" (log-lambda sequence) or "dev" (percent deviance)
+* ``	label.n 	``: 	Number of Df labels
+* ``	label 	``: 	Logical value whether to display labels
+* ``	label.label	``: 	Column name used for label text
+* ``	label.colour 	``: 	Colour for text labels
+* ``	label.alpha 	``: 	Alpha for text labels
+* ``	label.size 	``: 	Size for text labels
+* ``	label.angle 	``: 	Angle for text labels
+* ``	label.family	``: 	Font family for text labels
+* ``	label.fontface 	``: 	Fontface for text labels
+* ``	label.lineheight	``: 	Lineheight for text labels
+* ``	label.hjust 	``: 	Horizontal adjustment for text labels
+* ``	label.vjust 	``: 	Vertical adjustment for text labels
+* ``	xlim 	``: 	limits for x axis
+* ``	ylim 	``: 	limits for y axis
+* ``	log 	``: 	which variables to log transform ("x", "y", or "xy") main character vector or expression for plot title
+* ``	xlab 	``: 	character vector or expression for x axis label
+* ``	ylab 	``: 	character vector or expression for y axis label
+* ``	asp 	``: 	the y/x aspect ratio
+* ``	... 	``: 	other arguments passed to methods
+Value
+ggplot
+
+#### Examples 
+```{r}
+autoplot(glmnet::glmnet(data.matrix(Orange[-3]), data.matrix(Orange[3])))
+```

@@ -1,0 +1,37 @@
+---
+title: "``ggproptest``:  Plot test of Equal or Given Proportions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(gginference)
+```
+
+#### Description
+Visualise prop.test for testing the null that the proportions (probabilities of success) in several
+groups are the same, or that they equal certain given values.
+
+#### Usage
+
+<pre><code>
+ggproptest(t, alpha=0.05,colaccept="lightsteelblue1",
+colreject="gray84", colstat="navyblue")
+</code></pre>
+
+#### Arguments
+* ``t``: a list result of prop.test of "htest" class
+* ``alpha``: alpha level for ploting distribution, when prop.test is used on more than 2 samples
+* ``colaccept``:  color the acceptance area of the test
+* ``colreject``:   color for the rejection area of the test
+* `` colstat``: color for the test statistic vline
+
+#### Examples
+```{r}
+x <- c(5, 8, 12)
+y <- c(8, 9, 13)
+pr_test <- prop.test(x, y)
+pr_test
+ggproptest(pr_test)
+```

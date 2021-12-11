@@ -1,0 +1,23 @@
+
+## ``fa_icon``
+Helpers functions to get FontAwesome icons code
+
+#### Description 
+
+Helpers functions to get FontAwesome icons code
+
+#### Usage
+<pre><code>
+fa_icon(iconname = "circle")
+fa_icon_mark(iconname = "circle")
+</code></pre>
+#### Arguments 
+
+* ``iconname``: The icon’s name
+
+### Examples
+```{r}
+fa_icon("car")
+fa_icon_mark("car")
+fa_icon_mark(iconname = c("car", "plane", "car"))
+```

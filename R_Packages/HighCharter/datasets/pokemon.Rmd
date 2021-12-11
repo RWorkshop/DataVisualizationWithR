@@ -1,0 +1,34 @@
+pokemon
+pokemon
+
+ #### Description 
+
+Information about 718 pokemon.
+Usage
+pokemon
+#### Format
+A data frame with 718 observations and 20 variables.
+
+#### Variables
+* id:
+* pokemon:
+* species_id:
+* height:
+* weight:random_id
+* base_experience:
+* type_1:
+* type_2:
+* attack:
+* defense:
+* hp:
+* special_attack:
+* special_defense:
+* speed:
+* color_1:
+* color_2:
+* color_f:
+* egg_group_1:
+* egg_group_2:
+* url_image:
+Source
+jkunst.com/r/pokemon-visualize-em-all/

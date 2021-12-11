@@ -1,0 +1,39 @@
+---
+title: "hc_add_series_boxplot: Shorcut for create boxplot"
+author: "KevinO'Brien"
+date: "11 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+hc_add_series_boxplot Shorcut for create boxplot
+
+#### Description 
+
+Shorcut for create boxplot
+#### Usage
+
+<pre><code>
+hc_add_series_boxplot(hc, x, by = NULL, outliers = TRUE, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``x``: A numeric vector
+* ``by``: A string vector same length of x
+* ``outliers``: A boolean value to show or not the outliers
+* ``...``: Aditional arguments for the data series 
+ - http://api.highcharts.com/highcharts#series
+
+#### Examples
+```{r}
+highchart() %>%
+hc_add_series_boxplot(x = iris$Sepal.Length, by = iris$Species, name = "length")
+````

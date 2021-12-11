@@ -1,0 +1,18 @@
+## highchartOutput
+Widget output function for use in Shiny
+
+#### Description 
+
+Widget output function for use in Shiny
+
+#### Usage
+<pre><code>
+highchartOutput(outputId, width = "100%", height = "400px")
+highchartOutput2(outputId, width = "100%", height = "400px")
+</code></pre>
+
+#### Arguments 
+
+* outputId The name of the input.
+* width A numeric input in pixels.
+* height A numeric input in pixels.

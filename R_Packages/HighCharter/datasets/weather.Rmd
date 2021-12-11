@@ -1,0 +1,33 @@
+78
+weather
+
+weather
+Weather
+
+#### Description 
+
+Temperature information of San Francisco.
+Usage
+weather
+#### Format
+
+A data frame with 365 observations and 4 variables.
+#### Variables 
+
+* date: Day in date format.
+* min_temperaturec: Minimum temperature.
+* max_temperaturec: Maximun temperature.
+* mean_temperaturec: Mean temperature.worldgeojson
+worldgeojson
+79
+World map in Geojson format (list)
+
+#### Description 
+
+This data comes from the https://code.highcharts.com/mapdata/custom/world.js and is
+used in highmaps examples.#’
+Usage
+worldgeojson
+#### Format
+
+A list in geojson format.

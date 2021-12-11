@@ -1,0 +1,68 @@
+---
+title: "hc_add_series_scatter"
+author: "KevinO'Brien"
+date: "12 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+#### Description 
+
+This function helps to create scatter plot from two numerics vectors. Options argumets like size,
+color and label for points are added.
+
+#### Usage
+<pre><code>
+hc_add_series_scatter(hc, x, y, z = NULL, color = NULL, label = NULL,
+showInLegend = FALSE, ...)
+</code></pre>
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+x A numeric vector.
+y A numeric vector. Same length of x.
+z A numeric vector for size. Same length of x.
+color A vector to color the points.
+label A vector to put names in the dots if you enable the datalabels.
+showInLegend Logical value to show or not the data in the legend box.
+* ``...``: Aditional shared arguments for the data series (http://api.highcharts.com/
+highcharts#series).
+#### Examples
+```{r}
+
+hc <- highchart()
+hc_add_series_scatter(hc,mtcars$wt,mtcars$mpg)
+```
+
+```{r}
+hc_add_series_scatter(hc,mtcars$wt,mtcars$mpg, mtcars$drat)
+```
+
+```{r}hc_add_series_scatter(hc,mtcars$wt,mtcars$mpg, mtcars$drat, mtcars$am)
+```
+
+```{r}
+hc_add_series_scatter(hc,mtcars$wt,mtcars$mpg, mtcars$drat, mtcars$qsec)
+hc_add_series_scatter(hc,mtcars$wt,mtcars$mpg, mtcars$drat, mtcars$qsec, rownames(mtcars))
+
+
+
+```
+
+```{r}
+
+
+# Add named attributes to data (attributes length needs to match number of rows)
+hc_add_series_scatter(hc, mtcars$wt, mtcars$mpg, mtcars$drat, mtcars$qsec,
+name = rownames(mtcars), gear = mtcars$gear) %>%
+hc_tooltip(pointFormat = "<b>{point.name}</b><br/>Gear: {point.gear}")
+## End(Not run)
+```
+

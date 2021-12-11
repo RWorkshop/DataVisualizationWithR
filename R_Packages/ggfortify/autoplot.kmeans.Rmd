@@ -1,0 +1,66 @@
+---
+title: "``ggfortify::autoplot.kmeans``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+#### Description 
+ 
+Autoplot cluster instances
+
+#### Usage 
+<pre><code>
+## S3 method for class 'kmeans'
+autoplot(object, data = NULL, colour = "cluster", ...)
+</code></pre>
+#### Arguments 
+ 
+object Clustered instance
+data Original data used for clustering. Mandatory for stats::kmeans.
+colour line colour for points
+... other 
+#### Arguments 
+  passed to autoplot::prcomp
+Value
+ggplot
+
+#### Examples 
+<pre><code>
+autoplot(stats::kmeans(iris[-5], 3), data = iris)
+autoplot(cluster::clara(iris[-5], 3), label = TRUE)
+autoplot(cluster::fanny(iris[-5], 3))
+autoplot(cluster::fanny(iris[-5], 3), frame = TRUE)
+autoplot(cluster::pam(iris[-5], 3), data = iris, colour = 'Species')
+autoplot(cluster::pam(iris[-5], 3), data = iris, frame = TRUE, frame.type = 't')
+</code></pre>
+
+autoplot.list
+Autoplot list
+
+#### Description 
+ 
+Autoplot list
+
+#### Usage 
+<pre><code>
+## S3 method for class 'list'
+autoplot(object, data = NULL, nrow = NULL, ncol = NULL,
+scales = "free_y", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``	object  	``: 	list instance
+* ``	data  	``: 	original dataset, if needed
+* ``	nrow  	``: 	Number of facet/subplot rows
+* ``	ncol  	``: 	Number of facet/subplot columns
+* ``	scales  	``: 	Scale value passed to ggplot2
+* ``	...   	``: 	other arguments   passed to methods
+
+
+#### Value
+
+ggplot

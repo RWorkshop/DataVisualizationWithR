@@ -1,0 +1,48 @@
+Bar plots
+===================
+Demo data set
+
+Load and prepare data:
+```{r}
+# Load data
+data("mtcars")
+dfm <- mtcars
+# Convert the cyl variable to a factor
+dfm$cyl <- as.factor(dfm$cyl)
+# Add the name colums
+dfm$name <- rownames(dfm)
+# Inspect the data
+head(dfm[, c("name", "wt", "mpg", "cyl")])
+#>                                name    wt  mpg cyl
+#> Mazda RX4                 Mazda RX4 2.620 21.0   6
+#> Mazda RX4 Wag         Mazda RX4 Wag 2.875 21.0   6
+#> Datsun 710               Datsun 710 2.320 22.8   4
+#> Hornet 4 Drive       Hornet 4 Drive 3.215 21.4   6
+#> Hornet Sportabout Hornet Sportabout 3.440 18.7   8
+#> Valiant                     Valiant 3.460 18.1   6
+```
+
+### Ordered bar plots
+
+Change the fill color by the grouping variable “cyl”. Sorting will be done globally, but not by groups.
+```{r}
+ggbarplot(dfm, x = "name", y = "mpg",
+          fill = "cyl",               # change fill color by cyl
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "desc",          # Sort the value in dscending order
+          sort.by.groups = FALSE,     # Don't sort inside each group
+          x.text.angle = 90           # Rotate vertically x axis texts
+          )
+```
+Sort bars inside each group. Use the argument sort.by.groups = TRUE.
+```{r}
+ggbarplot(dfm, x = "name", y = "mpg",
+          fill = "cyl",               # change fill color by cyl
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in dscending order
+          sort.by.groups = TRUE,      # Sort inside each group
+          x.text.angle = 90           # Rotate vertically x axis texts
+          )
+```  

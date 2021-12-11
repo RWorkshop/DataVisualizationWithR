@@ -1,0 +1,29 @@
+---
+title: "citytemp data set (HighCharter)"
+author: "Kevin O'Brien"
+date: "12 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+citytemp
+
+City temperatures from a year
+
+#### Description 
+
+This data comes from the http://www.highcharts.com/ examples.
+Usage
+citytemp
+#### Format
+
+A data frame with 12 observations and 5 variables
+#### Variables 
+
+* month: The months.
+* tokyo: Tokyo’s temperatures.
+* new_york: New york’s temperatures.
+* berlin: Berlin’s temperatures.
+* london: Londo’s temperatures.

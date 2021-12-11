@@ -1,0 +1,29 @@
+---
+title: "``hc_pane``: Adding panes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+#### Description 
+
+Applies only to polar charts and angular gauges. This configuration object holds general options
+for the combined X and Y axes set. Each xAxis or yAxis can reference the pane by index.
+
+#### Usage
+<pre><code>
+hc_pane(hc, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* ``...``: Arguments defined in http://api.highcharts.com/highcharts#pane.hc_plotOptions
+
+

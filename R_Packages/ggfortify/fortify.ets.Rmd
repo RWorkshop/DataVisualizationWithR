@@ -1,0 +1,31 @@
+fortify.ets
+Convert forecast::bats and forecast::ets to data.frame
+
+#### Description 
+ 
+Convert forecast::bats and forecast::ets to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'ets'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* model forecast::bats or forecast::ets instance
+* data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame
+
+#### Examples 
+```{r}
+## Not run:
+fortify(forecast::bats(UKgas))
+fortify(forecast::ets(UKgas))
+## End(Not run)44
+
+```
+
+

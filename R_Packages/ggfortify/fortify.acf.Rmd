@@ -1,0 +1,41 @@
+---
+title: "``ggfortify::fortify.acf``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+#### Description 
+ 
+Convert stats::acf to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'acf'
+fortify(model, data = NULL, conf.int = TRUE,
+conf.int.value = 0.95, conf.int.type = "white", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``model``: stats::acf instance
+* ``data``: original dataset, if needed
+* ``conf.int``: Logical flag indicating whether to attach confidence intervals
+* ``conf.int.value``: Coverage probability for confidence interval
+* ``conf.int.type``: Type of confidence interval, ’white’ for white noise or ’ma’ MA(k-1) model
+* ``... ``: other arguments passed to methods
+
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(stats::acf(AirPassengers))
+fortify(stats::pacf(AirPassengers))
+fortify(stats::ccf(AirPassengers, AirPassengers))
+fortify(stats::acf(AirPassengers), conf.int = TRUE)
+
+```
+

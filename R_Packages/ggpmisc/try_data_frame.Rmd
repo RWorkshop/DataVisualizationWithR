@@ -1,0 +1,54 @@
+##``try_data_frame`` Convert an R object into a tibble
+### Description
+This functions tries to convert any R object into a data.frame object. If x is already a data.frame,
+it is returned as is. If it is a list or a vector it is converted by means of as.data.frame(). If of
+any other type, a conversion into an object of class xts is attempted by means of try.xts() and
+if successful the xts object is converted into a data frame with a variable time containing times as
+POSIXct and the remaining data columns with the time series data. In this conversion row names
+are stripped.
+
+#### Usage 
+ <pre><code>
+try_data_frame(x, time.resolution = "month", as.numeric = FALSE,
+col.names = NULL)
+try_tibble(x, time.resolution = "month", as.numeric = FALSE,
+col.names = NULL)
+</code></pre>
+
+### Arguments
+* x An R object
+* time.resolution character The time unit to which the returned time values will be rounded.
+* as.numeric logical If TRUE convert time to numeric, expressed as fractional calendar years.
+* col.names character vector
+
+#### Value
+A tibble::tibble object, derived from data.frame.
+
+#### Warning!
+The time zone was set to "UTC" by try.xts() in the test cases I used. Setting TZ to "UTC" can
+cause some trouble as several frequently used functions have as default the local or system TZ and
+will apply a conversion before printing or plotting time data, which in addition is affected by summer/
+winter time transitions. This should be taken into account as even for yearly data when conversion
+is to POSIXct a day (1st of January) will be set, but then shifted some hours if printed on a TZ
+different from "UTC". I recommend reading the documentation of package lubridate-package
+where the irregularities of time data and the difficulties they cause are very well described. In many
+cases when working with time series with yearly observations it is best to work with numeric values
+for years.
+
+#### Note
+This function can be used to easily convert time series data into a format that can be easily plotted
+with package ggplot2. try_tibble is another name for try_data_frame which tracks the
+separation and re-naming of data_frame into tibble::tibble in the imported packages.
+
+### Examples 
+```{r} 
+library(xts)
+class(lynx)
+try_data_frame(lynx)
+try_data_frame(lynx, "year")
+class(austres)
+try_data_frame(austres)
+try_data_frame(austres, "quarter")
+class(cars)
+try_data_frame(cars)
+```

@@ -1,0 +1,156 @@
+---
+title: "autoplots"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggfortify)
+```
+
+
+autoplot.basis
+Autoplot spline basis instances
+
+#### Description 
+ 
+Autoplot spline basis instances
+
+#### Usage 
+<pre><code>
+## S3 method for class 'basis'
+autoplot(object, data, n = 256, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``object``: spline basis object
+* ``data``: x-values at which to evaluate the splines. Optional. By default, an evenly spaced sequence of 256 values covering the range of the splines will be used.
+* ``n``: If data is not provided, instead use an evenly-spaced sequence of x-values of this length (plus one, since both endpoints are included). If data is provided, this argument is ignored.
+* ``...``: Ignored.
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+library(splines)
+x <- seq(0, 1, by=0.001)
+spl <- bs(x, df=6)
+autoplot(spl)
+autoplot(spl, n=5)
+```
+autoplot.breakpoints
+Autoplot strucchange::breakpoints
+
+#### Description 
+ 
+Autoplot strucchange::breakpoints
+
+#### Usage 
+<pre><code>
+## S3 method for class 'breakpoints'
+autoplot(object, data = NULL, cpt.colour = "#FF0000",
+cpt.linetype = "dashed", ...)
+</code></pre>
+
+
+#### Arguments 
+* ``object``: strucchange::breakpoints or strucchange::breakpointsfull instance.
+* ``data``: Original time series. Mandatory for plotting strucchange::breakpoints instance.
+* ``cpt.colour``: Line colour for changepoints
+* ``cpt.linetype``: Line type for changepoints
+* ``...``: other arguments passed to autoplot.ts
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+library(strucchange)
+bp.nile <- breakpoints(Nile ~ 1)
+autoplot(bp.nile)
+autoplot(bp.nile, is.date = TRUE)
+autoplot(breakpoints(bp.nile, breaks = 2), data = Nile)
+
+```
+autoplot.cpt
+Autoplot changepoint::cpt
+
+#### Description 
+ 
+Autoplot changepoint::cpt
+
+#### Usage 
+<pre><code>
+## S3 method for class 'cpt'
+autoplot(object, is.date = NULL, cpt.colour = "#FF0000",
+cpt.linetype = "dashed", ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``	object 	``: 	changepoint::cpt instance
+* ``	is.date 	``: 	Logical frag indicates whether the stats::ts is date or not. If not provided, regard the input as date when the frequency is 4 or 12.
+* ``	cpt.colour 	``: 	Line colour for changepoints
+* ``	cpt.linetype 	``: 	Line type for changepoints
+* ``	... 	``: 	other arguments passed autoplot.ts
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+library(changepoint)
+autoplot(cpt.mean(AirPassengers))
+autoplot(cpt.meanvar(AirPassengers))
+
+```
+autoplot.cv.glmnet
+
+Autoplot glmnet::cv.glmnet
+
+#### Description 
+ 
+Autoplot glmnet::cv.glmnet
+
+#### Usage 
+<pre><code>
+## S3 method for class 'cv.glmnet'
+autoplot(object, sign.lambda = 1, label.n = 12, label = TRUE, label.label = "nz", label.colour = NULL,
+label.alpha = NULL, label.size = NULL, label.angle = NULL, label.family = NULL, label.fontface = NULL, label.lineheight = NULL, label.hjust = NULL, label.vjust = NULL, label.repel = FALSE,
+xlim = c(NA, NA), ylim = c(NA, NA), log = "", main = NULL, xlab = NULL, ylab = NULL, asp = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``object 	``: 	glmnet::cv.glmnet instance
+* ``sign.lambda ``: 	Either plot against log(lambda) (default) or its negative if sign.lambda=-1.
+* ``label.n ``: 	Number of Df labels
+* ``label ``: 	Logical value whether to display labels
+* ``label.label 	``: 	Column name used for label text
+* ``label.colour 	``: 	Colour for text labels
+* ``label.alpha 	``: 	Alpha for text labels
+* ``label.size ``: 	Size for text labels
+* ``label.angle	``: 	Angle for text labels
+* ``label.family 	``: 	Font family for text labels
+* ``label.fontface	``: 	Fontface for text labels
+* ``label.lineheight	``: 	Lineheight for text labels
+* ``label.hjust	``: 	Horizontal adjustment for text labels
+* ``label.vjust	``: 	Vertical adjustment for text labels
+* ``label.repel	``: 	Logical flag indicating whether to use ggrepel, enabling this may take some time for plotting
+* ``	xlim ``: 	limits for x axis
+* ``	ylim	``: 	limits for y axis
+* ``	log 	``: 	which variables to log transform ("x", "y", or "xy") main character vector or expression for plot title
+* ``	xlab 	``: 	character vector or expression for x axis label
+* ``	ylab 	``: 	character vector or expression for y axis label
+* ``	asp 	``: 	the y/x aspect ratio
+* ``	... 	``: 	other arguments passed to methods
+
+Value
+ggplot
+
+#### Examples 
+```{r}
+autoplot(glmnet::cv.glmnet(data.matrix(Orange[-3]), data.matrix(Orange[3])))
+```

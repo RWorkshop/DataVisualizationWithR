@@ -1,0 +1,80 @@
+#### Units
+Often, when working with numeric data, there’s a unit attached to the values, but in R this unit is not attached to your data but rather lives in your head. The developers of the units package has done something about this with the units class, which carries unit information around with a numeric vector. It provides more than semantics though. If you assign a new unit to the data it will check whether the new unit is compatible with the old one. If it is the values gets converted automatically, and if not an error is thrown. Furthermore, units also gets updated when making calculations with the values so units gets compounded during multiplication etc. Without ggforce units data would simply get converted to a numeric vector and work as normal. The scale_[x|y]_unit() scale from ggforce adds a couple of niceties though. When ggforce is loaded the scale is picked by default when plotting units data and you get all of the benefits for free.
+The unit scale adds the unit to the axis label making it clear what the values on the axis is meassured in:
+```{r}
+library(units)
+## udunits system database from /Library/Frameworks/R.framework/Versions/3.5/Resources/library/units/share/udunits
+miles <- make_unit('miles')
+## Warning: make_unit() is deprecated. Please use as_units()
+gallon <- make_unit('gallon')
+## Warning: make_unit() is deprecated. Please use as_units()
+horsepower <- make_unit('horsepower')
+## Warning: make_unit() is deprecated. Please use as_units()
+mtcars$consumption <- mtcars$mpg * (miles/gallon)
+mtcars$power <- mtcars$hp * horsepower
+```
+```{r}
+ggplot(mtcars) +
+    geom_point(aes(power, consumption))
+```
+If data is transformed as part of an aesthetic assignment the unit will update automatically:
+```{r}
+ggplot(mtcars) +
+    geom_point(aes(power, 1/consumption))
+```
+Lastly it is possible to change the units used for the axes on the fly without touching the underlying data through the unit argument in the scale constructor. When doing this the data is automatically converted to the new unit.
+```{r}
+ggplot(mtcars) +
+    geom_point(aes(power, consumption)) +
+    scale_x_unit(unit = 'W') +
+    scale_y_unit(unit = 'km/l')
+## Warning: make_unit() is deprecated. Please use as_units()
+
+## Warning: make_unit() is deprecated. Please use as_units()
+```
+
+	
+A rocket
+We’ll finish this of by drawing a rocket:
+```{r}
+rocketData <- data.frame(
+  x = c(1,1,2,2),
+  y = c(1,2,2,3)
+)
+rocketData <- do.call(rbind, lapply(seq_len(500)-1, function(i) {
+  rocketData$y <- rocketData$y - c(0,i/500);
+  rocketData$group <- i+1;
+  rocketData
+}))
+rocketData2 <- data.frame(
+  x = c(2, 2.25, 2),
+  y = c(2, 2.5, 3)
+)
+rocketData2 <- do.call(rbind, lapply(seq_len(500)-1, function(i) {
+  rocketData2$x[2] <- rocketData2$x[2] - i*0.25/500;
+  rocketData2$group <- i+1 + 500;
+  rocketData2
+}))
+ggplot() + geom_link(aes(x=2, y=2, xend=3, yend=3, alpha=..index..,
+                     size = ..index..), colour='goldenrod', n=500) +
+           geom_bezier(aes(x=x, y=y, group=group, colour=..index..),
+                       data=rocketData) +
+           geom_bezier(aes(x=y, y=x, group=group, colour=..index..),
+                       data=rocketData) +
+           geom_bezier(aes(x=x, y=y, group=group, colour=1),
+                       data=rocketData2) +
+           geom_bezier(aes(x=y, y=x, group=group, colour=1),
+                       data=rocketData2) +
+           geom_text(aes(x=1.65, y=1.65, label='ggplot2', angle=45),
+                     colour='white', size=15) +
+           coord_fixed() +
+           scale_x_reverse() +
+           scale_y_reverse() +
+           scale_alpha(range=c(1, 0), guide='none') +
+           scale_size_continuous(range=c(20, 0.1), trans='exp',
+                                 guide='none') +
+           scale_color_continuous(guide='none') +
+           xlab('') + ylab('') +
+           ggtitle('ggforce: Accelerating ggplot2') +
+           theme(plot.title = element_text(size = 20))
+```

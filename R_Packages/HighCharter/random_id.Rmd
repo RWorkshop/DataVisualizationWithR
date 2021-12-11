@@ -1,0 +1,32 @@
+---
+title: "``random_id``:  Function to generate iids"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+
+#### Description 
+
+Function to generate iids
+
+#### Usage
+<pre><code>
+random_id(n = 1, length = 10)
+</code></pre>
+
+#### Arguments 
+
+* ``n`` Number of ids
+* ``length`` Length of ids
+
+```{r}
+
+random_id(4,4)
+
+```

@@ -1,0 +1,33 @@
+---
+title: "``hchist``: Shorcut to make an histogram"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+```
+
+#### Description 
+
+Shorcut to make an histogram
+
+#### Usage
+<pre><code>
+hchist(x, ...)
+</code></pre>
+
+#### Arguments 
+
+* ``x``: A numeric vector.
+* ``...``: Aditional arguments for the data series (http://api.highcharts.com/highcharts#series).
+
+```{r}
+hchart(iris$Sepal.Length)
+```
+
+```{r}
+hchart(iris$Sepal.Length,breaks=10)
+```

@@ -1,0 +1,47 @@
+---
+title: "``ShadowPlot`` Plot a Shadow Bar Plot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WVPlots)
+```
+
+
+#### Description
+
+Plot a bar chart of row counts conditioned on the categorical variable condvar, faceted on a second categorical variable, refinevar. Each faceted plot also shows a "shadow plot" of the totals conditioned on condvar alone.
+ 
+#### Usage
+<pre><code>
+
+ShadowPlot(frm, condvar, refinevar, title, ..., ncol = 1)
+
+
+</code></pre> 
+#### Arguments
+
+* ``frm``: data frame to get values from.
+* ``condvar ``:   name of the primary conditioning variable (a categorical variable, controls xaxis).
+* ``refinevar``: name of the second or refining conditioning variable (also a categorical variable,
+controls faceting).
+* ``title ``:    title to place on plot.
+* ``... `` : no unnamed argument, added to force named binding of later arguments
+* ``ncol``:  (numeric): number of columns in facet_wrap.
+ -  Examples:  grouped by condvar, faceted by refinevar.
+ 
+#### Examples
+```{r}
+
+ShadowPlot(mtcars, "carb", "cyl",
+title = "Number of example cars by carb and cyl counts")
+```
+
+#### Details
+
+This plot enables comparisons of subpopulation totals across both condvar and refinevar simultaneously.
+By default, the facet plots are arranged in a single column. This can be changed with the optional
+ncol argument.
+Please see here for some interesting discussion https://drsimonj.svbtle.com/plotting-background-data-for-groups-Value
+a ggplot2 bar chart counting  

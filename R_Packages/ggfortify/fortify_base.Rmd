@@ -1,0 +1,21 @@
+
+
+fortify_base
+Convert base::table to data.frame
+
+#### Description 
+ 
+Convert base::table to data.frame
+
+#### Usage 
+ <pre><code>
+fortify_base(model, data, ...)fortify_map
+57
+
+#### Arguments 
+ 
+model base::table instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methods
+Value
+data.frame

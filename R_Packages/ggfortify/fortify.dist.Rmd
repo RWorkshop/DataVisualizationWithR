@@ -1,0 +1,27 @@
+fortify.dist
+Convert stats::dist to data.frame
+
+#### Description 
+ 
+Convert stats::dist to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'dist'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+model stats::dist instance
+data original dataset, if needed
+* ``... ``: other arguments passed to methodsfortify.ets
+43
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(eurodist)
+```
+

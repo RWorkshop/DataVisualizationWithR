@@ -1,0 +1,54 @@
+
+\documentclass[MASTER.tex]{subfiles} 
+\begin{document} 
+	
+%============================================================================== %
+\begin{frame}[fragile]
+\frametitle{Interactivity}
+{\LARGE MAKING PLOTS INTERACTIVE} \\ \bigskip
+\large As well as mapping visual properties to variables or setting them to specific values, you can also connect them to interactive controls.
+
+\end{frame}
+%=================================================%
+\begin{frame}
+\frametitle{Basic interactivity}
+\large
+\textbf{Basic Interactivity}
+\begin{itemize}
+\item The most basic interactivity we can add is "hover
+over" changes
+\item We can change properties by using
+\texttt{property.hover} arguments
+\texttt{fill.hover := "red"}
+\end{itemize}
+\end{frame}
+%=================================================%
+\begin{frame}[fragile]
+	\frametitle{Basic interactivity}
+\begin{framed}
+\begin{verbatim}
+tubeData %>%
+  ggvis(~Excess)  %>%
+     layer_histograms(fill.hover = "red") 
+\end{verbatim}
+\end{framed}
+\end{frame}
+%=================================================%
+\begin{frame}[fragile]
+\frametitle{Interactive Input}
+\Large
+\textbf{The := operator}
+\begin{itemize}
+	\item We can also set properties to be the output of an
+	interactive control
+	
+	\item We use the setting "\texttt{:=}" for this input
+	\item We can optionally set labels next to the control
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+opacity := input_slider(0, 1, label = "Opacity")
+\end{verbatim}
+\end{framed}
+\end{frame}
+\end{document}

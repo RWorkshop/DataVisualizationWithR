@@ -1,0 +1,64 @@
+---
+title: "hc_add_series_map"
+author: "KevinO'Brien"
+date: "11 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(highcharter)
+library(dplyr)
+library(magrittr)
+library(treemap)
+```
+
+## ``hc_add_series_map``
+
+Add a map series
+
+#### Description 
+
+Add a map series
+Usage
+hc_add_series_map(hc, map, df, value, joinBy, ...)
+
+#### Arguments 
+
+* ``hc ``: A highchart htmlwidget object.
+* map A list object loaded from a geojson file.
+* df A data.frame object with data to chart. Code region and value are required.
+* value A string value with the name of the column to chart.
+* joinBy What property to join the map and df
+* ... Aditional shared arguments for the data series (http://api.highcharts.com/highcharts#series).
+
+#### Details
+This function force the highchart object to be map type.
+
+####Examples
+```{r}
+
+library("dplyr")
+data("USArrests", package = "datasets")
+data("usgeojson")
+USArrests <- mutate(USArrests, state = rownames(USArrests))
+highchart() %>%
+hc_title(text = "Violent Crime Rates by US State") %>%
+hc_subtitle(text = "Source: USArrests data") %>%
+hc_add_series_map(usgeojson, USArrests, name = "Murder arrests (per 100,000)",
+value = "Murder", joinBy = c("woename", "state"),
+dataLabels = list(enabled = TRUE,format = '{point.properties.postalcode}')) %>%
+hc_colorAxis(stops = color_stops()) %>%
+hc_legend(valueDecimals = 0, valueSuffix = "%") %>%
+hc_mapNavigation(enabled = TRUE)
+## Not run:32
+hc_add_series_ohlc
+data(worldgeojson, package = "highcharter")
+data("GNI2014", package = "treemap")
+highchart(type = "map") %>%
+hc_add_series_map(map = worldgeojson, df = GNI2014, value = "GNI", joinBy = "iso3") %>%
+hc_colorAxis(stops = color_stops()) %>%
+hc_tooltip(useHTML = TRUE, headerFormat = "",
+pointFormat = "this is {point.name} and have {point.population} people with gni of {point.GNI}")
+## End(Not run)
+```

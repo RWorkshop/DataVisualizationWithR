@@ -1,0 +1,96 @@
+
+gg_interaction Minimal Depth Variable Interaction data object
+(find.interaction).
+#### Description 
+
+Converts the matrix returned from find.interaction to a data.frame and add attributes for S3
+identification. If passed a rfsrc object, gg_interaction first runs the find.interaction function
+with all optional 
+</code></pre>
+#### Arguments
+.
+#### Usage 
+<pre><code>
+
+gg_interaction(object, ...)
+gg_interaction 11
+
+</code></pre>
+#### Arguments
+
+object a rfsrc object or the output from the find.interaction function call.
+... optional extra arguments
+ passed to find.interaction.
+Value
+gg_interaction object
+
+See Also
+rfsrc find.interaction max.subtree var.select vimp plot.gg_interaction
+#### Examples 
+```{r} 
+
+## #### Examples 
+```{r} 
+ from randomForestSRC package...
+## ------------------------------------------------------------
+## find interactions, classification setting
+## ------------------------------------------------------------
+## Not run:
+## -------- iris data
+## iris.obj <- rfsrc(Species ~., data = iris)
+## TODO: VIMP interactions not handled yet....
+## randomForestSRC::find.interaction(iris.obj, method = "vimp", nrep = 3)
+## interaction_iris <- randomForestSRC::find.interaction(iris.obj)
+data(interaction_iris, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_iris)
+plot(gg_dta, xvar="Petal.Width")
+plot(gg_dta, panel=TRUE)
+## End(Not run)
+## ------------------------------------------------------------
+## find interactions, regression setting
+## ------------------------------------------------------------
+## Not run:
+## -------- air quality data
+## airq.obj <- rfsrc(Ozone ~ ., data = airquality)
+##
+## TODO: VIMP interactions not handled yet....
+## randomForestSRC::find.interaction(airq.obj, method = "vimp", nrep = 3)
+## interaction_airq <- randomForestSRC::find.interaction(airq.obj)
+
+data(interaction_airq, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_airq)
+plot(gg_dta, xvar="Temp")
+plot(gg_dta, xvar="Solar.R")
+plot(gg_dta, panel=TRUE)
+## End(Not run)
+## Not run:
+## -------- Boston data
+data(interaction_Boston, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_Boston)
+plot(gg_dta, panel=TRUE)
+## End(Not run)
+## Not run:
+## -------- mtcars data
+data(interaction_mtcars, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_mtcars)
+plot(gg_dta, panel=TRUE)
+## End(Not run)
+## ------------------------------------------------------------
+## find interactions, survival setting
+## ------------------------------------------------------------
+## -------- pbc data
+## data(pbc, package = "randomForestSRC")
+## pbc.obj <- rfsrc(Surv(days,status) ~ ., pbc, nsplit = 10)
+## interaction_pbc <- randomForestSRC::find.interaction(pbc.obj, nvar = 8)
+## Not run:
+data(interaction_pbc, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_pbc)
+plot(gg_dta, xvar="bili")
+plot(gg_dta, panel=TRUE)
+## End(Not run)
+## Not run:
+## -------- veteran data
+data(interaction_veteran, package="ggRandomForests")
+gg_dta <- gg_interaction(interaction_veteran)
+plot(gg_dta, panel=TRUE)
+## End(Not run)

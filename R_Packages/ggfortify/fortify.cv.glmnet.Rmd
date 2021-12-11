@@ -1,0 +1,27 @@
+fortify.cv.glmnet
+Convert glmnet::cv.glmnet to data.frame
+
+#### Description 
+ 
+Convert glmnet::cv.glmnet to data.frame
+
+#### Usage 
+<pre><code>
+## S3 method for class 'cv.glmnet'
+fortify(model, data = NULL, ...)
+</code></pre>
+
+#### Arguments 
+ 
+* ``	model	``: 	glmnet::cv.glmnet instance
+* ``	data	``: 	original dataset, if needed
+* ``	...	``: 	other arguments passed to methods
+
+Value
+data.frame
+
+#### Examples 
+```{r}
+fortify(glmnet::cv.glmnet(data.matrix(Orange[-3]), data.matrix(Orange[3])))42
+fortify.dist
+```

@@ -1,0 +1,47 @@
+---
+title: "``ggRandomForest::calc_auc``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggRandomForests)
+library(ggplot2)
+```
+
+calc_auc Area Under the ROC Curve calculator
+#### Description 
+
+Area Under the ROC Curve calculator
+#### Usage 
+<pre><code>
+
+calc_auc(x)
+
+</code></pre>
+#### Arguments
+
+x gg_roc object
+
+#### Examples 
+```{r} 
+##
+## Taken from the gg_roc example
+rfsrc_iris <- rfsrc(Species ~ ., data = iris)
+#data(rfsrc_iris)
+## Not run:
+gg_dta <- gg_roc(rfsrc_iris, which.outcome=1)
+calc_auc(gg_dta)
+## End(Not run)
+gg_dta <- gg_roc(rfsrc_iris, which.outcome=2)
+calc_auc(gg_dta)
+```
+
+Details
+calc_auc uses the trapezoidal rule to calculate the area under the ROC curve.
+This is a helper function for the gg_roc functions.
+Value
+AUC. 50% is random guessing, higher is better.
+See Also
+calc_roc gg_roc plot.gg_roc
+

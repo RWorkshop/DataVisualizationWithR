@@ -1,0 +1,16 @@
+## ``usgeojson``: US States map in Geojson format (list)
+
+#### Description 
+
+This data comes from the https://code.highcharts.com/mapdata/countries/us/us-all.js
+and is used in highmaps examples.
+
+#### Usage
+<pre><code>
+usgeojson
+</code></pre>
+
+#### Format
+
+A list in geojson format.
+

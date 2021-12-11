@@ -1,0 +1,34 @@
+Rbind original and predicted time-series-like instances as fortified
+data.frame
+
+#### Description 
+ 
+Rbind original and predicted time-series-like instances as fortified data.frame
+
+#### Usage 
+ <pre><code>
+rbind_ts(data, original, ts.connect = TRUE, index.name = "Index",
+data.name = "Data")
+
+#### Arguments 
+ 
+data
+original
+ts.connect
+index.name
+data.name
+Predicted/forecasted ts instance
+Original ts instance
+Logical frag indicates whether connects original time-series and predicted val-
+ues
+Specify column name for time series index
+Specify column name for univariate time series data. Ignored in multivariate
+time series.74
+show,ggmultiplot-method
+Value
+data.frame
+
+#### Examples 
+
+predicted <- predict(stats::HoltWinters(UKgas), n.ahead = 5, prediction.interval = TRUE)
+rbind_ts(predicted, UKgas, ts.connect = TRUE)
