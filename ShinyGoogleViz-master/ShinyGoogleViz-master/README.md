@@ -1,4 +1,0 @@
-ShinyGoogleViz
-==============
-
-Shiny and GoogleViz
