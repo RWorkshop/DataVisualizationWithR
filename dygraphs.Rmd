@@ -1,7 +1,0 @@
-dygraph: Time series chart with range selector 
-===============================================
-
-* This package provides an R interface for dygraphs, a fast, flexible JavaScript charting library for exploring time-series data sets. What’s powerful about dygraphs is that it’s interactive right out of the box, with default mouse-over labels, zooming, and panning. It’s got lots of nifty other interactivity features, like synchronization or the range selector shown above.
-
-* But dygraph’s interactivity doesn’t come at the expense of speed: it can handle huge datasets with millions of points without slowing its roll. And you can use RColorBrewer with dygraphs to choose a different color palette for your time series— check out this example to see how.
-
